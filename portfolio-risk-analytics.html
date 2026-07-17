@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio — Credit Risk Analytics & IFRS 9 ECL System</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="portfolio-detail.css" />
+    <style>
+      /* ── Metric cards ───────────────────────────────────────────── */
+      .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin: 1.5rem 0;
+      }
+      .metric-card {
+        background: var(--cream);
+        border: 1px solid var(--light-warm);
+        border-radius: 8px;
+        padding: 1.2rem 1.4rem;
+      }
+      .metric-label {
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--warm);
+        margin-bottom: .4rem;
+      }
+      .metric-value {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.9rem;
+        font-weight: 600;
+        color: var(--dark);
+        line-height: 1.1;
+      }
+      .metric-sub {
+        font-size: 0.78rem;
+        color: var(--warm);
+        margin-top: .25rem;
+      }
+
+      /* ── Finding pills ──────────────────────────────────────────── */
+      .finding-list { list-style: none; padding: 0; margin: 1rem 0; }
+      .finding-list li {
+        padding: .7rem 1rem .7rem 2.6rem;
+        margin-bottom: .5rem;
+        border-radius: 6px;
+        font-size: .92rem;
+        position: relative;
+        line-height: 1.55;
+      }
+      .finding-list li::before {
+        position: absolute; left: .9rem; top: .7rem;
+        font-weight: 700; font-size: .9rem;
+      }
+      .finding-list li.good  { background: #f0faf0; color: #1b4a1b; }
+      .finding-list li.good::before  { content: "✓"; color: #2E7D32; }
+      .finding-list li.bad   { background: #fff5f5; color: #5c1a1a; }
+      .finding-list li.bad::before   { content: "✗"; color: #C62828; }
+      .finding-list li.note  { background: #fffbf0; color: #4a3800; }
+      .finding-list li.note::before  { content: "~"; color: #E65100; }
+
+      /* ── Proposal blocks ────────────────────────────────────────── */
+      .proposal-list { list-style: none; padding: 0; margin: 1rem 0; }
+      .proposal-item {
+        display: flex; gap: 1rem;
+        padding: .9rem 1rem;
+        border-bottom: 1px solid var(--light-warm);
+      }
+      .proposal-badge {
+        flex-shrink: 0;
+        width: 28px; height: 28px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: #fff;
+        font-size: .8rem;
+        font-weight: 700;
+        display: flex; align-items: center; justify-content: center;
+        margin-top: .15rem;
+      }
+      .proposal-body strong { display: block; font-size: .95rem; margin-bottom: .25rem; }
+      .proposal-body p { font-size: .88rem; color: var(--warm); line-height: 1.55; margin: 0; }
+
+      /* ── Module table ───────────────────────────────────────────── */
+      .module-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .88rem; }
+      .module-table th {
+        background: var(--dark); color: #fff;
+        padding: .6rem .9rem; text-align: left; font-weight: 500;
+      }
+      .module-table td { padding: .6rem .9rem; border-bottom: 1px solid var(--light-warm); }
+      .module-table tr:nth-child(even) td { background: var(--cream); }
+      .badge-ok   { background:#e8f5e9; color:#2E7D32; padding:.2rem .5rem; border-radius:4px; font-size:.78rem; font-weight:600; }
+      .badge-fix  { background:#fff3e0; color:#E65100; padding:.2rem .5rem; border-radius:4px; font-size:.78rem; font-weight:600; }
+
+      /* ── Formula block ──────────────────────────────────────────── */
+      .formula-block {
+        background: #1a1a2e; color: #a8d8a8;
+        font-family: "Courier New", monospace;
+        font-size: .83rem; line-height: 1.7;
+        padding: 1.1rem 1.4rem;
+        border-radius: 8px;
+        margin: 1rem 0;
+        overflow-x: auto;
+      }
+
+      /* ── Tier divider ───────────────────────────────────────────── */
+      .tier-label {
+        display: inline-flex; align-items: center; gap: .6rem;
+        background: var(--dark); color: #fff;
+        font-size: .78rem; letter-spacing: .1em; text-transform: uppercase;
+        padding: .4rem 1rem; border-radius: 20px;
+        margin-bottom: 1.2rem;
+      }
+      .tier-label .tier-num {
+        background: var(--accent); color: #fff;
+        border-radius: 50%; width: 20px; height: 20px;
+        display: inline-flex; align-items: center; justify-content: center;
+        font-size: .75rem; font-weight: 700;
+      }
+
+      /* ── Impact callout ─────────────────────────────────────────── */
+      .impact-callout {
+        border-left: 4px solid var(--accent);
+        background: var(--cream);
+        padding: 1rem 1.4rem;
+        margin: 1.2rem 0;
+        border-radius: 0 8px 8px 0;
+      }
+      .impact-callout .ic-number {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2.4rem; font-weight: 600; color: var(--accent);
+        line-height: 1;
+      }
+      .impact-callout .ic-desc { font-size: .9rem; color: var(--dark); margin-top: .3rem; }
+
+      /* ── Sidebar TOC ────────────────────────────────────────────── */
+      .toc-sticky {
+        position: sticky; top: 5.5rem;
+        font-size: .82rem;
+      }
+      .toc-sticky a {
+        display: block; padding: .3rem 0;
+        color: var(--warm); text-decoration: none;
+        border-left: 2px solid transparent;
+        padding-left: .7rem;
+        transition: all .2s;
+      }
+      .toc-sticky a:hover { color: var(--dark); border-left-color: var(--accent); }
+
+      /* ── Layout with TOC ────────────────────────────────────────── */
+      @media (min-width: 1024px) {
+        .with-toc {
+          display: grid;
+          grid-template-columns: 1fr 200px;
+          gap: 3rem;
+          max-width: 1100px;
+          margin: 0 auto;
+          padding: 0 2rem;
+        }
+        .toc-col { order: 2; }
+        .content-col { order: 1; }
+        .detail-container { max-width: none !important; padding: 0 !important; }
+      }
+    </style>
+  </head>
+  <body class="detail-page-compact">
+    <nav>
+      <a href="index.html" class="nav-logo">Nam Phuong</a>
+      <ul class="nav-links">
+        <li><a href="index.html#portfolio">Work</a></li>
+        <li><a href="index.html#about">About</a></li>
+      </ul>
+      <a href="index.html" class="back-btn"><span class="arrow">&#8592;</span> Back</a>
+    </nav>
+
+    <header class="detail-hero">
+      <div class="breadcrumb">
+        <a href="index.html">Portfolio</a> / <span>Credit Risk Analytics</span>
+      </div>
+      <h1>Credit Risk Analytics &amp; IFRS&nbsp;9 ECL System</h1>
+    </header>
+
+    <main>
+      <div class="with-toc">
+
+        <!-- ── TOC ──────────────────────────────────────────────── -->
+        <aside class="toc-col">
+          <nav class="toc-sticky">
+            <p style="font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--warm);margin-bottom:.6rem;">Contents</p>
+            <a href="#context">Context &amp; Problem</a>
+            <a href="#tier1">Tier 1 — Diagnostic</a>
+            <a href="#tier2">Tier 2 — Model Building</a>
+            <a href="#tier3">Tier 3 — IFRS 9 Application</a>
+            <a href="#stack">Tech Stack</a>
+            <a href="#proposals">Key Proposals</a>
+          </nav>
+        </aside>
+
+        <!-- ── Main content ──────────────────────────────────────── -->
+        <div class="content-col">
+
+          <!-- ══ HERO METRICS ══ -->
+          <section class="project-section" id="context">
+            <div class="detail-container">
+              <div class="project-links">
+                <a href="https://github.com/namphuong-data" target="_blank" class="github-btn">GitHub Repository</a>
+              </div>
+
+              <p class="detail-intro-text">
+                Day la du an phan tich rui ro tin dung end-to-end tren bo du lieu
+                <strong>2.26 trieu khoan vay Lending Club (2007&ndash;2018)</strong>,
+                bao gom 8 module lien ket tu chan doan danh muc, xay dung mo hinh
+                PD, he thong canh bao som den tinh toan du phong IFRS 9.
+                Ket qua dinh luong chinh: ML-PD phat hien them
+                <strong>$404M (36%) du phong thieu hut</strong>
+                so voi PhuongPhap PD tinh truyen thong.
+              </p>
+
+              <div class="metric-grid">
+                <div class="metric-card">
+                  <div class="metric-label">Tong khoan vay</div>
+                  <div class="metric-value">2.26M</div>
+                  <div class="metric-sub">140 thang, 2007&ndash;2018</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">PD Model AUC</div>
+                  <div class="metric-value">0.9702</div>
+                  <div class="metric-sub">Gradient Boosting — production-ready</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">EWS Predictive AUC</div>
+                  <div class="metric-value">0.7412</div>
+                  <div class="metric-sub">Loai bo circular bias (0.999 gia)</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">ECL Gap ML vs Static</div>
+                  <div class="metric-value">+$404M</div>
+                  <div class="metric-sub">+36% du phong thieu hut</div>
+                </div>
+              </div>
+
+              <!-- Problem statement -->
+              <h2 class="detail-section-title" style="margin-top:2rem;">Problem Statement</h2>
+              <p class="detail-intro-text">
+                Lending Club co <strong>NPL Ratio dat dinh 19.07% (2015)</strong>
+                va tong ECL theo PD tinh chi la $1,122M — con so nay bi underestimate
+                nghiem trong do PD nhom Late (debt_group 3) la 35% trong khi
+                thuc nghiem la 100% (sai lech 65 diem %). Bai toan: lam the nao
+                de xay dung he thong phan tich rui ro chinh xac hon, co kha nang
+                canh bao som truoc khi no xau phat sinh, va tinh toan ECL dung
+                chuan IFRS 9 voi ML-PD thay vi PD gia dinh cung?
+              </p>
+            </div>
+          </section>
+
+          <!-- ══ TIER 1: DIAGNOSTIC ══ -->
+          <section class="project-section" id="tier1">
+            <div class="detail-container">
+              <div class="tier-label">
+                <span class="tier-num">1</span>
+                Chan doan Danh muc &mdash; Hieu boi canh truoc khi mo hinh hoa
+              </div>
+
+              <p class="detail-intro-text">
+                Truoc khi xay dung bat ky mo hinh nao, can hieu ro suc khoe hien
+                tai cua danh muc, cac yeu to vi mo anh huong den no xau, va dac
+                tinh lich su theo thoi gian. 4 module sau (M1, M3, M4, M5) phuc
+                vu muc tieu nay.
+              </p>
+
+              <!-- M1 -->
+              <h2 class="detail-section-title">M1 — Portfolio Health: NPL &amp; Grade Mix</h2>
+              <p class="detail-intro-text">
+                <strong>Phat hien chinh:</strong> NPL tang don dieu tu Grade A
+                (3.59%) den Grade G (39.41%) — he thong phan hang co gia tri
+                phan biet rui ro. Loi nghiep vu da phat hien: flag logic goc
+                gan nhan <em>OK</em> cho Grade D-G du NPL 20-39% vi chi kiem tra
+                portfolio share, khong kiem tra NPL. Da sua thanh dual-dimension flag.
+              </p>
+              <div class="formula-block">NPL_Ratio = (Charged Off / Total Loans) × 100
+
+concentration_flag  = WATCH  si portfolio_share &gt; 10%  |  ALERT si &gt; 20%
+credit_quality_flag = WATCH  si NPL &gt; 8%               |  HIGH_RISK si &gt; 20%
+composite_flag      = HIGH_RISK neu bat ky chieu nao canh bao</div>
+
+              <ul class="finding-list">
+                <li class="good">Grade D (NPL 20.29%), E (28.17%), F (36.20%), G (39.41%) — da duoc flag HIGH_RISK chinh xac sau fix.</li>
+                <li class="good">NPL Trend: tang tu 2007, dat dinh 19.07% (2015-03), giam dan — dung chu ky tin dung Lending Club.</li>
+                <li class="note">debt_consolidation: ALERT_BOTH (concentration + credit risk). credit_card: CONCENTRATION only (NPL binh thuong).</li>
+              </ul>
+
+              <!-- M3 -->
+              <h2 class="detail-section-title">M3 — Migration Matrix: Lich su Dich chuyen Nhom No</h2>
+              <p class="detail-intro-text">
+                <strong>Phat hien chinh:</strong> Xac suat Nhom 3 (Late) chuyen
+                sang Nhom 5 (Charged Off) la 15.05% — cao gap 4.6 lan so voi
+                Nhom 1→Nhom 5 (3.28%). Day la tin hieu quan trong cho EWS.
+                Loi da sua: diagonal 27.07% la point-in-time snapshot, khong phai
+                Markov transition probability.
+              </p>
+              <div class="formula-block">Annualized_NPL = NPL_raw × (12 / avg_loan_age_months)
+Reliable cohort: avg_loan_age ≥ 36 thang  →  2010–2015
+NPL annualized TB (reliable): 4.57%/nam — ben vung, co the dung calibrate</div>
+              <ul class="finding-list">
+                <li class="good">Cohort 2010-2015 NPL annualized = 4.57%/nam — benchmark de thiết lap provision rate.</li>
+                <li class="bad">Cohort 2017-2018 NPL thap (3-11%) la truncation bias, khong phai chat luong tot hon.</li>
+              </ul>
+
+              <!-- M4 -->
+              <h2 class="detail-section-title">M4 — Macro &amp; Concentration: DTI va Lag Effect</h2>
+              <p class="detail-intro-text">
+                <strong>Insight quan trong nhat toan du an:</strong>
+                Corr NPL vs Unemployment tai lag=0 chi la 0.271 (yeu), nhung tai
+                lag=24 thang dat 0.651 — co nghia la chinh sach tin dung can
+                theo doi Unemployment Rate hom nay de du bao NPL sau 2 nam.
+              </p>
+              <div class="formula-block">r(lag=k) = Corr(NPL_t, Unemployment_{t-k})
+Lag toi uu = argmax |r| → lag=24 thang (r=0.651)
+
+DTI Bucket (loan-level, 0-40%):
+  Pearson r = +0.953  →  DTI tang 5% → NPL tang ~1.9 diem %
+  (Loai DTI &gt; 100%: 4,140 khoan du lieu loi)
+  DTI 45-60%: selection bias — underwriting nghiem ngat, NPL thap la do loc</div>
+
+              <div class="impact-callout">
+                <div class="ic-number">r = 0.953</div>
+                <div class="ic-desc">Tuong quan NPL vs DTI trong vung 0-40% — bien du bao manh nhat trong toan du an</div>
+              </div>
+
+              <!-- M5 -->
+              <h2 class="detail-section-title">M5 — Credit Appetite: Score Gap theo Tieu bang</h2>
+              <p class="detail-intro-text">
+                FICO Gap giam tu &gt;100 diem (2007-2012) xuong 35-80 diem
+                (2013-2018) — credit appetite noi long ro rang sau khung hoang.
+                Phat hien loi: cold-start thang 2007-05 (rejection 100% do 0
+                accepted, khong phai policy) va tail artifact cuoi 2018 (dataset
+                bi cat) da duoc loc.
+              </p>
+              <ul class="finding-list">
+                <li class="good">Score Gap vs Rejection Rate: r=0.474 — state gap cao → rejection cao, dung huong.</li>
+                <li class="good">DC gap cao nhat (89.8 pts): underwriting nghiem ngat nhat hoac population rui ro cao nhat.</li>
+                <li class="note">Score gap la so tuyet doi giua 2 thang do khac nhau — chi so sanh tuong doi giua cac state.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- ══ TIER 2: MODEL BUILDING ══ -->
+          <section class="project-section" id="tier2">
+            <div class="detail-container">
+              <div class="tier-label">
+                <span class="tier-num">2</span>
+                Xay dung Mo hinh &mdash; PD Model va Early Warning System
+              </div>
+
+              <p class="detail-intro-text">
+                Voi nen tang hieu biet ve danh muc tu Tier 1, Tier 2 xay dung
+                hai mo hinh co gia tri thuc thi: mo hinh PD du bao xac suat vo
+                no ca nhan hoa, va EWS phat hien som rui ro truoc khi no xau phat sinh.
+              </p>
+
+              <!-- M6 -->
+              <h2 class="detail-section-title">M6 — PD Model: Gradient Boosting AUC=0.9702</h2>
+              <p class="detail-intro-text">
+                <strong>Ket qua dinh luong:</strong> Gradient Boosting dat
+                Test AUC=0.9702, Gini=0.9403, KS=0.871 — vuot toan bo nguong
+                production (Basel II &gt;0.75, thuc tien tot &gt;0.85).
+                Mo hinh duoc train tren time-based split nghiem ngat (Train
+                2007-2015, Val 2016, Test 2017-2018) de tranh data leakage
+                theo chu ky kinh te.
+              </p>
+
+              <table class="module-table">
+                <thead>
+                  <tr><th>Model</th><th>Test AUC</th><th>Gini</th><th>KS Stat</th><th>Train Time</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Logistic Regression</td><td>0.9680</td><td>0.9360</td><td>—</td><td>2.7s</td></tr>
+                  <tr><td>Random Forest</td><td>0.9616</td><td>0.9232</td><td>—</td><td>65.8s</td></tr>
+                  <tr><td><strong>Gradient Boosting</strong></td><td><strong>0.9702</strong></td><td><strong>0.9403</strong></td><td><strong>0.871</strong></td><td>479.5s</td></tr>
+                </tbody>
+              </table>
+
+              <div class="formula-block">Calibration: GB raw ECE = 0.1636 (khong calibrated)
+→ Platt Scaling:     ECE = 0.0664  (-59.4%)
+→ Isotonic Regr.:    ECE = 0.0616  (-62.4%)  [Best — dung cho IFRS 9]
+Nguong chap nhan: ECE &lt; 0.10 (MAS TRM / ECB TRIM consumer PD)
+
+PD Score gradient A→G (sanity check):
+A=0.123 | B=0.237 | C=0.359 | D=0.459 | E=0.556 | F=0.637 | G=0.691</div>
+
+              <ul class="finding-list">
+                <li class="good">PSI toan bo 5 fold &lt; 0.10 (Stable) — khong co distribution shift theo thoi gian.</li>
+                <li class="good">CV AUC tang theo fold: 0.926→0.954→0.950→0.963→0.969 — expected behavior.</li>
+                <li class="good">Sau Isotonic calibration: ECE=0.0616, dat chuan MAS TRM/ECB TRIM.</li>
+                <li class="note">Coverage 59.6%: 878K Current loans dung grade-based PD fill — chua ML-driven.</li>
+              </ul>
+
+              <!-- M7 -->
+              <h2 class="detail-section-title">M7 — EWS: Tu Circular AUC 0.999 den Predictive AUC 0.7412</h2>
+              <p class="detail-intro-text">
+                <strong>Phat hien quan trong nhat cua du an:</strong>
+                AUC 0.999 cua EWS goc la gia tri gia do circular evaluation —
+                Signal 1 dung debt_group lam input, trong khi label cung tu
+                debt_group. Da xu ly bang cach xay dung True Predictive EWS
+                voi 4 features doc lap, cho AUC=0.7412 co y nghia thuc su.
+              </p>
+
+              <div class="formula-block">EWS Predictive Score (khong dung debt_group):
+ews = fico_deterioration×0.35 + dti_signal×0.25 + delinq_signal×0.25 + revol_signal×0.15
+
+fico_deterioration = |last_fico - fico_range_low| / 300
+dti_signal         = min(dti / 50, 1.0)   [cap 50% = nguong nguy hiem]
+delinq_signal      = delinq_2yrs×0.3 + ever_delinquent×0.7
+revol_signal       = revol_util / 100.0</div>
+
+              <p class="detail-intro-text">
+                <strong>3 che do van hanh</strong> tu Precision-Recall curve:
+              </p>
+              <table class="module-table">
+                <thead>
+                  <tr><th>Che do</th><th>Threshold</th><th>Precision</th><th>Recall</th><th>Phu hop</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>ALERT (Youden)</td><td>0.312</td><td>19.5%</td><td>75.5%</td><td>Quet dien rong toan danh muc</td></tr>
+                  <tr><td><strong>BALANCED (F1)</strong></td><td><strong>0.459</strong></td><td><strong>36.0%</strong></td><td><strong>36.8%</strong></td><td><strong>Van hanh hang tuan (khuyen nghi)</strong></td></tr>
+                  <tr><td>PRECISE (F0.75)</td><td>0.483</td><td>41.8%</td><td>31.1%</td><td>Kiem tra sau uu tien cao</td></tr>
+                </tbody>
+              </table>
+              <ul class="finding-list">
+                <li class="good">Capture Rate tang tu 51.2% → 62.6% sau ha nguong Watch (0.65→0.45).</li>
+                <li class="good">Top 20 Watch List sau fix: khoan DANG TOT co FICO giam 130-220 diem, DTI cao, revol_util cao — canh bao som thuc su.</li>
+                <li class="bad">Rule-based 4 features dat tran AUC=0.741 — khong the vuot bang chi chinh threshold.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- ══ TIER 3: IFRS 9 APPLICATION ══ -->
+          <section class="project-section" id="tier3">
+            <div class="detail-container">
+              <div class="tier-label">
+                <span class="tier-num">3</span>
+                Ung dung IFRS 9 &mdash; Gia tri Dinh luong cua ML trong Du phong
+              </div>
+
+              <p class="detail-intro-text">
+                Day la tang ket qua — noi Tier 1 (hieu biet danh muc) va Tier 2
+                (mo hinh PD va EWS) hoi tu de tra loi cau hoi kinh doanh chinh:
+                ML-PD thay doi muc du phong IFRS 9 len bao nhieu so voi phuong
+                phap truyen thong?
+              </p>
+
+              <!-- M2 baseline -->
+              <h2 class="detail-section-title">M2 — Baseline IFRS 9: PD Tinh 5-bucket</h2>
+              <p class="detail-intro-text">
+                PD tinh theo debt_group: Group 3 (Late) = 35% trong khi thuc
+                nghiem la 100% (underestimate 65 diem %). Ket qua: baseline ECL
+                $1,122M la con so sai do flat PD assumption.
+              </p>
+              <div class="formula-block">Empirical PD validation:
+Group 3 (Late 31-120d): static PD = 35%  vs  empirical PD = 100%  →  error = -65 pts
+Group 5 (Charged Off) : static PD = 90%  vs  empirical PD = 100%  →  error = -10 pts</div>
+
+              <!-- M8 advanced -->
+              <h2 class="detail-section-title">M8 — Advanced IFRS 9: ML-PD Integration</h2>
+              <p class="detail-intro-text">
+                M8 tich hop ML-PD tu M6 (calibrated Isotonic), LGD thuc nghiem
+                theo grade (thap hon Basel 12-25 diem %), va EAD net sau recoveries.
+                Ket qua: ECL tang tu $1,122M len $1,526M.
+              </p>
+              <div class="formula-block">ECL = pd_for_ecl × LGD_adjusted × EAD × Horizon × Discount
+
+Stage 1: pd_for_ecl = pd_score | horizon = 1/12  (12-month ECL)
+Stage 2: pd_for_ecl = pd_score | horizon = remaining_life
+Stage 3: pd_for_ecl = 1.0      | horizon = 1.0   [IFRS 9 para 5.5.3: confirmed default]
+
+EAD Stage 3 = loan_amnt × CCF(0.75) − recoveries  [net sau thu hoi]
+
+SICR Stage 2: debt_group==2  OR  FICO det.>20  OR  (pd_score>0.15 AND has_ml_pd=True)
+              [Chi ap PD>15% cho ML-PD thuc, tranh Stage 2 inflation tu PD fill]</div>
+
+              <table class="module-table">
+                <thead>
+                  <tr><th>Stage</th><th>So KV</th><th>EAD ($M)</th><th>Avg PD</th><th>ECL ($M)</th><th>Coverage (Agg)</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>1 — Binh thuong</td><td>1,249,674</td><td>$13,278M</td><td>18.28%</td><td>$62.76M</td><td>0.47%</td></tr>
+                  <tr><td>2 — SICR</td><td>718,179</td><td>$7,554M</td><td>35.06%</td><td>$175.56M</td><td>2.32%</td></tr>
+                  <tr><td>3 — Default (PD=1.0)</td><td>290,066</td><td>$3,032M</td><td>100%*</td><td>$1,288M</td><td>42.49%</td></tr>
+                  <tr><td><strong>TONG</strong></td><td><strong>2,257,919</strong></td><td><strong>$23,864M</strong></td><td>—</td><td><strong>$1,526M</strong></td><td><strong>6.40%</strong></td></tr>
+                </tbody>
+              </table>
+              <p style="font-size:.8rem;color:var(--warm);margin-top:.3rem;">* Stage 3: pd_for_ecl=1.0 (confirmed default). avg_pd=0.7648 la ML-PD de tham khao.</p>
+
+              <div class="impact-callout">
+                <div class="ic-number">+$404M</div>
+                <div class="ic-desc">Chench lech ECL M8 (ML-PD) vs M2 (PD tinh): +36% — minh chung dinh luong gia tri kinh doanh cua ML trong IFRS 9</div>
+              </div>
+
+              <ul class="finding-list">
+                <li class="good">LGD thuc nghiem thap hon Basel 12-25 diem % — phan anh dac thu Lending Club co thu hoi qua collection agency.</li>
+                <li class="good">Stage 3 coverage 42.49% = LGD_adjusted — dung IFRS 9 (coverage = LGD khi PD=1.0).</li>
+                <li class="good">ECL phan phoi dung chu ky: tang 2007→2016, giam 2017-2018 (truncation cohort moi).</li>
+                <li class="note">40% Current loans (878K) dung grade-based PD fill — ECL nhom nay la static, chua ML-driven.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- ══ TECH STACK ══ -->
+          <section class="project-section" id="stack">
+            <div class="detail-container">
+              <h2 class="detail-section-title">Tech Stack &amp; Tools</h2>
+              <table class="module-table">
+                <thead><tr><th>Tang</th><th>Cong cu</th><th>Muc dich</th></tr></thead>
+                <tbody>
+                  <tr><td>Data Storage</td><td>PostgreSQL + DuckDB</td><td>Luu tru va truy van phan tich toc do cao</td></tr>
+                  <tr><td>Data Processing</td><td>Python, Pandas, PySpark</td><td>ETL, feature engineering, aggregation</td></tr>
+                  <tr><td>ML Modeling</td><td>Scikit-learn, XGBoost/LightGBM</td><td>PD Model, Calibration, EWS scoring</td></tr>
+                  <tr><td>Visualization</td><td>Matplotlib, Seaborn</td><td>Chart, heatmap, reliability diagram</td></tr>
+                  <tr><td>Orchestration</td><td>Jupyter Notebook (8 modules)</td><td>Phan tich lien ket, reproducible research</td></tr>
+                  <tr><td>Version Control</td><td>Git (Conventional Commits)</td><td>fix(M1-M8): 8 commit rieng tung module</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- ══ KEY PROPOSALS ══ -->
+          <section class="project-section" id="proposals">
+            <div class="detail-container">
+              <h2 class="detail-section-title">3 De xuat Co gia tri Trien khai Ngay</h2>
+              <ol class="proposal-list">
+                <li class="proposal-item">
+                  <span class="proposal-badge">1</span>
+                  <div class="proposal-body">
+                    <strong>Tich hop ML-PD Calibrated vao SICR va ECL Production</strong>
+                    <p>Isotonic-calibrated PD (ECE=0.062) da san sang thay the PD tinh. Ap dung SICR filter has_ml_pd=True tranh Stage 2 inflation. Mo rong training sang Current loans (proxy label: payment behavior score) de tang PD coverage tu 59.6% len 95%+.</p>
+                  </div>
+                </li>
+                <li class="proposal-item">
+                  <span class="proposal-badge">2</span>
+                  <div class="proposal-body">
+                    <strong>Trien khai EWS theo 3 che do van hanh dong</strong>
+                    <p>ALERT (R=75%): quet dinh ky toan danh muc. BALANCED (P=36%, R=37%): van hanh hang tuan. PRECISE (P=42%): kiem tra sau uu tien. Tang trong so Signal 3 (PD proxy) tu 0.2 len 0.35 bang calibrated ML-PD — du kien predictive AUC tang tu 0.741 len 0.82+.</p>
+                  </div>
+                </li>
+                <li class="proposal-item">
+                  <span class="proposal-badge">3</span>
+                  <div class="proposal-body">
+                    <strong>Xay dung Macro Stress Testing voi Unemployment Lag 24 thang</strong>
+                    <p>Su dung Unemployment Rate (t-24) lam leading indicator du bao NPL tuong lai (r=0.651). Thiet lap DTI cap &le;35% trong underwriting policy (DTI tang 5% → NPL tang 1.9 diem %). Tich hop vao provision rate de ECL phan ung voi chu ky kinh te.</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </section>
+
+        </div><!-- end content-col -->
+      </div><!-- end with-toc -->
+    </main>
+
+    <footer>
+      <span>&copy; 2026 Nam Phuong</span>
+      <a href="https://linkedin.com" target="_blank">LinkedIn &nearr;</a>
+    </footer>
+
+    <script src="portfolio-detail.js"></script>
+  </body>
+</html>
