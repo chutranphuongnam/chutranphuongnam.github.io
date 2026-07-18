@@ -1,0 +1,849 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio — Hệ thống Phân tích Rủi ro Tín dụng & IFRS 9 ECL</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="portfolio-detail.css" />
+    <style>
+      .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+        gap: 1rem;
+        margin: 1.5rem 0;
+      }
+      .metric-card {
+        background: var(--cream);
+        border: 1px solid var(--light-warm);
+        border-radius: 8px;
+        padding: 1.2rem 1.4rem;
+      }
+      .metric-label {
+        font-size: 0.74rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--warm);
+        margin-bottom: 0.35rem;
+      }
+      .metric-value {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--dark);
+        line-height: 1.1;
+      }
+      .metric-sub {
+        font-size: 0.76rem;
+        color: var(--warm);
+        margin-top: 0.2rem;
+      }
+
+      .finding-list {
+        list-style: none;
+        padding: 0;
+        margin: 0.8rem 0;
+      }
+      .finding-list li {
+        padding: 0.7rem 1rem 0.7rem 2.6rem;
+        margin-bottom: 0.45rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        position: relative;
+        line-height: 1.6;
+      }
+      .finding-list li::before {
+        position: absolute;
+        left: 0.88rem;
+        top: 0.7rem;
+        font-weight: 700;
+        font-size: 0.88rem;
+      }
+      .finding-list li.good {
+        background: #f0faf0;
+        color: #1b4a1b;
+      }
+      .finding-list li.good::before {
+        content: "✓";
+        color: #2e7d32;
+      }
+      .finding-list li.bad {
+        background: #fff5f5;
+        color: #5c1a1a;
+      }
+      .finding-list li.bad::before {
+        content: "✗";
+        color: #c62828;
+      }
+      .finding-list li.note {
+        background: #fffbf0;
+        color: #4a3800;
+      }
+      .finding-list li.note::before {
+        content: "~";
+        color: #e65100;
+      }
+
+      .proposal-list {
+        list-style: none;
+        padding: 0;
+        margin: 0.8rem 0;
+      }
+      .proposal-item {
+        display: flex;
+        gap: 1rem;
+        padding: 1rem 1rem;
+        border-bottom: 1px solid var(--light-warm);
+      }
+      .proposal-badge {
+        flex-shrink: 0;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: #fff;
+        font-size: 0.78rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0.2rem;
+      }
+      .proposal-body strong {
+        display: block;
+        font-size: 0.93rem;
+        margin-bottom: 0.3rem;
+      }
+      .proposal-body p {
+        font-size: 0.87rem;
+        color: var(--warm);
+        line-height: 1.65;
+        margin: 0;
+      }
+
+      .module-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+        font-size: 0.86rem;
+      }
+      .module-table th {
+        background: var(--dark);
+        color: #fff;
+        padding: 0.6rem 0.9rem;
+        text-align: left;
+        font-weight: 500;
+        font-size: 0.82rem;
+      }
+      .module-table td {
+        padding: 0.6rem 0.9rem;
+        border-bottom: 1px solid var(--light-warm);
+        line-height: 1.5;
+      }
+      .module-table tr:nth-child(even) td {
+        background: var(--cream);
+      }
+
+      .formula-block {
+        background: #1a1a2e;
+        color: #a8d8a8;
+        font-family: "Courier New", monospace;
+        font-size: 0.8rem;
+        line-height: 1.8;
+        padding: 1.2rem 1.5rem;
+        border-radius: 8px;
+        margin: 1.1rem 0;
+        overflow-x: auto;
+        white-space: pre;
+      }
+
+      .tier-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        background: var(--dark);
+        color: #fff;
+        font-size: 0.73rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.4rem 1rem;
+        border-radius: 20px;
+        margin-bottom: 1.2rem;
+        margin-top: 0.5rem;
+      }
+      .tier-num {
+        background: var(--accent);
+        color: #fff;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.72rem;
+        font-weight: 700;
+      }
+
+      .impact-callout {
+        border-left: 4px solid var(--accent);
+        background: var(--cream);
+        padding: 1.1rem 1.5rem;
+        margin: 1.4rem 0;
+        border-radius: 0 8px 8px 0;
+      }
+      .impact-callout .ic-number {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2.5rem;
+        font-weight: 600;
+        color: var(--accent);
+        line-height: 1.1;
+      }
+      .impact-callout .ic-desc {
+        font-size: 0.88rem;
+        color: var(--dark);
+        margin-top: 0.35rem;
+        line-height: 1.55;
+      }
+
+      .chart-figure {
+        margin: 1.8rem 0;
+      }
+      .chart-figure img {
+        width: 100%;
+        border-radius: 8px;
+        border: 1px solid var(--light-warm);
+        display: block;
+      }
+      .chart-caption {
+        font-size: 0.78rem;
+        color: var(--warm);
+        margin-top: 0.5rem;
+        font-style: italic;
+        text-align: center;
+        line-height: 1.55;
+      }
+
+      @media (min-width: 1024px) {
+        .with-toc {
+          display: grid;
+          grid-template-columns: 1fr 190px;
+          gap: 3rem;
+          max-width: 1100px;
+          margin: 0 auto;
+          padding: 0 2rem;
+        }
+        .toc-col {
+          order: 2;
+        }
+        .content-col {
+          order: 1;
+        }
+        .detail-container {
+          max-width: none !important;
+          padding: 0 !important;
+        }
+      }
+      .toc-sticky {
+        position: sticky;
+        top: 5.5rem;
+        font-size: 0.8rem;
+      }
+      .toc-sticky .toc-head {
+        font-size: 0.71rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--warm);
+        margin-bottom: 0.6rem;
+      }
+      .toc-sticky a {
+        display: block;
+        padding: 0.3rem 0 0.3rem 0.7rem;
+        color: var(--warm);
+        text-decoration: none;
+        border-left: 2px solid transparent;
+        transition: all 0.2s;
+        line-height: 1.45;
+      }
+      .toc-sticky a:hover,
+      .toc-sticky a.active {
+        color: var(--dark);
+        border-left-color: var(--accent);
+      }
+      .toc-tier {
+        font-size: 0.67rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin: 0.65rem 0 0.15rem 0.7rem;
+      }
+
+      .section-intro {
+        font-size: 0.92rem;
+        color: var(--warm);
+        font-style: italic;
+        margin-bottom: 1.2rem;
+        line-height: 1.65;
+        padding: 0.8rem 1rem;
+        border-left: 3px solid var(--light-warm);
+      }
+    </style>
+  </head>
+
+  <body class="detail-page-compact">
+    <nav>
+      <a href="index.html" class="nav-logo">Nam Phương</a>
+      <ul class="nav-links">
+        <li><a href="index.html#portfolio">Work</a></li>
+        <li><a href="index.html#about">About</a></li>
+      </ul>
+      <a href="index.html" class="back-btn"
+        ><span class="arrow">&#8592;</span> Quay lại</a
+      >
+    </nav>
+
+    <header class="detail-hero">
+      <div class="breadcrumb">
+        <a href="index.html">Portfolio</a> /
+        <span>Phân tích Rủi ro Tín dụng</span>
+      </div>
+      <h1 style="text-align: justify">Hệ thống phân tích rủi ro tín dụng</h1>
+    </header>
+
+    <main>
+      <div class="with-toc">
+       
+
+        <!-- ── NỘI DUNG CHÍNH ── -->
+        <div class="content-col">
+          <!-- BỐI CẢNH & VẤN ĐỀ -->
+          <section class="project-section" id="context">
+            <div class="detail-container">
+              <div class="project-links">
+                <a
+                  href="https://github.com/namphuong-data/risk_banking"
+                  target="_blank"
+                  class="github-btn"
+                  >GitHub Repository</a
+                >
+              </div>
+
+              <p style="text-align: justify">
+                Đây là dự án phân tích rủi ro tín dụng được xây dựng trên bộ dữ
+                liệu với
+                <strong
+                  >2,260,701 khoản vay của Lending Club trong giai đoạn
+                  2007–2018</strong
+                >. Quá trình phân tích được khai thác trên 8 module, mỗi module
+                thực hiện việc đánh giá tình trạng của từng danh mục. Sau đó xây
+                dựng mô hình dự đoán xác suất vỡ nợ PD cho từng khoản vay và hệ
+                thống phân loại mức độ rủi ro cho từng khoản vay đó nhằm cảnh
+                báo và xác định mức độ ưu tiên can thiệp cho các khoản vay đang
+                trong danh mục.
+              </p>
+              <br />
+              <p style="text-align: justify">
+                Sau quá trình thống kê và phân tích, mô hình Logictics Regression giúp phát hiện 
+                thêm 404 triệu USD (+36% so với phương pháp PD tĩnh) từ việc xác 
+                định sớm tình trạng vỡ nợ của một khoản vay.
+                
+              </p>
+
+
+              <h2 class="detail-section-title" style="margin-top: 2rem">
+                Khai thác vấn đề
+              </h2>
+              <p style="text-align: justify">
+                Dựa trên dữ liệu lịch sử từ Lending Club, cứ 5 khoản vay thì có
+                gần 1 khoản không trả được nợ vào giai đoạn đỉnh điểm năm 2015.
+                Phân tích thực nghiệm cho thấy phương pháp truyền thống ước tính
+                rủi ro theo nhóm cố định đang bỏ sót hơn 400 USD dự phòng (dựa
+                trên mức độ dự đoán chênh lệch giữa 2 phương pháp đánh giá.
+                Nguyên nhân vì cách đánh giá truyền thống FICO không phân biệt
+                được rủi ro thực sự giữa các khoản vay trong cùng một nhóm.
+                <br />
+                <br />
+                Bài toán đặt ra là làm thế nào để xây dựng một hệ thống có thể
+                đánh giá rủi ro cho từng khoản vay, cảnh báo sớm trước khi khoản
+                vay đó trở thành nợ xấu, và tính toán mức dự phòng tài chính
+                chính xác hơn theo chuẩn quốc tế?
+              </p>
+            </div>
+          </section>
+
+          <!-- ══ TẦNG 1 ══ -->
+          <section class="project-section">
+            <div class="detail-container">
+              <h2 style="text-align: justify">
+                Phần 1: Đánh giá nền tảng cho vay Lending Club
+              </h2>
+            </div>
+          </section>
+
+          <section class="project-section" id="m1">
+            <div class="detail-container">
+              <h2 style="text-align: justify">
+                Phân tích 1: đánh giá sức khoẻ danh mục.
+              </h2>
+              <p style="text-align: justify">
+                Để đánh giá được tình của của các danh mục cho vay, thực hiện
+                xác định xu hướng của các nhóm nợ xấu và xếp hạng tín dụng.
+              </p>
+              <br />
+              <p style="text-align: justify">
+                Với 2,26 triệu khoản vay, qua thống kê số liệu cho thấy các chỉ
+                số gồm
+                
+                  tỷ lệ nợ xấu, xếp hạng tín dụng (A-G) và mục đích vay
+                
+                giúp đánh giá hiệu quả tình trạng sức khỏe của từng danh mục.
+              </p>
+
+              <div class="chart-figure">
+                <img
+                  src="img/m1_npl_trend.png"
+                  alt="NPL Ratio Trend 2007–2018"
+                />
+                <br />
+                <p style="text-align: justify">
+                  Tháng 6/2007, Lending Club được thành lập dưới mô hình cho vay
+                  P2P. Thời điểm này tỷ lệ nợ xấu là 0%, sau hơn 7 năm hoạt
+                  động, cuối năm 2014 Lending Club mở rộng mô hình kinh doanh
+                  sau khoản đầu tư lớn từ Google. Chính giai đoạn này, Lending
+                  Club hợp tác với ngân hàng và thay đổi cách đánh giá điểm tín
+                  dụng khi áp dụng mô hình học máy để đánh giá thay vì cách đánh
+                  giá truyền thống FICO trước đây. Việc chưa tối ưu được mô hình
+                  dẫn đến tỷ lệ nợ xấu duy trì ở mức cao cụ thể đỉnh tại tháng
+                  3/2015 với 19.07%. Sau giai đoạn này, Lending Club dần cải
+                  thiện được mô hình đánh gía điểm tín dụng cho thấy tình trạng
+                  nợ xấu giảm liên tục qua từng giai đoạn từ 2016 đến 2018.
+                </p>
+              </div>
+
+              <div class="chart-figure">
+                <img
+                  src="img/m1_grade_mix.png"
+                  alt="Grade Mix và NPL theo phân hạng tín dụng"
+                />
+                <br />
+                <p style="text-align: justify">
+                  Biểu đồ trên thể hiện mối quan hệ giữa xếp hạng tín dụng, tỷ
+                  lệ nợ xấu và điểm đánh gía truyền thống FICO (trung bình) trên
+                  toàn danh mục 2,26 triệu khoản vay. Phần lớn tỷ lệ tập trung ở
+                  nhóm B (29,4%) và C (28,8%), chiếm hơn một nửa tổng các nhóm.
+                  Khi đánh giá tỷ lệ nợ xấu qua nhóm tín dụng, ta thấy nhóm A
+                  chiếm 3,6% và tăng cao đến 39,4% tại nhóm G. Từ số liệu trên,
+                  cho thấy cách đánh giá truyền thống theo FICO Lending Club
+                  đang phản ánh đúng mức độ rủi ro thực tế. Tuy nhiên, qua đánh
+                  giá dựa trên điểm FICO trung bình giữa các nhóm đang có sự
+                  chênh lệch không hợp lý với 2 cách đánh giá theo xếp hạng tín
+                  dụng và tỷ lệ nợ xấu theo nhóm. Cụ thể, nhóm A với điểm FICO
+                  từ 729 xuống 679 tại nhóm G (giảm 50 điểm). Trong khi đó tỷ lệ
+                  nợ xấu của 2 nhóm chênh lệch hơn 10 lần (từ 3,6% - 39,4%).
+                  Điều này cho thấy cách đánh giá theo điểm FICO truyền thống
+                  không đủ để phân biệt rủi ro. Chính vì thế, cần đánh giá thêm
+                  mức độ rủi ro của các nhóm dựa vào việc kết hợp các chỉ số
+                  DTI, lịch sử trễ hạn và các yếu tố hành vi khác để đảm bảo
+                  tính đúng và khách quan.
+                </p>
+              </div>
+
+              <div class="chart-figure">
+                <img
+                  src="img/m1_purpose_mix.png"
+                  alt="Purpose Mix — Concentration Risk theo mục đích vay"
+                />
+                <br />
+                <p style="text-align: justify">
+                  Biểu đồ phân tích danh mục theo mục đích vay, kết hợp giữa tỷ
+                  trọng và tỷ lệ nợ xấu để phát hiện đặc trưng của từng nhóm nợ
+                  xấu. Với mục đích vay tái cơ cấu (debt consolation) chiếm phần
+                  lớn trong danh mục cho vay với 55% gấp 2.5 lần (22%) danh mục
+                  vay theo thẻ tín dụng (credit card).
+
+                  <br />
+                  <br />
+                  Thông qua dữ liệu ta thấy được, nhóm chiếm tỷ trọng lớn nhất
+                  không phải nhóm rủi ro nhất. Hai nhóm debt consolation và
+                  credit card chiếm hơn 80% tỷ trọng tỷ lệ nợ xấu chỉ chỉ từ 10
+                  - 14%. Điều này cho thầy Lending Club đang kiểm soát rất tốt
+                  rủi ro ở các danh mục trọng yếu.
+                  <br />
+                  <br />
+                  Ngược lại, 2 nhóm có tỷ lệ nợ xấu cao nhất là small business
+                  (19,9%) và renewable energy (16,3%) lại là những nhóm có tỷ
+                  trọng rất thấp. Với thống kê này, ta thấy có sự chênh lệch khi
+                  đánh giá chất lượng của từng nhóm tín dụng.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- M3 -->
+          <section class="project-section" id="m3">
+            <div class="detail-container">
+              <h2 style="text-align: justify">
+                Phân tích 2: quá trình chuyển đổi giữa các nhóm nợ
+              </h2>
+              <p style="text-align: justify">
+                Một khoản vay là nợ xấu thường trải qua một chuỗi các dấu hiệu
+                cảnh báo trước khi đến giai đoạn mất khả năng thanh khoản. Phân
+                tích trên 2,26 triệu khoản vay lịch sử cho thấy khi một khoản
+                vay bắt đầu trễ hạn 31–120 ngày, xác suất khoản đó tiếp tục xấu
+                đi thành mất vốn hoàn toàn là 15%. Đặc trưng này cao gấp 4,6 lần
+                so với khoản vay đang trả bình thường.
+                <br />
+                <br />
+                Câu hỏi đặt ra là có thể dự đoán được giai đoạn một khoản vay
+                đang xấu đi và giai đoạn nào đáng tin cậy nhất để có những quyết
+                định can thiệp.
+              </p>
+
+              <div class="chart-figure">
+                <img
+                  src="img/m3_migration_matrix.png"
+                  alt="Ma trận Dịch chuyển Nhóm Nợ 5×5"
+                />
+                <br />
+                <p style="text-align: justify">
+                  Ma trận tương quan cho thấy một khoản vay từ khi phát sinh đến
+                  khi trở thành nợ xấu. Phần lớn các khoản vay đều có xu hướng
+                  kết thúc ở nhóm 1, tuy nhưng số liệu cho thấy nhóm 5 có xác
+                  suất mất vốn hoàn toàn tăng gần 5 lần từ nhóm 1 (3,3%) lên
+                  nhóm 3 (15,1%). Điều này có nghĩa là một khi khoản vay bắt đầu
+                  trễ hạn (với số ngày trễ từ 31-120 ngày) có nguy cơ không thể
+                  thu hồi vốn tăng đột biến.
+                  <br />
+                  <br />
+                  Qua biểu đồ dưới đây, ta phân tích được trong từng giai đoạn
+                  đáo hạn, tỷ lệ trễ hạn thường xảy ra ở giai đoạn nào trong
+                  vòng đời khoản vay.
+                </p>
+              </div>
+
+              <div class="chart-figure">
+                <img
+                  src="img/m3_age_migration.png"
+                  alt="Ma trận Dịch chuyển Nhóm Nợ 5×5"
+                />
+                <br />
+                <p style="text-align: justify">
+                  Qua thống kê số liệu, rủi ro tập trung cao nhất trong giai
+                  đoạn 12–24 tháng đầu sau khi phát sinh vay với tỷ lệ nợ xấu
+                  đạt đỉnh 15,7%. Cứ 100 khoản vay dừng thanh toán trong giai
+                  đoạn này thì có gần 16 khoản đã rơi vào nợ xấu. Kết hợp với ma
+                  trận tương quan cho thấy khi một khoản vay bắt đầu trễ hạn,
+                  xác suất trượt xuống mất vốn hoàn toàn tăng gấp 4,6 lần so với
+                  khoản vay bình thường. <br />
+                  <br />
+                  Sau 48 tháng, tỷ lệ nợ xấu giảm dần còn 6,1%, nguyên nhân vì
+                  các khoản vay có rủi ro cao đã bị sàng lọc trong 2 năm đầu.
+                  Dựa vào mô tả trên ta thấy được, giai đoạn can thiệp hiệu quả
+                  nhất là từ 12–24 tháng đầu sau khi phát vay. Đây là thời gian
+                  rủi ro tăng cao nhất nhưng vẫn đủ thời gian để can thiệp trước
+                  khi khoản vay bị mất vốn hoàn toàn.
+                </p>
+              </div>
+
+              <div class="chart-figure">
+                <img
+                  src="img/m3_downgrade_trend.png"
+                  alt="Downgrade Rate theo Cohort năm phát hành"
+                />
+                <br />
+                <p style="text-align: justify">
+                  Qua đánh giá chất lượng tín dụng với mô hình trên cho thấy tổ
+                  chức cho vay đã thay đổi cách đánh giá từng nhóm khách hàng
+                  qua từng giai đoạn. Cụ thể, năm 2007 đến 2015 tỷ lệ nợ xấu
+                  tăng liên tục từ 7,5% lên 18,3%. Điều này phản ánh việc
+                  Lending Club đang thay đổi mô hình kinh doanh như mô tả trước
+                  đó. Đỉnh điểm của giai đoạn này là năm 2015, với tỷ lệ nợ xấu
+                  đạt 18,3% cho thấy cứ mỗi 5 khoản vay trong năm đó thì có 1
+                  khoản vay không thu hồi được vốn. Từ năm 2016 trở đi, tỷ lệ
+                  này có xu hướng giảm mạnh, đặc biệt trong năm 2018 chỉ còn
+                  3,2%. Dựa vào các đánh giá trên, ta thấy được giai đoạn
+                  2017-2018 chưa đủ thời gian để đánh giá một khoản vay là xấu
+                  (rủi ro tập trung cao từ 12-24 tháng sau phát sinh vay). Nhóm
+                  3-5 chiếm tỷ trọng nợ xấu cao nhất, tuy nhiên trong năm 2018
+                  thì tỷ trọng của nhóm này tập trung gần như cho nhóm 1. Điều
+                  này cho thấy những nhóm vay trong giai đoạn 2018 cần thêm thời
+                  gian để xác định được khoản vay đó có mức đổ rủi ro thế nào.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- M4 -->
+          <section class="project-section" id="m4">
+            <div class="detail-container">
+              <h2 style="text-align: justify">
+                Phân tích 3: đánh giá tỷ lệ nợ trên thu nhập & hệ số tương quan.
+              </h2>
+              <p style="text-align: justify">
+                Phân tích tập trung vào hai vấn đề, một là danh mục cho vay đang
+                phân bổ tập trung ở khu vực nào. Hai là các chỉ số như tỷ lệ
+                thất nghiệp, lãi suất có ảnh hưởng đến tỷ lệ nợ xấu như thế nào.
+                Để đánh gía được các thông tin trên, tiến hành phân tích dữ liệu
+                thất nghiệp theo nhiều mốc thời gian khác nhau gồm: 6, 12, 18 và
+                24 tháng để tìm ra mối quan hệ rõ ràng nhất với nợ xấu.
+              </p>
+
+              <div class="chart-figure">
+                <img
+                  src="img/m4_concentration_state.png"
+                  alt="Concentration Risk và NPL vs DTI Bucket"
+                />
+                <br />
+                <p style="text-align: justify">
+                  California là vùng duy nhất vượt ngưỡng cần theo dõi với 13,9%
+                  toàn danh mục, gần gấp đôi vùng hai là New York (8%). Thống kê
+                  cho thấy kinh tế California đang có vấn đề lớn với các vùng
+                  còn lại.
+
+                  <br />
+                  <br />Qua đánh giá DTI, biểu đồ thứ hai cho thấy dải DTI nằm
+                  trong khoảng 0–40%. Mỗi khi DTI tăng 5% thì tỷ lệ nợ xấu tăng
+                  khoảng 1,9%. Đây là chỉ số dự báo nợ xấu mạnh nhất trong toàn
+                  bộ dự án. Ngưỡng DTI 35–40% là điểm ngưỡng nhằm chỉ ra rằng
+                  giai đoạn từ đây trở đi rủi ro tăng rất nhanh. <br />
+                  <br />
+                  Với dữ liệu biểu diễn qua biểu đồ thứ ba khi DTI 40% trở lên,
+                  số khoản vay sụt giảm mạnh từ 478.000 xuống còn vài nghìn.
+                  Đồng thời tỷ lệ xác minh thu nhập tăng vọt từ 37% lên 69%.
+                  Điều này cho thấy nhóm DTI cao không phải ít rủi ro mà đã bị
+                  lọc trước khi được duyệt.
+                </p>
+              </div>
+
+              <div class="chart-figure">
+                <img
+                  src="img/m4_macro_overlay.png"
+                  alt="NPL vs Unemployment Rate và Fed Funds Rate"
+                />
+                <p style="text-align: justify">
+                  <br />
+                  Qua biểu đồ tỷ lệ nợ xấu & thất nghiệp, ta thấy giai đoạn 2007
+                  khi Lending Club bắt đầu hoạt động nên có tỷ lệ nợ xấu = 0.
+                  Song song đó, tỷ lệ thất nghiệp trong giai đoạn 2007-2008 rất
+                  thấp và tăng nhẹ. Giai đoạn 2009-2011 là thời điểm thất nghiệp
+                  tăng cao và đạt đỉnh tại tháng 10/2009 với 10% giảm nhẹ cho
+                  tới năm 2011. Sau giai đoạn này tỷ lệ thất nghiệp giảm mạnh,
+                  tuy nhiên số liệu cho thấy nợ xấu vẫn duy trì ở mức rất cao và
+                  không giảm. Cụ thể tỷ lệ nợ xấu đạt đỉnh tại tháng 3/2015 với
+                  19.07%. Điều này cho thấy, mặc dù thất nghiệp giảm, nhưng nợ
+                  xấu vẫn tiếp tục tăng 3-4 năm sau đó, cho thấy rằng dù kinh tế
+                  khó khăn, người vay không vỡ nợ ngay lập tức mà thường mất vài
+                  năm để thấy được hậu quả trực tiếp.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- M5 -->
+          <section class="project-section" id="m5">
+            <div class="detail-container">
+              <h2 style="text-align: justify">
+                Phân tích 4: tỷ lệ từ chối khoản vay.
+              </h2>
+              <p style="text-align: justify">
+                Tỷ lệ từ chối đơn vay là tín hiệu trực tiếp phản ánh mức độ thận
+                trọng của tổ chức tín dụng trong từng giai đoạn. Khi tỷ lệ này
+                tăng, có nghĩa là tổ chức đang siết chặt tiêu chí — thường xảy
+                ra sau khi nợ xấu leo thang hoặc khi môi trường kinh tế xấu đi.
+                Khi tỷ lệ này giảm, tổ chức đang nới lỏng cửa vào, chấp nhận
+                thêm rủi ro. Theo dõi chỉ số này theo thời gian cho phép nhìn
+                lại xem quyết định cấp tín dụng trong quá khứ có phù hợp với
+                điều kiện thị trường hay không, và từ đó rút ra ngưỡng phù hợp
+                cho chính sách hiện tại. Bên cạnh tỷ lệ từ chối, khoảng cách
+                chất lượng giữa nhóm được duyệt và nhóm bị từ chối cũng nói lên
+                nhiều điều. Nếu khoảng cách này lớn, tổ chức đang chọn lọc kỹ —
+                chỉ duyệt những hồ sơ rõ ràng tốt hơn hẳn so với nhóm bị loại.
+                Nếu khoảng cách thu hẹp, ranh giới giữa được duyệt và bị từ chối
+                trở nên mờ hơn, rủi ro lọt vào danh mục cao hơn. Phân tích theo
+                từng tiểu bang giúp phát hiện thêm liệu chính sách có được áp
+                dụng nhất quán trên toàn quốc hay đang có sự khác biệt đáng kể
+                theo địa lý. Cần lưu ý rằng trong bộ dữ liệu này có hai thời
+                điểm tỷ lệ từ chối cho kết quả bất thường — đầu và cuối chuỗi
+                thời gian — không phản ánh chính sách thực mà do dữ liệu không
+                đầy đủ ở hai đầu mút. Các điểm này đã được loại khỏi phân tích
+                để tránh diễn giải sai.
+              </p>
+
+              <div class="chart-figure">
+                <img
+                  src="img/m5_rejection_rate.png"
+                  alt="Rejection Rate và FICO Gap theo thời gian"
+                />
+                <p style="text-align: justify">
+                  <br />
+                  Trong giai đoạn 2007-2018 Lending Club phần lớn duy trì tỷ lệ
+                  từ chối vay rất cao (trung bình 90%). Điều này cho thấy hệ
+                  thống đã xây dựng một bộ lọc ban đầu rất chắc chắn. Tỷ lệ này
+                  giao động trong khoảng 79-95% cho thấy sự nhất quán trong từng
+                  giai đoạn khi đánh giá một khoản vay rủi ro.
+
+                  <br />
+                  <br />
+                  Khoảng cách điểm tín dụng giữa nhóm được duyệt và nhóm bị từ
+                  chối có sự khác nhau theo từng giai đoạn. Trong những năm
+                  2007-2011 điểm tín dụng duy trì ở mức cao từ 120–160 điểm. Cho
+                  thấy giai đoạn đầu, Lending Club chỉ duyệt những hồ sơ thật sự
+                  vượt trội. Từ 2012 trở đi, khoảng cách này thu hẹp dần xuống
+                  còn 50–100 điểm và có lúc chạm đáy dưới 50 điểm vào 2013–2014.
+                  Đây cũng là giai đoạn nợ xấu duy trì ở mức cao nhất, cho thấy
+                  việc nới lỏng cách đánh giá đang gây nên để lọt nhiều khoản
+                  vay rủi ro.
+                  <br />
+                  <br />
+                  Từ 2015 trở đi, khoảng cách dần hồi phục về vùng 80–100 điểm,
+                  cho thấy đồng thời tỷ lệ nợ xấu giảm dần. Điều này chứng minh
+                  điểm tín dụng đóng vai trò thông báo sớm cho chất lượng danh
+                  mục. Khi điểm tín dụng thu hẹp liên tục là dấu hiệu cho thấy
+                  cần xem xét lại tiêu chí phê duyệt giúp tránh tình trạng nợ
+                  xấu tăng cao.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- ══ TẦNG 2 ══ -->
+          <section class="project-section">
+            <div class="detail-container">
+              <h2 style="text-align: justify">
+                PHẦN 2: Xây dựng hệ thống cảnh báo khoản vay rủi ro.
+              </h2>
+            </div>
+          </section>
+
+          <!-- M6 -->
+          <section class="project-section" id="m6">
+            <div class="detail-container">
+              <h2 style="text-align: justify">
+                Phân tích 4: Mô hình xác suất vỡ nợ.
+              </h2>
+
+              <div class="chart-figure">
+                <img
+                  src="img/m6_model_evaluation.png"
+                  alt="ROC Curve, PR Curve, PD Distribution, Confusion Matrix"
+                />
+                <p style="text-align: justify">
+                  <br />
+                  Dữ liệu được huấn luyện trên 1.344.949 khoản vay (giai đoạn
+                  2007-2015), validation (2016), test (2017-2018). Qua việc
+                  triển khai đồng thời nhiều mô hình, kết quả cho thấy Logistics
+                  Regression có kết quả tốt nhất với AUC=0,968 cho thấy nhóm
+                  không vỡ nợ tập trung rõ ràng gần 0 trong khi nhóm vỡ nợ phân
+                  tán về phía 1.
+                </p>
+              </div>
+
+              <div class="chart-figure">
+                <img
+                  src="img/m6_feature_importance.png"
+                  alt="LR Coefficients và Odds Ratio Top 10 features"
+                />
+                <p style="text-align: justify">
+                  <br />
+                  Dự trên các thống kê trên, các yếu tố quyết định phần lớn xác
+                  suất vỡ nợ gồm điểm FICO trong quá trình vay là tín hiệu bảo
+                  vệ mạnh nhất. Khi FICO tăng thì rủi ro giảm đáng kể. Ngược
+                  lại, quy mô khoản vay và tỷ lệ nợ trên thu nhập là hai yếu tố
+                  đẩy rủi ro lên cao.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- ══ TẦNG 3 ══ -->
+          <section class="project-section">
+            <div class="detail-container">
+              <h2 style="text-align: justify">
+                Phần 3: Ứng dụng IFRS 9 đánh giá định lượng trong mô hình dự báo.
+              </h2>
+            </div>
+          </section>
+
+          <!-- M2 -->
+          <section class="project-section" id="m2">
+            <div class="detail-container">
+              <h2 style="text-align: justify">
+                Phân tích 5: ECL & IFRS
+              </h2>
+              <p style="text-align: justify">
+                Module M2 phân loại 2,26 triệu khoản vay vào 3 Stage IFRS 9 và
+                tính ECL với PD tĩnh 5-bucket theo debt_group. Đây là baseline
+                để so sánh với M8, đồng thời là nguồn kiểm chứng thực nghiệm cho
+                thấy mức độ sai lệch của PD tĩnh so với thực tế.
+              </p>
+              
+
+              <div class="chart-figure">
+                <img
+                  src="img/m2_ifrs9_stage.png"
+                  alt="Phân phối Stage IFRS 9"
+                />
+                <p style="text-align: justify"> 
+                  <br>
+                  Toàn bộ danh mục gồm 2,26 triệu khoản vay được phân loại theo 3 stage của IFRS 9. 
+                  Stage 1 chiếm đa số với 1.57 triệu khoản và 7.7 tỷ USD dư nợ, 
+                  nhưng ECL chỉ ở mức 16.4 triệu USD do xác suất vỡ nợ thấp. 
+                  Stage 3 là nhóm đã mất vốn chỉ có 290K khoản vay với 244.6 triệu dư nợ.
+                  Tuy vậy, ECL lên đến 50.2 triệu USD, cao gấp 3 lần stage 1 dù dư nợ chỉ bằng 3%. 
+                  Điều này xác nhận rằng rủi ro tín dụng tập trung rất cao ở một nhóm nhỏ, 
+                  và việc phát hiện sớm dấu hiệu chuyển dịch từ Stage 1 sang Stage 2 có giá trị kinh tế lớn hơn nhiều so với việc quản lý toàn bộ danh mục theo cùng một tiêu chuẩn.
+                </p>
+              </div>
+
+
+              <div class="chart-figure">
+                <img
+                  src="img/m8_ecl_comparison.png"
+                  alt="ECL theo Grade: M2 PD tĩnh vs M8 ML-PD"
+                />
+                <p style="text-align: justify">
+                  <br>
+                Khi thay thế thống kê PD tĩnh bằng PD từ mô hình, ta thấy ECL 
+                tăng ở tất cả 7 nhóm (A-G). Chênh lệch lớn nhất ở nhóm C khi tăng từ 
+                347 triệu USD lên 477 triệu USD. Khi sử dụng mô hình dự đoán, ta tối ưu được các khoản vay thêm 130 triệu USD.
+                Nhóm D và E cũng tăng đáng kể lần lượt 100 triệu USD và 55 triệu USD, chỉ riêng nhóm A 
+                có mức chênh lệch nhỏ nhất. 
+                </p>
+              </div>
+            </div>
+          </section>
+
+        <!-- end content-col -->
+      </div>
+      <!-- end with-toc -->
+    </main>
+
+    <!-- <footer>
+      <span>&copy; 2026 Nam Phương</span>
+      <a href="https://linkedin.com" target="_blank">LinkedIn &#8599;</a>
+    </footer> -->
+
+    <script src="portfolio-detail.js"></script>
+    <script>
+      const sections = document.querySelectorAll("[id]");
+      const links = document.querySelectorAll(".toc-sticky a");
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              links.forEach((l) => l.classList.remove("active"));
+              const a = document.querySelector(
+                `.toc-sticky a[href="#${e.target.id}"]`,
+              );
+              if (a) a.classList.add("active");
+            }
+          });
+        },
+        { rootMargin: "-25% 0px -65% 0px" },
+      );
+      sections.forEach((s) => obs.observe(s));
+    </script>
+  </body>
+</html>
