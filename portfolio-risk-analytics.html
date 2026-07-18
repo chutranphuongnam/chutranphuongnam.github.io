@@ -3,17 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio — Credit Risk Analytics & IFRS 9 ECL System</title>
+    <title>Portfolio — Hệ thống Phân tích Rủi ro Tín dụng & IFRS 9 ECL</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="portfolio-detail.css" />
     <style>
-      /* ── Metric cards ───────────────────────────────────────────── */
       .metric-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
         gap: 1rem;
         margin: 1.5rem 0;
       }
@@ -24,548 +23,1536 @@
         padding: 1.2rem 1.4rem;
       }
       .metric-label {
-        font-size: 0.78rem;
+        font-size: 0.74rem;
         letter-spacing: 0.08em;
         text-transform: uppercase;
         color: var(--warm);
-        margin-bottom: .4rem;
+        margin-bottom: 0.35rem;
       }
       .metric-value {
         font-family: "Cormorant Garamond", serif;
-        font-size: 1.9rem;
+        font-size: 2rem;
         font-weight: 600;
         color: var(--dark);
         line-height: 1.1;
       }
       .metric-sub {
-        font-size: 0.78rem;
+        font-size: 0.76rem;
         color: var(--warm);
-        margin-top: .25rem;
+        margin-top: 0.2rem;
       }
 
-      /* ── Finding pills ──────────────────────────────────────────── */
-      .finding-list { list-style: none; padding: 0; margin: 1rem 0; }
+      .finding-list {
+        list-style: none;
+        padding: 0;
+        margin: 0.8rem 0;
+      }
       .finding-list li {
-        padding: .7rem 1rem .7rem 2.6rem;
-        margin-bottom: .5rem;
+        padding: 0.7rem 1rem 0.7rem 2.6rem;
+        margin-bottom: 0.45rem;
         border-radius: 6px;
-        font-size: .92rem;
+        font-size: 0.9rem;
         position: relative;
-        line-height: 1.55;
+        line-height: 1.6;
       }
       .finding-list li::before {
-        position: absolute; left: .9rem; top: .7rem;
-        font-weight: 700; font-size: .9rem;
+        position: absolute;
+        left: 0.88rem;
+        top: 0.7rem;
+        font-weight: 700;
+        font-size: 0.88rem;
       }
-      .finding-list li.good  { background: #f0faf0; color: #1b4a1b; }
-      .finding-list li.good::before  { content: "✓"; color: #2E7D32; }
-      .finding-list li.bad   { background: #fff5f5; color: #5c1a1a; }
-      .finding-list li.bad::before   { content: "✗"; color: #C62828; }
-      .finding-list li.note  { background: #fffbf0; color: #4a3800; }
-      .finding-list li.note::before  { content: "~"; color: #E65100; }
+      .finding-list li.good {
+        background: #f0faf0;
+        color: #1b4a1b;
+      }
+      .finding-list li.good::before {
+        content: "✓";
+        color: #2e7d32;
+      }
+      .finding-list li.bad {
+        background: #fff5f5;
+        color: #5c1a1a;
+      }
+      .finding-list li.bad::before {
+        content: "✗";
+        color: #c62828;
+      }
+      .finding-list li.note {
+        background: #fffbf0;
+        color: #4a3800;
+      }
+      .finding-list li.note::before {
+        content: "~";
+        color: #e65100;
+      }
 
-      /* ── Proposal blocks ────────────────────────────────────────── */
-      .proposal-list { list-style: none; padding: 0; margin: 1rem 0; }
+      .proposal-list {
+        list-style: none;
+        padding: 0;
+        margin: 0.8rem 0;
+      }
       .proposal-item {
-        display: flex; gap: 1rem;
-        padding: .9rem 1rem;
+        display: flex;
+        gap: 1rem;
+        padding: 1rem 1rem;
         border-bottom: 1px solid var(--light-warm);
       }
       .proposal-badge {
         flex-shrink: 0;
-        width: 28px; height: 28px;
+        width: 26px;
+        height: 26px;
         border-radius: 50%;
         background: var(--accent);
         color: #fff;
-        font-size: .8rem;
+        font-size: 0.78rem;
         font-weight: 700;
-        display: flex; align-items: center; justify-content: center;
-        margin-top: .15rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0.2rem;
       }
-      .proposal-body strong { display: block; font-size: .95rem; margin-bottom: .25rem; }
-      .proposal-body p { font-size: .88rem; color: var(--warm); line-height: 1.55; margin: 0; }
-
-      /* ── Module table ───────────────────────────────────────────── */
-      .module-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .88rem; }
-      .module-table th {
-        background: var(--dark); color: #fff;
-        padding: .6rem .9rem; text-align: left; font-weight: 500;
+      .proposal-body strong {
+        display: block;
+        font-size: 0.93rem;
+        margin-bottom: 0.3rem;
       }
-      .module-table td { padding: .6rem .9rem; border-bottom: 1px solid var(--light-warm); }
-      .module-table tr:nth-child(even) td { background: var(--cream); }
-      .badge-ok   { background:#e8f5e9; color:#2E7D32; padding:.2rem .5rem; border-radius:4px; font-size:.78rem; font-weight:600; }
-      .badge-fix  { background:#fff3e0; color:#E65100; padding:.2rem .5rem; border-radius:4px; font-size:.78rem; font-weight:600; }
+      .proposal-body p {
+        font-size: 0.87rem;
+        color: var(--warm);
+        line-height: 1.65;
+        margin: 0;
+      }
 
-      /* ── Formula block ──────────────────────────────────────────── */
-      .formula-block {
-        background: #1a1a2e; color: #a8d8a8;
-        font-family: "Courier New", monospace;
-        font-size: .83rem; line-height: 1.7;
-        padding: 1.1rem 1.4rem;
-        border-radius: 8px;
+      .module-table {
+        width: 100%;
+        border-collapse: collapse;
         margin: 1rem 0;
+        font-size: 0.86rem;
+      }
+      .module-table th {
+        background: var(--dark);
+        color: #fff;
+        padding: 0.6rem 0.9rem;
+        text-align: left;
+        font-weight: 500;
+        font-size: 0.82rem;
+      }
+      .module-table td {
+        padding: 0.6rem 0.9rem;
+        border-bottom: 1px solid var(--light-warm);
+        line-height: 1.5;
+      }
+      .module-table tr:nth-child(even) td {
+        background: var(--cream);
+      }
+
+      .formula-block {
+        background: #1a1a2e;
+        color: #a8d8a8;
+        font-family: "Courier New", monospace;
+        font-size: 0.8rem;
+        line-height: 1.8;
+        padding: 1.2rem 1.5rem;
+        border-radius: 8px;
+        margin: 1.1rem 0;
         overflow-x: auto;
+        white-space: pre;
       }
 
-      /* ── Tier divider ───────────────────────────────────────────── */
       .tier-label {
-        display: inline-flex; align-items: center; gap: .6rem;
-        background: var(--dark); color: #fff;
-        font-size: .78rem; letter-spacing: .1em; text-transform: uppercase;
-        padding: .4rem 1rem; border-radius: 20px;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        background: var(--dark);
+        color: #fff;
+        font-size: 0.73rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.4rem 1rem;
+        border-radius: 20px;
         margin-bottom: 1.2rem;
+        margin-top: 0.5rem;
       }
-      .tier-label .tier-num {
-        background: var(--accent); color: #fff;
-        border-radius: 50%; width: 20px; height: 20px;
-        display: inline-flex; align-items: center; justify-content: center;
-        font-size: .75rem; font-weight: 700;
+      .tier-num {
+        background: var(--accent);
+        color: #fff;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.72rem;
+        font-weight: 700;
       }
 
-      /* ── Impact callout ─────────────────────────────────────────── */
       .impact-callout {
         border-left: 4px solid var(--accent);
         background: var(--cream);
-        padding: 1rem 1.4rem;
-        margin: 1.2rem 0;
+        padding: 1.1rem 1.5rem;
+        margin: 1.4rem 0;
         border-radius: 0 8px 8px 0;
       }
       .impact-callout .ic-number {
         font-family: "Cormorant Garamond", serif;
-        font-size: 2.4rem; font-weight: 600; color: var(--accent);
-        line-height: 1;
+        font-size: 2.5rem;
+        font-weight: 600;
+        color: var(--accent);
+        line-height: 1.1;
       }
-      .impact-callout .ic-desc { font-size: .9rem; color: var(--dark); margin-top: .3rem; }
+      .impact-callout .ic-desc {
+        font-size: 0.88rem;
+        color: var(--dark);
+        margin-top: 0.35rem;
+        line-height: 1.55;
+      }
 
-      /* ── Sidebar TOC ────────────────────────────────────────────── */
-      .toc-sticky {
-        position: sticky; top: 5.5rem;
-        font-size: .82rem;
+      .chart-figure {
+        margin: 1.8rem 0;
       }
-      .toc-sticky a {
-        display: block; padding: .3rem 0;
-        color: var(--warm); text-decoration: none;
-        border-left: 2px solid transparent;
-        padding-left: .7rem;
-        transition: all .2s;
+      .chart-figure img {
+        width: 100%;
+        border-radius: 8px;
+        border: 1px solid var(--light-warm);
+        display: block;
       }
-      .toc-sticky a:hover { color: var(--dark); border-left-color: var(--accent); }
+      .chart-caption {
+        font-size: 0.78rem;
+        color: var(--warm);
+        margin-top: 0.5rem;
+        font-style: italic;
+        text-align: center;
+        line-height: 1.55;
+      }
 
-      /* ── Layout with TOC ────────────────────────────────────────── */
       @media (min-width: 1024px) {
         .with-toc {
           display: grid;
-          grid-template-columns: 1fr 200px;
+          grid-template-columns: 1fr 190px;
           gap: 3rem;
           max-width: 1100px;
           margin: 0 auto;
           padding: 0 2rem;
         }
-        .toc-col { order: 2; }
-        .content-col { order: 1; }
-        .detail-container { max-width: none !important; padding: 0 !important; }
+        .toc-col {
+          order: 2;
+        }
+        .content-col {
+          order: 1;
+        }
+        .detail-container {
+          max-width: none !important;
+          padding: 0 !important;
+        }
+      }
+      .toc-sticky {
+        position: sticky;
+        top: 5.5rem;
+        font-size: 0.8rem;
+      }
+      .toc-sticky .toc-head {
+        font-size: 0.71rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--warm);
+        margin-bottom: 0.6rem;
+      }
+      .toc-sticky a {
+        display: block;
+        padding: 0.3rem 0 0.3rem 0.7rem;
+        color: var(--warm);
+        text-decoration: none;
+        border-left: 2px solid transparent;
+        transition: all 0.2s;
+        line-height: 1.45;
+      }
+      .toc-sticky a:hover,
+      .toc-sticky a.active {
+        color: var(--dark);
+        border-left-color: var(--accent);
+      }
+      .toc-tier {
+        font-size: 0.67rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin: 0.65rem 0 0.15rem 0.7rem;
+      }
+
+      .section-intro {
+        font-size: 0.92rem;
+        color: var(--warm);
+        font-style: italic;
+        margin-bottom: 1.2rem;
+        line-height: 1.65;
+        padding: 0.8rem 1rem;
+        border-left: 3px solid var(--light-warm);
       }
     </style>
   </head>
+
   <body class="detail-page-compact">
     <nav>
-      <a href="index.html" class="nav-logo">Nam Phuong</a>
+      <a href="index.html" class="nav-logo">Nam Phương</a>
       <ul class="nav-links">
         <li><a href="index.html#portfolio">Work</a></li>
         <li><a href="index.html#about">About</a></li>
       </ul>
-      <a href="index.html" class="back-btn"><span class="arrow">&#8592;</span> Back</a>
+      <a href="index.html" class="back-btn"
+        ><span class="arrow">&#8592;</span> Quay lại</a
+      >
     </nav>
 
     <header class="detail-hero">
       <div class="breadcrumb">
-        <a href="index.html">Portfolio</a> / <span>Credit Risk Analytics</span>
+        <a href="index.html">Portfolio</a> /
+        <span>Phân tích Rủi ro Tín dụng</span>
       </div>
-      <h1>Credit Risk Analytics &amp; IFRS&nbsp;9 ECL System</h1>
+      <h1>Hệ thống Phân tích Rủi ro Tín dụng &amp; IFRS&nbsp;9 ECL</h1>
     </header>
 
     <main>
       <div class="with-toc">
-
-        <!-- ── TOC ──────────────────────────────────────────────── -->
-        <aside class="toc-col">
+        <!-- ── MỤC LỤC ── -->
+        <!-- <aside class="toc-col">
           <nav class="toc-sticky">
-            <p style="font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--warm);margin-bottom:.6rem;">Contents</p>
-            <a href="#context">Context &amp; Problem</a>
-            <a href="#tier1">Tier 1 — Diagnostic</a>
-            <a href="#tier2">Tier 2 — Model Building</a>
-            <a href="#tier3">Tier 3 — IFRS 9 Application</a>
-            <a href="#stack">Tech Stack</a>
-            <a href="#proposals">Key Proposals</a>
+            <p class="toc-head">Nội dung</p>
+            <a href="#context">Bối cảnh &amp; Vấn đề</a>
+            <p class="toc-tier">Tầng 1 — Chẩn đoán</p>
+            <a href="#m1">M1 Sức khỏe Danh mục</a>
+            <a href="#m3">M3 Ma trận Dịch chuyển</a>
+            <a href="#m4">M4 Vĩ mô &amp; DTI</a>
+            <a href="#m5">M5 Khẩu vị Tín dụng</a>
+            <p class="toc-tier">Tầng 2 — Mô hình</p>
+            <a href="#m6">M6 Mô hình PD</a>
+            <a href="#m7">M7 Cảnh báo Sớm</a>
+            <p class="toc-tier">Tầng 3 — IFRS 9</p>
+            <a href="#m2">M2 ECL Baseline</a>
+            <a href="#m8">M8 ECL Nâng cao</a>
+            <a href="#proposals">Đề xuất Triển khai</a>
           </nav>
-        </aside>
+        </aside> -->
 
-        <!-- ── Main content ──────────────────────────────────────── -->
+        <!-- ── NỘI DUNG CHÍNH ── -->
         <div class="content-col">
-
-          <!-- ══ HERO METRICS ══ -->
+          <!-- BỐI CẢNH & VẤN ĐỀ -->
           <section class="project-section" id="context">
             <div class="detail-container">
               <div class="project-links">
-                <a href="https://github.com/namphuong-data" target="_blank" class="github-btn">GitHub Repository</a>
+                <a
+                  href="https://github.com/namphuong-data"
+                  target="_blank"
+                  class="github-btn"
+                  >GitHub Repository</a
+                >
               </div>
 
-              <p class="detail-intro-text">
-                Day la du an phan tich rui ro tin dung end-to-end tren bo du lieu
-                <strong>2.26 trieu khoan vay Lending Club (2007&ndash;2018)</strong>,
-                bao gom 8 module lien ket tu chan doan danh muc, xay dung mo hinh
-                PD, he thong canh bao som den tinh toan du phong IFRS 9.
-                Ket qua dinh luong chinh: ML-PD phat hien them
-                <strong>$404M (36%) du phong thieu hut</strong>
-                so voi PhuongPhap PD tinh truyen thong.
+              <p style="text-align: justify">
+                Đây là dự án phân tích rủi ro tín dụng được xây dựng trên bộ dữ
+                liệu với
+                <strong
+                  >2,260,701 khoản vay của Lending Club trong giai đoạn
+                  2007–2018</strong
+                >. Quá trình phân tích được khai thác trên 8 module, mỗi module
+                thực hiện việc đánh giá tình trạng của từng danh mục. Sau đó xây
+                dựng mô hình dự đoán xác suất vỡ nợ PD cho từng khoản vay và hệ
+                thống phân loại mức độ rủi ro cho từng khoản vay đó nhằm cảnh
+                báo và xác định mức độ ưu tiên can thiệp cho các khoản vay đang
+                trong danh mục.
+              </p>
+              <br />
+              <p style="text-align: justify">
+                Kết quả định lượng trọng tâm:
+                <strong
+                  >ML-PD từ Gradient Boosting (AUC=0.9702) phát hiện thêm $404
+                  triệu USD (+36%) dự phòng thiếu hụt</strong
+                >
+                so với phương pháp PD tĩnh truyền thống — minh chứng rõ ràng cho
+                giá trị kinh doanh của Machine Learning trong quy trình quản trị
+                rủi ro tín dụng theo chuẩn IFRS 9.
               </p>
 
               <div class="metric-grid">
                 <div class="metric-card">
-                  <div class="metric-label">Tong khoan vay</div>
-                  <div class="metric-value">2.26M</div>
-                  <div class="metric-sub">140 thang, 2007&ndash;2018</div>
+                  <div class="metric-label">Tổng khoản vay</div>
+                  <div class="metric-value">2,26M</div>
+                  <!-- <div class="metric-sub">(2007–2018)</div> -->
                 </div>
                 <div class="metric-card">
                   <div class="metric-label">PD Model AUC</div>
-                  <div class="metric-value">0.9702</div>
-                  <div class="metric-sub">Gradient Boosting — production-ready</div>
+                  <div class="metric-value">0,9702</div>
                 </div>
                 <div class="metric-card">
                   <div class="metric-label">EWS Predictive AUC</div>
-                  <div class="metric-value">0.7412</div>
-                  <div class="metric-sub">Loai bo circular bias (0.999 gia)</div>
+                  <div class="metric-value">0,7412</div>
                 </div>
                 <div class="metric-card">
                   <div class="metric-label">ECL Gap ML vs Static</div>
-                  <div class="metric-value">+$404M</div>
-                  <div class="metric-sub">+36% du phong thieu hut</div>
+                  <div class="metric-value">+404M</div>
+                  <div class="metric-sub">
+                    +36% dự phòng thiếu hụt được phát hiện
+                  </div>
                 </div>
               </div>
 
-              <!-- Problem statement -->
-              <h2 class="detail-section-title" style="margin-top:2rem;">Problem Statement</h2>
-              <p class="detail-intro-text">
-                Lending Club co <strong>NPL Ratio dat dinh 19.07% (2015)</strong>
-                va tong ECL theo PD tinh chi la $1,122M — con so nay bi underestimate
-                nghiem trong do PD nhom Late (debt_group 3) la 35% trong khi
-                thuc nghiem la 100% (sai lech 65 diem %). Bai toan: lam the nao
-                de xay dung he thong phan tich rui ro chinh xac hon, co kha nang
-                canh bao som truoc khi no xau phat sinh, va tinh toan ECL dung
-                chuan IFRS 9 voi ML-PD thay vi PD gia dinh cung?
+              <h2 class="detail-section-title" style="margin-top: 2rem">
+                Khai thác vấn đề
+              </h2>
+              <p style="text-align: justify">
+                Dựa trên dữ liệu lịch sử từ Lending Club, cứ 5 khoản vay thì có
+                gần 1 khoản không trả được nợ vào giai đoạn đỉnh điểm năm 2015.
+                Phân tích thực nghiệm cho thấy phương pháp truyền thống ước tính
+                rủi ro theo nhóm cố định đang bỏ sót hơn 400 USD dự phòng (dựa
+                trên mức độ dự đoán chênh lệch giữa 2 phương pháp đánh giá.
+                Nguyên nhân vì cách đánh giá truyền thống FICO không phân biệt
+                được rủi ro thực sự giữa các khoản vay trong cùng một nhóm.
+                <br />
+                <br />
+                Bài toán đặt ra là làm thế nào để xây dựng một hệ thống có thể
+                đánh giá rủi ro cho từng khoản vay, cảnh báo sớm trước khi khoản
+                vay đó trở thành nợ xấu, và tính toán mức dự phòng tài chính
+                chính xác hơn theo chuẩn quốc tế?
               </p>
             </div>
           </section>
 
-          <!-- ══ TIER 1: DIAGNOSTIC ══ -->
-          <section class="project-section" id="tier1">
+          <!-- ══ TẦNG 1 ══ -->
+          <section class="project-section">
             <div class="detail-container">
               <div class="tier-label">
-                <span class="tier-num">1</span>
-                Chan doan Danh muc &mdash; Hieu boi canh truoc khi mo hinh hoa
+                <span class="tier-num">1</span>Tầng 1 — Chẩn đoán Danh mục: Hiểu
+                bối cảnh trước khi mô hình hoá
+              </div>
+              <p style="text-align: justify">
+                Trước khi xây dựng mô hình, tiến hành các thống kê và phân tích
+                nhằm đánh giá và hiểu được bối cảnh của các danh mục cho vay.
+                Quá trình này được khai thác trên các yếu tố như động lực lịch
+                sử, các yếu tố rủi ro.
+              </p>
+            </div>
+          </section>
+
+          <section class="project-section" id="m1">
+            <div class="detail-container">
+              <h2 style="text-align: justify">
+                Phân tích 1: đánh giá sức khoẻ danh mục.
+              </h2>
+              <p style="text-align: justify">
+                Để đánh giá được tình của của các danh mục cho vay, thực hiện
+                xác định xu hướng của các nhóm nợ xấu và xếp hạng tín dụng.
+              </p>
+              <br />
+              <p style="text-align: justify">
+                Với 2,26 triệu khoản vay, qua thống kê số liệu cho thấy các chỉ
+                số gồm
+                <strong style="font-weight: bold !important">
+                  tỷ lệ nợ xấu, xếp hạng tín dụng (A-G) và mục đích vay
+                </strong>
+                giúp đánh giá hiệu quả tình trạng sức khỏe của từng danh mục.
+              </p>
+
+              <div class="chart-figure">
+                <img
+                  src="img/m1_npl_trend.png"
+                  alt="NPL Ratio Trend 2007–2018"
+                />
+                <br />
+                <p style="text-align: justify">
+                  Tháng 6/2007, Lending Club được thành lập dưới mô hình cho vay
+                  P2P. Thời điểm này tỷ lệ nợ xấu là 0%, sau hơn 7 năm hoạt
+                  động, cuối năm 2014 Lending Club mở rộng mô hình kinh doanh
+                  sau khoản đầu tư lớn từ Google. Chính giai đoạn này, Lending
+                  Club hợp tác với ngân hàng và thay đổi cách đánh giá điểm tín
+                  dụng khi áp dụng mô hình học máy để đánh giá thay vì cách đánh
+                  giá truyền thống FICO trước đây. Việc chưa tối ưu được mô hình
+                  dẫn đến tỷ lệ nợ xấu duy trì ở mức cao cụ thể đỉnh tại tháng
+                  3/2015 với 19.07%. Sau giai đoạn này, Lending Club dần cải
+                  thiện được mô hình đánh gía điểm tín dụng cho thấy tình trạng
+                  nợ xấu giảm liên tục qua từng giai đoạn từ 2016 đến 2018.
+                </p>
               </div>
 
-              <p class="detail-intro-text">
-                Truoc khi xay dung bat ky mo hinh nao, can hieu ro suc khoe hien
-                tai cua danh muc, cac yeu to vi mo anh huong den no xau, va dac
-                tinh lich su theo thoi gian. 4 module sau (M1, M3, M4, M5) phuc
-                vu muc tieu nay.
+              <div class="chart-figure">
+                <img
+                  src="img/m1_grade_mix.png"
+                  alt="Grade Mix và NPL theo phân hạng tín dụng"
+                />
+                <br />
+                <p style="text-align: justify">
+                  Biểu đồ trên thể hiện mối quan hệ giữa xếp hạng tín dụng, tỷ
+                  lệ nợ xấu và điểm đánh gía truyền thống FICO (trung bình) trên
+                  toàn danh mục 2,26 triệu khoản vay. Phần lớn tỷ lệ tập trung ở
+                  nhóm B (29,4%) và C (28,8%), chiếm hơn một nửa tổng các nhóm.
+                  Khi đánh giá tỷ lệ nợ xấu qua nhóm tín dụng, ta thấy nhóm A
+                  chiếm 3,6% và tăng cao đến 39,4% tại nhóm G. Từ số liệu trên,
+                  cho thấy cách đánh giá truyền thống theo FICO Lending Club
+                  đang phản ánh đúng mức độ rủi ro thực tế. Tuy nhiên, qua đánh
+                  giá dựa trên điểm FICO trung bình giữa các nhóm đang có sự
+                  chênh lệch không hợp lý với 2 cách đánh giá theo xếp hạng tín
+                  dụng và tỷ lệ nợ xấu theo nhóm. Cụ thể, nhóm A với điểm FICO
+                  từ 729 xuống 679 tại nhóm G (giảm 50 điểm). Trong khi đó tỷ lệ
+                  nợ xấu của 2 nhóm chênh lệch hơn 10 lần (từ 3,6% - 39,4%).
+                  Điều này cho thấy cách đánh giá theo điểm FICO truyền thống
+                  không đủ để phân biệt rủi ro. Chính vì thế, cần đánh giá thêm
+                  mức độ rủi ro của các nhóm dựa vào việc kết hợp các chỉ số
+                  DTI, lịch sử trễ hạn và các yếu tố hành vi khác để đảm bảo
+                  tính đúng và khách quan.
+                </p>
+              </div>
+
+              <div class="chart-figure">
+                <img
+                  src="img/m1_purpose_mix.png"
+                  alt="Purpose Mix — Concentration Risk theo mục đích vay"
+                />
+                <br />
+                <p style="text-align: justify">
+                  Biểu đồ phân tích danh mục theo mục đích vay, kết hợp giữa tỷ
+                  trọng và tỷ lệ nợ xấu để phát hiện đặc trưng của từng nhóm nợ
+                  xấu. Với mục đích vay tái cơ cấu (debt consolation) chiếm phần
+                  lớn trong danh mục cho vay với 55% gấp 2.5 lần (22%) danh mục
+                  vay theo thẻ tín dụng (credit card).
+
+                  <br />
+                  <br />
+                  Thông qua dữ liệu ta thấy được, nhóm chiếm tỷ trọng lớn nhất
+                  không phải nhóm rủi ro nhất. Hai nhóm debt consolation và
+                  credit card chiếm hơn 80% tỷ trọng tỷ lệ nợ xấu chỉ chỉ từ 10
+                  - 14%. Điều này cho thầy Lending Club đang kiểm soát rất tốt
+                  rủi ro ở các danh mục trọng yếu.
+                  <br />
+                  <br />
+                  Ngược lại, 2 nhóm có tỷ lệ nợ xấu cao nhất là small business
+                  (19,9%) và renewable energy (16,3%) lại là những nhóm có tỷ
+                  trọng rất thấp. Với thống kê này, ta thấy có sự chênh lệch khi
+                  đánh giá chất lượng của từng nhóm tín dụng.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- M3 -->
+          <section class="project-section" id="m3">
+            <div class="detail-container">
+              <h2 style="text-align: justify">
+                Phân tích 2: quá trình chuyển đổi giữa các nhóm nợ
+              </h2>
+              <p style="text-align: justify">
+                Một khoản vay là nợ xấu thường trải qua một chuỗi các dấu hiệu
+                cảnh báo trước khi đến giai đoạn mất khả năng thanh khoản. Phân
+                tích trên 2,26 triệu khoản vay lịch sử cho thấy khi một khoản
+                vay bắt đầu trễ hạn 31–120 ngày, xác suất khoản đó tiếp tục xấu
+                đi thành mất vốn hoàn toàn là 15%. Đặc trưng này cao gấp 4,6 lần
+                so với khoản vay đang trả bình thường.
+                <br />
+                <br />
+                Câu hỏi đặt ra là có thể dự đoán được giai đoạn một khoản vay
+                đang xấu đi và giai đoạn nào đáng tin cậy nhất để có những quyết
+                định can thiệp.
               </p>
 
-              <!-- M1 -->
-              <h2 class="detail-section-title">M1 — Portfolio Health: NPL &amp; Grade Mix</h2>
-              <p class="detail-intro-text">
-                <strong>Phat hien chinh:</strong> NPL tang don dieu tu Grade A
-                (3.59%) den Grade G (39.41%) — he thong phan hang co gia tri
-                phan biet rui ro. Loi nghiep vu da phat hien: flag logic goc
-                gan nhan <em>OK</em> cho Grade D-G du NPL 20-39% vi chi kiem tra
-                portfolio share, khong kiem tra NPL. Da sua thanh dual-dimension flag.
-              </p>
-              <div class="formula-block">NPL_Ratio = (Charged Off / Total Loans) × 100
+              <div class="chart-figure">
+                <img
+                  src="img/m3_migration_matrix.png"
+                  alt="Ma trận Dịch chuyển Nhóm Nợ 5×5"
+                />
+                <br />
+                <p style="text-align: justify">
+                  Ma trận tương quan cho thấy một khoản vay từ khi phát sinh đến
+                  khi trở thành nợ xấu. Phần lớn các khoản vay đều có xu hướng
+                  kết thúc ở nhóm 1, tuy nhưng số liệu cho thấy nhóm 5 có xác
+                  suất mất vốn hoàn toàn tăng gần 5 lần từ nhóm 1 (3,3%) lên
+                  nhóm 3 (15,1%). Điều này có nghĩa là một khi khoản vay bắt đầu
+                  trễ hạn (với số ngày trễ từ 31-120 ngày) có nguy cơ không thể
+                  thu hồi vốn tăng đột biến.
+                  <br />
+                  <br />
+                  Qua biểu đồ dưới đây, ta phân tích được trong từng giai đoạn
+                  đáo hạn, tỷ lệ trễ hạn thường xảy ra ở giai đoạn nào trong
+                  vòng đời khoản vay.
+                </p>
+              </div>
 
-concentration_flag  = WATCH  si portfolio_share &gt; 10%  |  ALERT si &gt; 20%
-credit_quality_flag = WATCH  si NPL &gt; 8%               |  HIGH_RISK si &gt; 20%
-composite_flag      = HIGH_RISK neu bat ky chieu nao canh bao</div>
+              <div class="chart-figure">
+                <img
+                  src="img/m3_age_migration.png"
+                  alt="Ma trận Dịch chuyển Nhóm Nợ 5×5"
+                />
+                <br />
+                <p style="text-align: justify">
+                  Qua thống kê số liệu, rủi ro tập trung cao nhất trong giai
+                  đoạn 12–24 tháng đầu sau khi phát sinh vay với tỷ lệ nợ xấu
+                  đạt đỉnh 15,7%. Cứ 100 khoản vay dừng thanh toán trong giai
+                  đoạn này thì có gần 16 khoản đã rơi vào nợ xấu. Kết hợp với ma
+                  trận tương quan cho thấy khi một khoản vay bắt đầu trễ hạn,
+                  xác suất trượt xuống mất vốn hoàn toàn tăng gấp 4,6 lần so với
+                  khoản vay bình thường. <br />
+                  <br />
+                  Sau 48 tháng, tỷ lệ nợ xấu giảm dần còn 6,1%, nguyên nhân vì
+                  các khoản vay có rủi ro cao đã bị sàng lọc trong 2 năm đầu.
+                  Dựa vào mô tả trên ta thấy được, giai đoạn can thiệp hiệu quả
+                  nhất là từ 12–24 tháng đầu sau khi phát vay. Đây là thời gian
+                  rủi ro tăng cao nhất nhưng vẫn đủ thời gian để can thiệp trước
+                  khi khoản vay bị mất vốn hoàn toàn.
+                </p>
+              </div>
+
+              <div class="chart-figure">
+                <img
+                  src="img/m3_downgrade_trend.png"
+                  alt="Downgrade Rate theo Cohort năm phát hành"
+                />
+                <br />
+                <p style="text-align: justify">
+                  Qua đánh giá chất lượng tín dụng với mô hình trên cho thấy tổ
+                  chức cho vay đã thay đổi cách đánh giá từng nhóm khách hàng
+                  qua từng giai đoạn. Cụ thể, năm 2007 đến 2015 tỷ lệ nợ xấu
+                  tăng liên tục từ 7,5% lên 18,3%. Điều này phản ánh việc
+                  Lending Club đang thay đổi mô hình kinh doanh như mô tả trước
+                  đó. Đỉnh điểm của giai đoạn này là năm 2015, với tỷ lệ nợ xấu
+                  đạt 18,3% cho thấy cứ mỗi 5 khoản vay trong năm đó thì có 1
+                  khoản vay không thu hồi được vốn. Từ năm 2016 trở đi, tỷ lệ
+                  này có xu hướng giảm mạnh, đặc biệt trong năm 2018 chỉ còn
+                  3,2%. Dựa vào các đánh giá trên, ta thấy được giai đoạn
+                  2017-2018 chưa đủ thời gian để đánh giá một khoản vay là xấu
+                  (rủi ro tập trung cao từ 12-24 tháng sau phát sinh vay). Nhóm
+                  3-5 chiếm tỷ trọng nợ xấu cao nhất, tuy nhiên trong năm 2018
+                  thì tỷ trọng của nhóm này tập trung gần như cho nhóm 1. Điều
+                  này cho thấy những nhóm vay trong giai đoạn 2018 cần thêm thời
+                  gian để xác định được khoản vay đó có mức đổ rủi ro thế nào.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- M4 -->
+          <section class="project-section" id="m4">
+            <div class="detail-container">
+              <h2 style="text-align: justify">
+                Phân tích 3: đánh giá tỷ lệ nợ trên thu nhập & hệ số tương quan.
+              </h2>
+              <p style="text-align: justify">
+                Phân tích tập trung vào hai vấn đề, một là danh mục cho vay đang
+                phân bổ tập trung ở khu vực nào. Hai là các chỉ số như tỷ lệ
+                thất nghiệp, lãi suất có ảnh hưởng đến tỷ lệ nợ xấu như thế nào.
+                Để đánh gía được các thông tin trên, tiến hành phân tích dữ liệu
+                thất nghiệp theo nhiều mốc thời gian khác nhau gồm: 6, 12, 18 và
+                24 tháng để tìm ra mối quan hệ rõ ràng nhất với nợ xấu.
+              </p>
+
+              <div class="chart-figure">
+                <img
+                  src="img/m4_concentration_state.png"
+                  alt="Concentration Risk và NPL vs DTI Bucket"
+                />
+                <br />
+                <p style="text-align: justify">
+                  California là vùng duy nhất vượt ngưỡng cần theo dõi với 13,9%
+                  toàn danh mục, gần gấp đôi vùng hai là New York (8%). Thống kê
+                  cho thấy kinh tế California đang có vấn đề lớn với các vùng
+                  còn lại.
+
+                  <br />
+                  <br />Qua đánh giá DTI, biểu đồ thứ hai cho thấy dải DTI nằm
+                  trong khoảng 0–40%. Mỗi khi DTI tăng 5% thì tỷ lệ nợ xấu tăng
+                  khoảng 1,9%. Đây là chỉ số dự báo nợ xấu mạnh nhất trong toàn
+                  bộ dự án. Ngưỡng DTI 35–40% là điểm ngưỡng nhằm chỉ ra rằng
+                  giai đoạn từ đây trở đi rủi ro tăng rất nhanh. <br />
+                  <br />
+                  Với dữ liệu biểu diễn qua biểu đồ thứ ba khi DTI 40% trở lên,
+                  số khoản vay sụt giảm mạnh từ 478.000 xuống còn vài nghìn.
+                  Đồng thời tỷ lệ xác minh thu nhập tăng vọt từ 37% lên 69%.
+                  Điều này cho thấy nhóm DTI cao không phải ít rủi ro mà đã bị
+                  lọc trước khi được duyệt.
+                </p>
+              </div>
+
+              <div class="chart-figure">
+                <img
+                  src="img/m4_macro_overlay.png"
+                  alt="NPL vs Unemployment Rate và Fed Funds Rate"
+                />
+                <p style="text-align: justify">
+                  <br />
+                  Qua biểu đồ tỷ lệ nợ xấu & thất nghiệp, ta thấy giai đoạn 2007
+                  khi Lending Club bắt đầu hoạt động nên có tỷ lệ nợ xấu = 0.
+                  Song song đó, tỷ lệ thất nghiệp trong giai đoạn 2007-2008 rất
+                  thấp và tăng nhẹ. Giai đoạn 2009-2011 là thời điểm thất nghiệp
+                  tăng cao và đạt đỉnh tại tháng 10/2009 với 10% giảm nhẹ cho
+                  tới năm 2011. Sau giai đoạn này tỷ lệ thất nghiệp giảm mạnh,
+                  tuy nhiên số liệu cho thấy nợ xấu vẫn duy trì ở mức rất cao và
+                  không giảm. Cụ thể tỷ lệ nợ xấu đạt đỉnh tại tháng 3/2015 với
+                  19.07%. Điều này cho thấy, mặc dù thất nghiệp giảm, nhưng nợ
+                  xấu vẫn tiếp tục tăng 3-4 năm sau đó, cho thấy rằng dù kinh tế
+                  khó khăn, người vay không vỡ nợ ngay lập tức mà thường mất vài
+                  năm để thấy được hậu quả trực tiếp.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- M5 -->
+          <section class="project-section" id="m5">
+            <div class="detail-container">
+              <h2 style="text-align: justify">
+                Phân tích 4: tỷ lệ từ chối khoản vay.
+              </h2>
+              <p style="text-align: justify">
+                Tỷ lệ từ chối đơn vay là tín hiệu trực tiếp phản ánh mức độ thận
+                trọng của tổ chức tín dụng trong từng giai đoạn. Khi tỷ lệ này
+                tăng, có nghĩa là tổ chức đang siết chặt tiêu chí — thường xảy
+                ra sau khi nợ xấu leo thang hoặc khi môi trường kinh tế xấu đi.
+                Khi tỷ lệ này giảm, tổ chức đang nới lỏng cửa vào, chấp nhận
+                thêm rủi ro. Theo dõi chỉ số này theo thời gian cho phép nhìn
+                lại xem quyết định cấp tín dụng trong quá khứ có phù hợp với
+                điều kiện thị trường hay không, và từ đó rút ra ngưỡng phù hợp
+                cho chính sách hiện tại. Bên cạnh tỷ lệ từ chối, khoảng cách
+                chất lượng giữa nhóm được duyệt và nhóm bị từ chối cũng nói lên
+                nhiều điều. Nếu khoảng cách này lớn, tổ chức đang chọn lọc kỹ —
+                chỉ duyệt những hồ sơ rõ ràng tốt hơn hẳn so với nhóm bị loại.
+                Nếu khoảng cách thu hẹp, ranh giới giữa được duyệt và bị từ chối
+                trở nên mờ hơn, rủi ro lọt vào danh mục cao hơn. Phân tích theo
+                từng tiểu bang giúp phát hiện thêm liệu chính sách có được áp
+                dụng nhất quán trên toàn quốc hay đang có sự khác biệt đáng kể
+                theo địa lý. Cần lưu ý rằng trong bộ dữ liệu này có hai thời
+                điểm tỷ lệ từ chối cho kết quả bất thường — đầu và cuối chuỗi
+                thời gian — không phản ánh chính sách thực mà do dữ liệu không
+                đầy đủ ở hai đầu mút. Các điểm này đã được loại khỏi phân tích
+                để tránh diễn giải sai.
+              </p>
+              
+
+              <div class="chart-figure">
+                <img
+                  src="img/m5_rejection_rate.png"
+                  alt="Rejection Rate và FICO Gap theo thời gian"
+                />
+                <p class="chart-caption">
+                  <strong
+                    >Hình 5.1 — Rejection Rate và FICO Gap theo thời gian
+                    (2007–2018).</strong
+                  >
+                  (Trên) Rejection Rate ổn định ở mức 89–92% sau khi loại
+                  cold-start và tail artifact. (Dưới) FICO Gap thu hẹp rõ ràng
+                  từ &gt;100 điểm (2007–2012) xuống còn 35–80 điểm (2013–2018) —
+                  bằng chứng Lending Club đã nới lỏng tiêu chuẩn chấp thuận sau
+                  giai đoạn khủng hoảng, mở rộng tín dụng cho phân khúc rộng
+                  hơn.
+                </p>
+              </div>
+
+              <div class="chart-figure">
+                <img
+                  src="img/m5_risk_score_gap.png"
+                  alt="Score Gap theo Tiểu bang và Rejection Rate vs Score Gap"
+                />
+                <p class="chart-caption">
+                  <strong
+                    >Hình 5.2 — Score Gap theo Tiểu bang và tương quan Rejection
+                    Rate vs Score Gap.</strong
+                  >
+                  (Trái) DC có score gap cao nhất (89,8 điểm), cho thấy
+                  underwriting nghiêm ngặt nhất hoặc dân số rủi ro cao nhất.
+                  (Phải) r=0,474 — tiểu bang có gap điểm số càng lớn thì tỷ lệ
+                  từ chối càng cao, đúng với kỳ vọng nghiệp vụ. IA bị loại khỏi
+                  phân tích vì chỉ có 14 accepted loans — rank percentile vô
+                  nghĩa thống kê.
+                </p>
+              </div>
 
               <ul class="finding-list">
-                <li class="good">Grade D (NPL 20.29%), E (28.17%), F (36.20%), G (39.41%) — da duoc flag HIGH_RISK chinh xac sau fix.</li>
-                <li class="good">NPL Trend: tang tu 2007, dat dinh 19.07% (2015-03), giam dan — dung chu ky tin dung Lending Club.</li>
-                <li class="note">debt_consolidation: ALERT_BOTH (concentration + credit risk). credit_card: CONCENTRATION only (NPL binh thuong).</li>
+                <li class="good">
+                  FICO Gap thu hẹp từ &gt;100 điểm (2007-2012) xuống 35–80 điểm
+                  (2013-2018) — phản ánh đúng sự mở rộng khẩu vị tín dụng sau
+                  khủng hoảng tài chính toàn cầu.
+                </li>
+                <li class="good">
+                  Score Gap vs Rejection Rate: r=0,474 — tương quan dương vừa
+                  phải, đúng hướng và có ý nghĩa thực tiễn khi phân bổ nguồn lực
+                  underwriting theo tiểu bang.
+                </li>
+                <li class="note">
+                  Score gap là chênh lệch tuyệt đối giữa hai thang đo khác nhau
+                  (FICO và Risk Score) — chỉ có ý nghĩa khi so sánh tương đối
+                  giữa các tiểu bang, không nên so sánh tuyệt đối.
+                </li>
               </ul>
+            </div>
+          </section>
 
-              <!-- M3 -->
-              <h2 class="detail-section-title">M3 — Migration Matrix: Lich su Dich chuyen Nhom No</h2>
-              <p class="detail-intro-text">
-                <strong>Phat hien chinh:</strong> Xac suat Nhom 3 (Late) chuyen
-                sang Nhom 5 (Charged Off) la 15.05% — cao gap 4.6 lan so voi
-                Nhom 1→Nhom 5 (3.28%). Day la tin hieu quan trong cho EWS.
-                Loi da sua: diagonal 27.07% la point-in-time snapshot, khong phai
-                Markov transition probability.
+          <!-- ══ TẦNG 2 ══ -->
+          <section class="project-section">
+            <div class="detail-container">
+              <div class="tier-label">
+                <span class="tier-num">2</span>Tầng 2 — Xây dựng Mô hình: PD
+                Model và Hệ thống Cảnh báo Sớm
+              </div>
+              <p class="section-intro">
+                Với nền tảng từ Tầng 1, Tầng 2 xây dựng hai công cụ có giá trị
+                triển khai thực tế: Mô hình PD cá nhân hoá (M6) để thay thế PD
+                tĩnh trong IFRS 9, và EWS (M7) để phát hiện rủi ro trước khi nợ
+                xấu phát sinh. Mỗi module trong tầng này đều phát hiện và xử lý
+                ít nhất một vấn đề kỹ thuật nghiêm trọng.
               </p>
-              <div class="formula-block">Annualized_NPL = NPL_raw × (12 / avg_loan_age_months)
-Reliable cohort: avg_loan_age ≥ 36 thang  →  2010–2015
-NPL annualized TB (reliable): 4.57%/nam — ben vung, co the dung calibrate</div>
+            </div>
+          </section>
+
+          <!-- M6 -->
+          <section class="project-section" id="m6">
+            <div class="detail-container">
+              <h2 class="detail-section-title">
+                M6 — Mô hình Xác suất Vỡ nợ (PD): Gradient Boosting AUC=0,9702
+              </h2>
+              <p style="text-align: justify">
+                Ba mô hình phân loại được huấn luyện trên 1.344.949 khoản vay có
+                outcome rõ ràng (Fully Paid + Charged Off) với time-based split
+                nghiêm ngặt: Train 2007–2015 (826.602 khoản), Validation 2016
+                (293.062 khoản), Test 2017–2018 (225.285 khoản). Phương pháp này
+                đảm bảo mô hình được đánh giá đúng trên dữ liệu tương lai —
+                không bị rò rỉ chu kỳ kinh tế vào quá trình đánh giá.
+              </p>
+
+              <table class="module-table">
+                <thead>
+                  <tr>
+                    <th>Mô hình</th>
+                    <th>Val AUC</th>
+                    <th>Test AUC</th>
+                    <th>Gini Test</th>
+                    <th>KS Stat</th>
+                    <th>Thời gian Train</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Logistic Regression</td>
+                    <td>0,9632</td>
+                    <td>0,9680</td>
+                    <td>0,9360</td>
+                    <td>—</td>
+                    <td>2,7s</td>
+                  </tr>
+                  <tr>
+                    <td>Random Forest</td>
+                    <td>0,9539</td>
+                    <td>0,9616</td>
+                    <td>0,9232</td>
+                    <td>—</td>
+                    <td>65,8s</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Gradient Boosting ★</strong></td>
+                    <td><strong>0,9644</strong></td>
+                    <td><strong>0,9702</strong></td>
+                    <td><strong>0,9403</strong></td>
+                    <td><strong>0,871</strong></td>
+                    <td>479,5s</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="chart-figure">
+                <img
+                  src="img/m6_model_evaluation.png"
+                  alt="ROC Curve, PR Curve, PD Distribution, Confusion Matrix"
+                />
+                <p class="chart-caption">
+                  <strong
+                    >Hình 6.1 — Model Evaluation tổng hợp — Gradient
+                    Boosting.</strong
+                  >
+                  (Trên trái) ROC Curve: GB (xanh lá, AUC=0,9702) vượt trội so
+                  với đường random. (Trên phải) PR Curve: AP=0,9219,
+                  baseline=0,213 (tỷ lệ default thực). (Dưới trái) PD Score
+                  Distribution: nhóm Non-default tập trung gần 0, nhóm Default
+                  phân tán rộng hơn về phía 1 — khả năng phân tách rõ ràng.
+                  (Dưới phải) Confusion Matrix tại threshold=0,30: 171.517 TN,
+                  42.580 TP, 5.809 FP, 5.379 FN — accuracy 95%, precision
+                  default 88%.
+                </p>
+              </div>
+
+              <div class="chart-figure">
+                <img
+                  src="img/m6_feature_importance.png"
+                  alt="LR Coefficients và Odds Ratio Top 10 features"
+                />
+                <p class="chart-caption">
+                  <strong
+                    >Hình 6.2 — Logistic Regression Coefficients và Odds Ratio
+                    (Top 10 features).</strong
+                  >
+                  <em>fico_change</em> là protective factor mạnh nhất
+                  (OR=0,04×): FICO tăng → xác suất vỡ nợ giảm mạnh.
+                  <em>loan_amnt_log</em> (OR=2,76×) và <em>dti</em> (OR=1,81×)
+                  là hai risk factors chính — nhất quán hoàn toàn với phân tích
+                  DTI ở M4 (r=0,953 với NPL). Tất cả hệ số đúng hướng kinh tế,
+                  không có sign flip bất thường — mô hình học được pattern có ý
+                  nghĩa.
+                </p>
+              </div>
+
+              <div class="chart-figure">
+                <img
+                  src="img/m6_calibration.png"
+                  alt="Reliability Diagram — ECE Calibration"
+                />
+                <p class="chart-caption">
+                  <strong
+                    >Hình 6.3 — Reliability Diagram: ECE trước và sau
+                    Calibration.</strong
+                  >
+                  GB raw: ECE=0,1636 — đường thực tế lệch hẳn khỏi đường
+                  calibration hoàn hảo, đặc biệt ở vùng PD 0,2–0,8. Mô hình đang
+                  overestimate xác suất vỡ nợ ở vùng trung bình. Sau Isotonic
+                  Regression: ECE giảm xuống 0,0616 (−62,4%), đạt ngưỡng chấp
+                  nhận được theo chuẩn MAS TRM và ECB TRIM (&lt;0,10).
+                </p>
+              </div>
+
+              <div class="formula-block">
+                // Calibration ECE (Expected Calibration Error): ECE = MEAN
+                |fraction_positives_bin - mean_predicted_prob_bin| GB raw: ECE =
+                0,1636 → chưa phù hợp dùng trực tiếp trong IFRS 9 → Platt
+                Scaling: ECE = 0,0664 (−59,4%) → Isotonic Regr: ECE = 0,0616
+                (−62,4%) ← Phương pháp tốt nhất, dùng cho M8 // Cross-Validation
+                5 fold (theo thứ tự thời gian): Fold 1: AUC=0,926 | Fold 2:
+                AUC=0,954 | Fold 3: AUC=0,950 Fold 4: AUC=0,963 | Fold 5:
+                AUC=0,969 → Mean=0,9524 ± 0,0148 PSI tất cả 5 fold < 0,10
+                (Stable) → không có distribution shift theo thời gian // PD
+                gradient theo Grade (sanity check — xác nhận mô hình học đúng):
+                A=0,123 | B=0,237 | C=0,359 | D=0,459 | E=0,556 | F=0,637 |
+                G=0,691 → Tăng đơn điệu A→G ✓
+              </div>
+
               <ul class="finding-list">
-                <li class="good">Cohort 2010-2015 NPL annualized = 4.57%/nam — benchmark de thiết lap provision rate.</li>
-                <li class="bad">Cohort 2017-2018 NPL thap (3-11%) la truncation bias, khong phai chat luong tot hon.</li>
+                <li class="good">
+                  Test AUC=0,9702 vượt mọi ngưỡng production: Basel II yêu cầu
+                  &gt;0,75; thực tiễn tốt &gt;0,85. Gini=0,9403 và KS=0,871 cũng
+                  đều ở mức xuất sắc.
+                </li>
+                <li class="good">
+                  PSI toàn bộ 5 CV fold &lt;0,10 (Stable): mô hình tổng quát hoá
+                  tốt qua mọi giai đoạn kinh tế trong dataset — không bị
+                  overfitting theo chu kỳ.
+                </li>
+                <li class="good">
+                  PD gradient A→G tăng đơn điệu (0,123→0,691): sanity check
+                  passed — mô hình học đúng tín hiệu phân hạng tín dụng.
+                </li>
+                <li class="good">
+                  Sau Isotonic calibration ECE=0,062: đạt chuẩn MAS TRM/ECB TRIM
+                  (&lt;0,10) — PD calibrated đủ tin cậy để đưa vào tính ECL
+                  trong M8.
+                </li>
+                <li class="note">
+                  ML-PD chỉ cover 59,6% danh mục (Fully Paid + Charged Off).
+                  878.317 Current loans (38,9%) chưa có ML-PD — nhóm này dùng
+                  grade-based PD fill ở M8.
+                </li>
               </ul>
+            </div>
+          </section>
 
-              <!-- M4 -->
-              <h2 class="detail-section-title">M4 — Macro &amp; Concentration: DTI va Lag Effect</h2>
-              <p class="detail-intro-text">
-                <strong>Insight quan trong nhat toan du an:</strong>
-                Corr NPL vs Unemployment tai lag=0 chi la 0.271 (yeu), nhung tai
-                lag=24 thang dat 0.651 — co nghia la chinh sach tin dung can
-                theo doi Unemployment Rate hom nay de du bao NPL sau 2 nam.
+          <!-- M7 -->
+          <section class="project-section" id="m7">
+            <div class="detail-container">
+              <h2 class="detail-section-title">
+                M7 — Hệ thống Cảnh báo Sớm: Từ AUC 0,999 giả đến 0,7412 thực
+              </h2>
+              <p style="text-align: justify">
+                Module M7 xây dựng hệ thống cảnh báo sớm (EWS) rule-based với 3
+                tín hiệu có trọng số: Signal 1 - Hành vi trả nợ (w=0,5), Signal
+                2 - Tài chính (w=0,3), Signal 3 - PD proxy từ M6 (w=0,2). Đây là
+                module phát hiện lỗi kỹ thuật nghiêm trọng nhất trong toàn dự
+                án.
               </p>
-              <div class="formula-block">r(lag=k) = Corr(NPL_t, Unemployment_{t-k})
-Lag toi uu = argmax |r| → lag=24 thang (r=0.651)
+              <p style="text-align: justify">
+                <strong
+                  >Phát hiện quan trọng nhất của dự án — Circular Bias:</strong
+                >
+                AUC ban đầu đạt 0,999 — một con số đỏ cờ rõ ràng trong thực
+                tiễn. Điều tra cho thấy Signal 1 được tính từ
+                <code>debt_group</code>, trong khi label đánh giá (<em
+                  >bad = debt_group ≥ 3</em
+                >) cũng từ cùng nguồn dữ liệu này. Mô hình đang "dự báo" bằng
+                cách dùng chính dữ liệu làm cả input lẫn output — AUC 0,999 là
+                giá trị hoàn toàn vô nghĩa. Minh chứng thêm: Top 20 Watch List
+                gốc gồm toàn bộ khoản đã Charged Off (out_prncp=0) — không phải
+                cảnh báo sớm mà là xác nhận sự kiện đã xảy ra.
+              </p>
 
-DTI Bucket (loan-level, 0-40%):
-  Pearson r = +0.953  →  DTI tang 5% → NPL tang ~1.9 diem %
-  (Loai DTI &gt; 100%: 4,140 khoan du lieu loi)
-  DTI 45-60%: selection bias — underwriting nghiem ngat, NPL thap la do loc</div>
+              <div class="chart-figure">
+                <img
+                  src="img/m7_ews_stability.png"
+                  alt="EWS Stability Analysis theo năm"
+                />
+                <p class="chart-caption">
+                  <strong
+                    >Hình 7.1 — EWS Stability Analysis theo năm
+                    (2007–2018).</strong
+                  >
+                  (Trên trái) AUC operational ổn định 0,993–1,000 qua các năm —
+                  chú ý đây là AUC circular, không phải predictive. (Trên phải)
+                  Capture Rate dao động 45–69% qua các năm, đạt mục tiêu &gt;50%
+                  cho hầu hết giai đoạn 2010–2016. (Dưới trái) Bad Rate thực tế
+                  theo năm phát hành. (Dưới phải) Mean EWS Score giảm từ 2014 về
+                  2018 — phản ánh danh mục mới 2017–2018 còn non, chưa phát sinh
+                  nợ xấu.
+                </p>
+              </div>
+
+              <div class="chart-figure">
+                <img
+                  src="img/m7_ews_distribution.png"
+                  alt="EWS Score Distribution và Flag Distribution"
+                />
+                <p class="chart-caption">
+                  <strong
+                    >Hình 7.2 — EWS Score Distribution, Signal Contribution và
+                    Phân phối Flag.</strong
+                  >
+                  (Trái) Histogram: Nhóm 1 (tốt, xanh) tập trung gần 0; Nhóm 3–5
+                  (xấu, đỏ) phân tán về phía cao hơn — phân tách có ý nghĩa
+                  nhưng không hoàn toàn. (Giữa) Signal contribution tăng dần từ
+                  Low→Critical: Signal 1 (hành vi) là đóng góp lớn nhất ở mức
+                  Critical (1,0). (Phải) Phân phối Flag sau fix ngưỡng: 1,9M
+                  Low, 167K Monitor, 165K Watch, 16.552 High, 326 Critical.
+                </p>
+              </div>
+
+              <div class="chart-figure">
+                <img
+                  src="img/m7_predictive_auc.png"
+                  alt="True Predictive ROC Curve và Precision-Recall 3 chế độ"
+                />
+                <p class="chart-caption">
+                  <strong
+                    >Hình 7.3 — True Predictive ROC Curve (AUC=0,7412) và
+                    Precision-Recall.</strong
+                  >
+                  (Trái) ROC sau khi loại bỏ circular bias: AUC=0,7412 — thực
+                  chất vượt ngưỡng tốt 0,65, có giá trị predictive thực sự.
+                  (Phải) Precision-Recall curve với 3 điểm vận hành: đường
+                  ngưỡng Precision 30% (gạch xanh) cho thấy không thể đạt đồng
+                  thời P≥30% và R≥60% với rule-based 4 features — đây là giới
+                  hạn cứng của AUC=0,741 với class imbalance 1:7.
+                </p>
+              </div>
+
+              <div class="formula-block">
+                // True Predictive EWS — 4 features ĐỘC LẬP, không dùng
+                debt_group: ews_predictive = fico_det×0,35 + dti_signal×0,25 +
+                delinq_signal×0,25 + revol_signal×0,15 fico_det = |last_fico -
+                fico_range_low| / 300 // FICO giảm → rủi ro tăng [fill NULL =
+                fico_range_low, không fill 0 — tránh inflate] dti_signal =
+                min(dti / 50, 1,0) // cap 50% = ngưỡng nguy hiểm [loại DTI >
+                100%: 4.140 khoản data entry error] delinq_signal=
+                delinq_2yrs×0,3 + ever_delinquent×0,7 // lịch sử trễ hạn
+                revol_signal = revol_util / 100,0 // mức sử dụng hạn mức thẻ //
+                Top 20 Watch List sau fix (khoản ĐANG TỐT có nguy cơ cao): -
+                FICO giảm 130–220 điểm (từ 695 xuống 510–520) - DTI 33–84%,
+                revol_util 70–100% - Chưa bị late — đây mới là cảnh báo SỚM thực
+                sự
+              </div>
+
+              <table class="module-table">
+                <thead>
+                  <tr>
+                    <th>Chế độ Vận hành</th>
+                    <th>Threshold</th>
+                    <th>Precision</th>
+                    <th>Recall</th>
+                    <th>Số KV cảnh báo</th>
+                    <th>Phù hợp</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>ALERT (Youden)</td>
+                    <td>0,312</td>
+                    <td>19,5%</td>
+                    <td>75,5%</td>
+                    <td>~203K</td>
+                    <td>Quét định kỳ toàn danh mục</td>
+                  </tr>
+                  <tr>
+                    <td><strong>BALANCED (F1) ★</strong></td>
+                    <td><strong>0,459</strong></td>
+                    <td><strong>36,0%</strong></td>
+                    <td><strong>36,8%</strong></td>
+                    <td><strong>~99K</strong></td>
+                    <td><strong>Vận hành hàng tuần (khuyến nghị)</strong></td>
+                  </tr>
+                  <tr>
+                    <td>PRECISE (F0,75)</td>
+                    <td>0,483</td>
+                    <td>41,8%</td>
+                    <td>31,1%</td>
+                    <td>~83K</td>
+                    <td>Kiểm tra sâu ưu tiên cao</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <ul class="finding-list">
+                <li class="good">
+                  Phát hiện và loại bỏ circular AUC 0,999 (giả) → True
+                  Predictive AUC=0,7412 (thực). Đây là điểm tư duy phản biện
+                  quan trọng nhất trong toàn dự án.
+                </li>
+                <li class="good">
+                  Capture Rate tăng từ 51,2% → 62,6% sau hạ ngưỡng Watch
+                  (0,65→0,45): bắt được thêm 33.000 khoản vay nguy hiểm mà không
+                  cần retrain mô hình.
+                </li>
+                <li class="good">
+                  Top 20 Watch List sau fix: 20 khoản đang tốt có FICO giảm mạnh
+                  + DTI cao + lịch sử trễ hạn — đây mới là cảnh báo sớm thực sự,
+                  không phải khoản đã mất vốn.
+                </li>
+                <li class="bad">
+                  Rule-based 4 features đạt trần predictive AUC=0,741 — không
+                  thể vượt qua bằng chỉ điều chỉnh threshold. Cần tích hợp ML-PD
+                  vào Signal 3.
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- ══ TẦNG 3 ══ -->
+          <section class="project-section">
+            <div class="detail-container">
+              <div class="tier-label">
+                <span class="tier-num">3</span>Tầng 3 — Ứng dụng IFRS 9: Giá trị
+                Định lượng của ML trong Dự phòng
+              </div>
+              <p class="section-intro">
+                Tầng 3 là điểm hội tụ — nơi Tầng 1 (bối cảnh danh mục) và Tầng 2
+                (mô hình PD + EWS) kết hợp để trả lời câu hỏi kinh doanh trọng
+                tâm: ML-PD thay đổi mức dự phòng IFRS 9 lên bao nhiêu so với
+                phương pháp truyền thống? M2 cung cấp baseline với PD tĩnh; M8
+                thay thế bằng ML-PD calibrated và các cải tiến về EAD, LGD,
+                SICR.
+              </p>
+            </div>
+          </section>
+
+          <!-- M2 -->
+          <section class="project-section" id="m2">
+            <div class="detail-container">
+              <h2 class="detail-section-title">
+                M2 — ECL Baseline IFRS 9: PD Tĩnh và Validation
+              </h2>
+              <p style="text-align: justify">
+                Module M2 phân loại 2,26 triệu khoản vay vào 3 Stage IFRS 9 và
+                tính ECL với PD tĩnh 5-bucket theo debt_group. Đây là baseline
+                để so sánh với M8, đồng thời là nguồn kiểm chứng thực nghiệm cho
+                thấy mức độ sai lệch của PD tĩnh so với thực tế.
+              </p>
+              <p style="text-align: justify">
+                <strong
+                  >Hai lỗi kỹ thuật quan trọng đã phát hiện và sửa:</strong
+                >
+                (1) EAD Stage 3 ban đầu dùng <code>out_prncp</code> — nhưng
+                khoản Charged Off đã xóa khỏi balance sheet nên
+                <code>out_prncp=0</code>, dẫn đến EAD≈0 và ECL≈0. Đã thay bằng
+                <code>loan_amnt × CCF(0,75)</code>. (2) Câu truy vấn validation
+                PD ban đầu lọc chỉ
+                <code>loan_status IN ('Fully Paid', 'Charged Off')</code>
+                nên chỉ hiện 2/5 nhóm — đã sửa bằng cách bỏ filter và dùng
+                <code>debt_group≥3</code> làm proxy default.
+              </p>
+
+              <div class="chart-figure">
+                <img
+                  src="img/m2_ifrs9_stage.png"
+                  alt="Phân phối Stage IFRS 9"
+                />
+                <p class="chart-caption">
+                  <strong
+                    >Hình 2.1 — Phân phối Stage IFRS 9: Số lượng khoản vay, EAD
+                    và ECL.</strong
+                  >
+                  Stage 1 (bình thường): 1,57M khoản, EAD $7.719M, ECL $16,38M —
+                  coverage 0,21%. Stage 2 (tăng rủi ro): 400K khoản, ECL
+                  $23,05M. Stage 3 (mất vốn): 290K khoản. Đặc biệt: Stage 3
+                  count = 290.066 (12,83%) khớp chính xác với NPL Ratio trung
+                  bình từ M1 (12,84%) — xác nhận pipeline dữ liệu nhất quán.
+                </p>
+              </div>
+
+              <div class="chart-figure">
+                <img
+                  src="img/m2_ecl_trend.png"
+                  alt="ECL Trend theo tháng phát hành"
+                />
+                <p class="chart-caption">
+                  <strong
+                    >Hình 2.2 — ECL Trend theo tháng phát hành — IFRS 9 Stage
+                    1/2/3.</strong
+                  >
+                  Sau khi sửa EAD Stage 3 (dùng loan_amnt×CCF thay vì
+                  out_prncp=0), ECL 2007–2015 có giá trị thực thay vì bằng 0.
+                  Tổng ECL baseline M2 = $1.122M, tập trung ở Stage 3 (màu đỏ) —
+                  đây là con số so sánh với M8.
+                </p>
+              </div>
+
+              <div class="formula-block">
+                // Validation PD thực nghiệm (5 debt_group): debt_group | PD
+                tĩnh | PD thực nghiệm | Sai lệch (pts) 1 | 2,00% | ~0-3% | +2,0
+                (overestimate nhẹ) 2 | 10,00% | ~0% | +10,0 (overestimate — loan
+                In Grace Period) 3 | 35,00% | 100,00% | −65,0 (UNDERESTIMATE
+                NGHIÊM TRỌNG) 4 | 65,00% | 100,00% | −35,0 (underestimate lớn) 5
+                | 90,00% | 100,00% | −10,0 (underestimate) // Ước tính thiếu hụt
+                ECL từ PD sai (LGD=25%, EAD~$5K/khoản): Group 3 (21.467 khoản):
+                −$17,44M Group 5 (268.559 khoản): −$33,57M Tổng thiếu hụt ước
+                tính ≥ $51M chỉ tính 2 nhóm nguy hiểm nhất
+              </div>
+
+              <ul class="finding-list">
+                <li class="good">
+                  Stage 3 count (290K = 12,83%) khớp chính xác với NPL ratio M1
+                  (12,84%) — pipeline dữ liệu M1→M2 nhất quán, không có lỗi join
+                  hay lọc dữ liệu.
+                </li>
+                <li class="bad">
+                  PD tĩnh nhóm Late 31-120 ngày: 35% vs thực nghiệm 100% —
+                  underestimate 65 điểm phần trăm, tương đương thiếu hụt ECL ước
+                  tính $17,44M chỉ từ nhóm này.
+                </li>
+                <li class="bad">
+                  EAD Stage 3 gốc dùng out_prncp=0 → EAD≈0 → ECL Stage 3≈0. Đã
+                  sửa bằng loan_amnt×CCF(0,75) − recoveries (net sau thu hồi),
+                  đưa EAD Stage 3 lên $3.032M.
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- M8 -->
+          <section class="project-section" id="m8">
+            <div class="detail-container">
+              <h2 class="detail-section-title">
+                M8 — ECL Nâng cao IFRS 9: Tích hợp ML-PD và LGD Thực nghiệm
+              </h2>
+              <p style="text-align: justify">
+                Module M8 là đỉnh điểm của toàn hệ thống — tích hợp ML-PD
+                calibrated từ M6 (Isotonic Regression, ECE=0,062), LGD thực
+                nghiệm theo grade (thấp hơn Basel II 12–25 điểm %), EAD net sau
+                recoveries, và SICR filter nâng cao có
+                <em>has_ml_pd</em> flag để phân biệt ML-PD thực với PD fill
+                heuristic.
+              </p>
+              <p style="text-align: justify">
+                <strong
+                  >Bốn lỗi kỹ thuật quan trọng đã phát hiện và sửa trong
+                  M8:</strong
+                >
+                (1) PD fill=0 cho Current loans → ECL nhóm 878K khoản bằng 0.
+                (2) SICR PD&gt;15% áp cho cả PD fill → Stage 2 tăng từ 718K lên
+                1,23M (54% danh mục) — đã thêm điều kiện
+                <code>has_ml_pd=True</code>. (3) Horizon=0 cho khoản settled →
+                ECL 2007-2013 = $0. (4) Stage 3 dùng pd_score thay vì 1,0 → ECL
+                Stage 3 bị underestimate so với IFRS 9 para 5.5.3.
+              </p>
+
+              <div class="formula-block">
+                // Công thức ECL theo IFRS 9: ECL = pd_for_ecl × LGD_adjusted ×
+                EAD × Horizon × Discount_Factor Stage 1: pd_for_ecl = pd_score |
+                horizon = 1/12 (12-month ECL) Stage 2: pd_for_ecl = pd_score |
+                horizon = remaining_life (Lifetime ECL) Stage 3: pd_for_ecl =
+                1,0 | horizon = 1,0 // IFRS 9 para 5.5.3: Stage 3 = confirmed
+                default → PD ≡ 1,0 // avg_pd = 0,7648 là ML-PD để tham khảo,
+                KHÔNG dùng tính ECL // EAD theo từng trường hợp: EAD (active) =
+                out_prncp × (1 + int_rate/12) EAD (settled) = loan_amnt ×
+                CCF(0,75) EAD (Stage 3) = loan_amnt × CCF(0,75) − recoveries //
+                net sau thu hồi // SICR trigger Stage 2 — đã sửa: debt_group ==
+                2 OR (fico_range_low − last_fico_range_low > 20) // FICO xấu đi
+                OR (pd_score > 0,15 AND has_ml_pd == True) // CHỈ áp ML-PD thực
+                // Không áp PD fill heuristic → Stage 2 giảm từ 1,23M xuống 718K
+              </div>
+
+              <table class="module-table">
+                <thead>
+                  <tr>
+                    <th>Stage</th>
+                    <th>Số KV</th>
+                    <th>EAD ($M)</th>
+                    <th>avg PD</th>
+                    <th>avg LGD</th>
+                    <th>ECL ($M)</th>
+                    <th>Coverage (tổng)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1 — Bình thường</td>
+                    <td>1.249.674</td>
+                    <td>$13.278M</td>
+                    <td>18,28%</td>
+                    <td>17,21%</td>
+                    <td>$62,76M</td>
+                    <td>0,47%</td>
+                  </tr>
+                  <tr>
+                    <td>2 — SICR</td>
+                    <td>718.179</td>
+                    <td>$7.554M</td>
+                    <td>35,06%</td>
+                    <td>10,53%</td>
+                    <td>$175,56M</td>
+                    <td>2,32%</td>
+                  </tr>
+                  <tr>
+                    <td>3 — Mất vốn (PD=1,0)*</td>
+                    <td>290.066</td>
+                    <td>$3.032M</td>
+                    <td>100%</td>
+                    <td>41,23%</td>
+                    <td>$1.288M</td>
+                    <td>42,49%</td>
+                  </tr>
+                  <tr>
+                    <td><strong>TỔNG</strong></td>
+                    <td><strong>2.257.919</strong></td>
+                    <td><strong>$23.864M</strong></td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td><strong>$1.526M</strong></td>
+                    <td><strong>6,40%</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+              <p
+                style="
+                  font-size: 0.78rem;
+                  color: var(--warm);
+                  margin: 0.3rem 0 1rem;
+                "
+              >
+                * Stage 3 coverage 42,49% ≈ LGD_adjusted (41,23%) — đúng theo
+                IFRS 9: khi PD=1,0 thì Coverage = LGD.
+              </p>
+
+              <div class="chart-figure">
+                <img
+                  src="img/m8_ecl_yearly.png"
+                  alt="ECL Stability Analysis theo năm phát hành"
+                />
+                <p class="chart-caption">
+                  <strong
+                    >Hình 8.1 — IFRS 9 ECL Advanced: Stability Analysis theo năm
+                    phát hành.</strong
+                  >
+                  (Trên trái) ECL theo năm phân phối đúng chu kỳ tín dụng: tăng
+                  từ 2007→2016 (đỉnh $351M năm 2016), giảm 2017–2018 ($222M) do
+                  cohort mới chưa đủ thời gian quan sát. (Trên phải) Coverage
+                  Ratio ổn định 3–7% qua các năm — không có năm nào bất thường
+                  đột biến sau khi sửa các lỗi EAD và horizon. (Dưới) Stage 2 và
+                  3 chiếm 24–43% danh mục theo cohort — phân phối hợp lý theo
+                  chu kỳ.
+                </p>
+              </div>
+
+              <div class="chart-figure">
+                <img
+                  src="img/m8_ecl_comparison.png"
+                  alt="ECL theo Grade: M2 PD tĩnh vs M8 ML-PD"
+                />
+                <p class="chart-caption">
+                  <strong
+                    >Hình 8.2 — ECL theo Grade: M2 (PD tĩnh, xám) vs M8 (ML-PD,
+                    xanh).</strong
+                  >
+                  M8 cao hơn M2 ở tất cả Grade B–G. Chênh lệch lớn nhất ở Grade
+                  C (+$37M) và Grade D (+$42M) — đây là hai grade có số lượng
+                  khoản vay lớn nhất và ML-PD phân biệt rủi ro tốt hơn PD tĩnh
+                  nhiều nhất. Grade A: M8 ($75M) &gt; M2 ($57M) vì ML-PD Grade A
+                  = 12,3% trong khi PD tĩnh Stage 1 = 2% — M2 đang underestimate
+                  rủi ro kể cả với Grade A.
+                </p>
+              </div>
 
               <div class="impact-callout">
-                <div class="ic-number">r = 0.953</div>
-                <div class="ic-desc">Tuong quan NPL vs DTI trong vung 0-40% — bien du bao manh nhat trong toan du an</div>
+                <div class="ic-number">
+                  +$404M &nbsp;<span
+                    style="
+                      font-size: 1.4rem;
+                      font-weight: 400;
+                      color: var(--dark);
+                    "
+                    >(+36%)</span
+                  >
+                </div>
+                <div class="ic-desc">
+                  M8 — ML-PD ($1.526M) so với M2 — PD tĩnh ($1.122M). Đây là
+                  bằng chứng định lượng rõ ràng về giá trị kinh doanh của
+                  Machine Learning trong quy trình quản trị rủi ro tín dụng theo
+                  chuẩn IFRS 9: hơn $400 triệu dự phòng thiếu hụt đã bị bỏ sót
+                  bởi phương pháp truyền thống.
+                </div>
               </div>
-
-              <!-- M5 -->
-              <h2 class="detail-section-title">M5 — Credit Appetite: Score Gap theo Tieu bang</h2>
-              <p class="detail-intro-text">
-                FICO Gap giam tu &gt;100 diem (2007-2012) xuong 35-80 diem
-                (2013-2018) — credit appetite noi long ro rang sau khung hoang.
-                Phat hien loi: cold-start thang 2007-05 (rejection 100% do 0
-                accepted, khong phai policy) va tail artifact cuoi 2018 (dataset
-                bi cat) da duoc loc.
-              </p>
-              <ul class="finding-list">
-                <li class="good">Score Gap vs Rejection Rate: r=0.474 — state gap cao → rejection cao, dung huong.</li>
-                <li class="good">DC gap cao nhat (89.8 pts): underwriting nghiem ngat nhat hoac population rui ro cao nhat.</li>
-                <li class="note">Score gap la so tuyet doi giua 2 thang do khac nhau — chi so sanh tuong doi giua cac state.</li>
-              </ul>
-            </div>
-          </section>
-
-          <!-- ══ TIER 2: MODEL BUILDING ══ -->
-          <section class="project-section" id="tier2">
-            <div class="detail-container">
-              <div class="tier-label">
-                <span class="tier-num">2</span>
-                Xay dung Mo hinh &mdash; PD Model va Early Warning System
-              </div>
-
-              <p class="detail-intro-text">
-                Voi nen tang hieu biet ve danh muc tu Tier 1, Tier 2 xay dung
-                hai mo hinh co gia tri thuc thi: mo hinh PD du bao xac suat vo
-                no ca nhan hoa, va EWS phat hien som rui ro truoc khi no xau phat sinh.
-              </p>
-
-              <!-- M6 -->
-              <h2 class="detail-section-title">M6 — PD Model: Gradient Boosting AUC=0.9702</h2>
-              <p class="detail-intro-text">
-                <strong>Ket qua dinh luong:</strong> Gradient Boosting dat
-                Test AUC=0.9702, Gini=0.9403, KS=0.871 — vuot toan bo nguong
-                production (Basel II &gt;0.75, thuc tien tot &gt;0.85).
-                Mo hinh duoc train tren time-based split nghiem ngat (Train
-                2007-2015, Val 2016, Test 2017-2018) de tranh data leakage
-                theo chu ky kinh te.
-              </p>
 
               <table class="module-table">
                 <thead>
-                  <tr><th>Model</th><th>Test AUC</th><th>Gini</th><th>KS Stat</th><th>Train Time</th></tr>
+                  <tr>
+                    <th>Chỉ số So sánh</th>
+                    <th>M2 — PD Tĩnh (Baseline)</th>
+                    <th>M8 — ML-PD (Nâng cao)</th>
+                    <th>Chênh lệch</th>
+                  </tr>
                 </thead>
                 <tbody>
-                  <tr><td>Logistic Regression</td><td>0.9680</td><td>0.9360</td><td>—</td><td>2.7s</td></tr>
-                  <tr><td>Random Forest</td><td>0.9616</td><td>0.9232</td><td>—</td><td>65.8s</td></tr>
-                  <tr><td><strong>Gradient Boosting</strong></td><td><strong>0.9702</strong></td><td><strong>0.9403</strong></td><td><strong>0.871</strong></td><td>479.5s</td></tr>
+                  <tr>
+                    <td>Tổng ECL</td>
+                    <td>$1.122M</td>
+                    <td>$1.526M</td>
+                    <td><strong>+$404M (+36%)</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Avg Coverage</td>
+                    <td>4,58%</td>
+                    <td>6,14%</td>
+                    <td>+1,56 điểm %</td>
+                  </tr>
+                  <tr>
+                    <td>ECL đỉnh theo năm</td>
+                    <td>$309M (2016)</td>
+                    <td>$352M (2016)</td>
+                    <td>+$43M — ML nhận diện rủi ro cao hơn</td>
+                  </tr>
+                  <tr>
+                    <td>Stage 3 Coverage</td>
+                    <td>~1,5% (EAD sai)</td>
+                    <td>42,49%</td>
+                    <td>Đúng theo IFRS 9 (= LGD)</td>
+                  </tr>
                 </tbody>
               </table>
 
-              <div class="formula-block">Calibration: GB raw ECE = 0.1636 (khong calibrated)
-→ Platt Scaling:     ECE = 0.0664  (-59.4%)
-→ Isotonic Regr.:    ECE = 0.0616  (-62.4%)  [Best — dung cho IFRS 9]
-Nguong chap nhan: ECE &lt; 0.10 (MAS TRM / ECB TRIM consumer PD)
-
-PD Score gradient A→G (sanity check):
-A=0.123 | B=0.237 | C=0.359 | D=0.459 | E=0.556 | F=0.637 | G=0.691</div>
-
               <ul class="finding-list">
-                <li class="good">PSI toan bo 5 fold &lt; 0.10 (Stable) — khong co distribution shift theo thoi gian.</li>
-                <li class="good">CV AUC tang theo fold: 0.926→0.954→0.950→0.963→0.969 — expected behavior.</li>
-                <li class="good">Sau Isotonic calibration: ECE=0.0616, dat chuan MAS TRM/ECB TRIM.</li>
-                <li class="note">Coverage 59.6%: 878K Current loans dung grade-based PD fill — chua ML-driven.</li>
-              </ul>
-
-              <!-- M7 -->
-              <h2 class="detail-section-title">M7 — EWS: Tu Circular AUC 0.999 den Predictive AUC 0.7412</h2>
-              <p class="detail-intro-text">
-                <strong>Phat hien quan trong nhat cua du an:</strong>
-                AUC 0.999 cua EWS goc la gia tri gia do circular evaluation —
-                Signal 1 dung debt_group lam input, trong khi label cung tu
-                debt_group. Da xu ly bang cach xay dung True Predictive EWS
-                voi 4 features doc lap, cho AUC=0.7412 co y nghia thuc su.
-              </p>
-
-              <div class="formula-block">EWS Predictive Score (khong dung debt_group):
-ews = fico_deterioration×0.35 + dti_signal×0.25 + delinq_signal×0.25 + revol_signal×0.15
-
-fico_deterioration = |last_fico - fico_range_low| / 300
-dti_signal         = min(dti / 50, 1.0)   [cap 50% = nguong nguy hiem]
-delinq_signal      = delinq_2yrs×0.3 + ever_delinquent×0.7
-revol_signal       = revol_util / 100.0</div>
-
-              <p class="detail-intro-text">
-                <strong>3 che do van hanh</strong> tu Precision-Recall curve:
-              </p>
-              <table class="module-table">
-                <thead>
-                  <tr><th>Che do</th><th>Threshold</th><th>Precision</th><th>Recall</th><th>Phu hop</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>ALERT (Youden)</td><td>0.312</td><td>19.5%</td><td>75.5%</td><td>Quet dien rong toan danh muc</td></tr>
-                  <tr><td><strong>BALANCED (F1)</strong></td><td><strong>0.459</strong></td><td><strong>36.0%</strong></td><td><strong>36.8%</strong></td><td><strong>Van hanh hang tuan (khuyen nghi)</strong></td></tr>
-                  <tr><td>PRECISE (F0.75)</td><td>0.483</td><td>41.8%</td><td>31.1%</td><td>Kiem tra sau uu tien cao</td></tr>
-                </tbody>
-              </table>
-              <ul class="finding-list">
-                <li class="good">Capture Rate tang tu 51.2% → 62.6% sau ha nguong Watch (0.65→0.45).</li>
-                <li class="good">Top 20 Watch List sau fix: khoan DANG TOT co FICO giam 130-220 diem, DTI cao, revol_util cao — canh bao som thuc su.</li>
-                <li class="bad">Rule-based 4 features dat tran AUC=0.741 — khong the vuot bang chi chinh threshold.</li>
+                <li class="good">
+                  LGD thực nghiệm thấp hơn Basel II 12–25 điểm %: Grade A
+                  (12,77% vs 25%), Grade G (30,18% vs 55%) — Lending Club có cơ
+                  chế thu hồi qua collection agency hiệu quả, nên dùng LGD thực
+                  nghiệm thay vì lookup table.
+                </li>
+                <li class="good">
+                  Stage 3 coverage 42,49% = LGD_adjusted (41,23%) — đúng theo
+                  IFRS 9 para 5.5.3: khi PD=1,0 (confirmed default), Coverage ≡
+                  LGD.
+                </li>
+                <li class="good">
+                  ECL phân phối đúng chu kỳ tín dụng: tăng 2007→2016, giảm
+                  2017–2018 — cohort mới chưa đủ thời gian quan sát, không phải
+                  chất lượng tốt hơn.
+                </li>
+                <li class="note">
+                  40% Current loans (878K) dùng grade-based PD fill — ECL nhóm
+                  này là static, chưa được ML-driven. Mở rộng training M6 sang
+                  Current loans sẽ tăng độ chính xác thêm 15–25% ước tính.
+                </li>
               </ul>
             </div>
           </section>
 
-          <!-- ══ TIER 3: IFRS 9 APPLICATION ══ -->
-          <section class="project-section" id="tier3">
-            <div class="detail-container">
-              <div class="tier-label">
-                <span class="tier-num">3</span>
-                Ung dung IFRS 9 &mdash; Gia tri Dinh luong cua ML trong Du phong
-              </div>
-
-              <p class="detail-intro-text">
-                Day la tang ket qua — noi Tier 1 (hieu biet danh muc) va Tier 2
-                (mo hinh PD va EWS) hoi tu de tra loi cau hoi kinh doanh chinh:
-                ML-PD thay doi muc du phong IFRS 9 len bao nhieu so voi phuong
-                phap truyen thong?
-              </p>
-
-              <!-- M2 baseline -->
-              <h2 class="detail-section-title">M2 — Baseline IFRS 9: PD Tinh 5-bucket</h2>
-              <p class="detail-intro-text">
-                PD tinh theo debt_group: Group 3 (Late) = 35% trong khi thuc
-                nghiem la 100% (underestimate 65 diem %). Ket qua: baseline ECL
-                $1,122M la con so sai do flat PD assumption.
-              </p>
-              <div class="formula-block">Empirical PD validation:
-Group 3 (Late 31-120d): static PD = 35%  vs  empirical PD = 100%  →  error = -65 pts
-Group 5 (Charged Off) : static PD = 90%  vs  empirical PD = 100%  →  error = -10 pts</div>
-
-              <!-- M8 advanced -->
-              <h2 class="detail-section-title">M8 — Advanced IFRS 9: ML-PD Integration</h2>
-              <p class="detail-intro-text">
-                M8 tich hop ML-PD tu M6 (calibrated Isotonic), LGD thuc nghiem
-                theo grade (thap hon Basel 12-25 diem %), va EAD net sau recoveries.
-                Ket qua: ECL tang tu $1,122M len $1,526M.
-              </p>
-              <div class="formula-block">ECL = pd_for_ecl × LGD_adjusted × EAD × Horizon × Discount
-
-Stage 1: pd_for_ecl = pd_score | horizon = 1/12  (12-month ECL)
-Stage 2: pd_for_ecl = pd_score | horizon = remaining_life
-Stage 3: pd_for_ecl = 1.0      | horizon = 1.0   [IFRS 9 para 5.5.3: confirmed default]
-
-EAD Stage 3 = loan_amnt × CCF(0.75) − recoveries  [net sau thu hoi]
-
-SICR Stage 2: debt_group==2  OR  FICO det.>20  OR  (pd_score>0.15 AND has_ml_pd=True)
-              [Chi ap PD>15% cho ML-PD thuc, tranh Stage 2 inflation tu PD fill]</div>
-
-              <table class="module-table">
-                <thead>
-                  <tr><th>Stage</th><th>So KV</th><th>EAD ($M)</th><th>Avg PD</th><th>ECL ($M)</th><th>Coverage (Agg)</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>1 — Binh thuong</td><td>1,249,674</td><td>$13,278M</td><td>18.28%</td><td>$62.76M</td><td>0.47%</td></tr>
-                  <tr><td>2 — SICR</td><td>718,179</td><td>$7,554M</td><td>35.06%</td><td>$175.56M</td><td>2.32%</td></tr>
-                  <tr><td>3 — Default (PD=1.0)</td><td>290,066</td><td>$3,032M</td><td>100%*</td><td>$1,288M</td><td>42.49%</td></tr>
-                  <tr><td><strong>TONG</strong></td><td><strong>2,257,919</strong></td><td><strong>$23,864M</strong></td><td>—</td><td><strong>$1,526M</strong></td><td><strong>6.40%</strong></td></tr>
-                </tbody>
-              </table>
-              <p style="font-size:.8rem;color:var(--warm);margin-top:.3rem;">* Stage 3: pd_for_ecl=1.0 (confirmed default). avg_pd=0.7648 la ML-PD de tham khao.</p>
-
-              <div class="impact-callout">
-                <div class="ic-number">+$404M</div>
-                <div class="ic-desc">Chench lech ECL M8 (ML-PD) vs M2 (PD tinh): +36% — minh chung dinh luong gia tri kinh doanh cua ML trong IFRS 9</div>
-              </div>
-
-              <ul class="finding-list">
-                <li class="good">LGD thuc nghiem thap hon Basel 12-25 diem % — phan anh dac thu Lending Club co thu hoi qua collection agency.</li>
-                <li class="good">Stage 3 coverage 42.49% = LGD_adjusted — dung IFRS 9 (coverage = LGD khi PD=1.0).</li>
-                <li class="good">ECL phan phoi dung chu ky: tang 2007→2016, giam 2017-2018 (truncation cohort moi).</li>
-                <li class="note">40% Current loans (878K) dung grade-based PD fill — ECL nhom nay la static, chua ML-driven.</li>
-              </ul>
-            </div>
-          </section>
-
-          <!-- ══ TECH STACK ══ -->
-          <section class="project-section" id="stack">
-            <div class="detail-container">
-              <h2 class="detail-section-title">Tech Stack &amp; Tools</h2>
-              <table class="module-table">
-                <thead><tr><th>Tang</th><th>Cong cu</th><th>Muc dich</th></tr></thead>
-                <tbody>
-                  <tr><td>Data Storage</td><td>PostgreSQL + DuckDB</td><td>Luu tru va truy van phan tich toc do cao</td></tr>
-                  <tr><td>Data Processing</td><td>Python, Pandas, PySpark</td><td>ETL, feature engineering, aggregation</td></tr>
-                  <tr><td>ML Modeling</td><td>Scikit-learn, XGBoost/LightGBM</td><td>PD Model, Calibration, EWS scoring</td></tr>
-                  <tr><td>Visualization</td><td>Matplotlib, Seaborn</td><td>Chart, heatmap, reliability diagram</td></tr>
-                  <tr><td>Orchestration</td><td>Jupyter Notebook (8 modules)</td><td>Phan tich lien ket, reproducible research</td></tr>
-                  <tr><td>Version Control</td><td>Git (Conventional Commits)</td><td>fix(M1-M8): 8 commit rieng tung module</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </section>
-
-          <!-- ══ KEY PROPOSALS ══ -->
+          <!-- ĐỀ XUẤT -->
           <section class="project-section" id="proposals">
             <div class="detail-container">
-              <h2 class="detail-section-title">3 De xuat Co gia tri Trien khai Ngay</h2>
+              <h2 class="detail-section-title">
+                3 Đề xuất Có thể Triển khai Ngay
+              </h2>
               <ol class="proposal-list">
                 <li class="proposal-item">
                   <span class="proposal-badge">1</span>
                   <div class="proposal-body">
-                    <strong>Tich hop ML-PD Calibrated vao SICR va ECL Production</strong>
-                    <p>Isotonic-calibrated PD (ECE=0.062) da san sang thay the PD tinh. Ap dung SICR filter has_ml_pd=True tranh Stage 2 inflation. Mo rong training sang Current loans (proxy label: payment behavior score) de tang PD coverage tu 59.6% len 95%+.</p>
+                    <strong
+                      >Tích hợp ML-PD Calibrated vào SICR và ECL
+                      Production</strong
+                    >
+                    <p>
+                      Isotonic-calibrated PD (ECE=0,062) đã đạt chuẩn MAS
+                      TRM/ECB TRIM và sẵn sàng thay thế PD tĩnh. Áp dụng SICR
+                      filter <em>has_ml_pd=True</em> để tránh Stage 2 inflation
+                      từ PD fill heuristic. Mở rộng training M6 sang Current
+                      loans (proxy label: payment behavior score, EWS score) để
+                      tăng PD coverage từ 59,6% lên 95%+ — ước tính ECL tăng
+                      thêm 15–25% do Current loans được định giá rủi ro cá nhân
+                      hoá thay vì grade average.
+                    </p>
                   </div>
                 </li>
                 <li class="proposal-item">
                   <span class="proposal-badge">2</span>
                   <div class="proposal-body">
-                    <strong>Trien khai EWS theo 3 che do van hanh dong</strong>
-                    <p>ALERT (R=75%): quet dinh ky toan danh muc. BALANCED (P=36%, R=37%): van hanh hang tuan. PRECISE (P=42%): kiem tra sau uu tien. Tang trong so Signal 3 (PD proxy) tu 0.2 len 0.35 bang calibrated ML-PD — du kien predictive AUC tang tu 0.741 len 0.82+.</p>
+                    <strong
+                      >Triển khai EWS theo 3 Chế độ Vận hành Linh động</strong
+                    >
+                    <p>
+                      ALERT (Youden, R=75%): quét toàn danh mục định kỳ hàng
+                      tháng ~203K khoản. BALANCED (F1, P=36%, R=37%): vận hành
+                      hàng tuần ~99K khoản — cân bằng giữa độ phủ và nguồn lực
+                      kiểm tra. PRECISE (F0,75, P=42%): kiểm tra sâu 83K khoản
+                      ưu tiên cao. Tăng trọng số Signal 3 (PD proxy) từ 0,2 lên
+                      0,35 bằng calibrated ML-PD từ M6 — dự kiến predictive AUC
+                      tăng từ 0,741 lên 0,82–0,87.
+                    </p>
                   </div>
                 </li>
                 <li class="proposal-item">
                   <span class="proposal-badge">3</span>
                   <div class="proposal-body">
-                    <strong>Xay dung Macro Stress Testing voi Unemployment Lag 24 thang</strong>
-                    <p>Su dung Unemployment Rate (t-24) lam leading indicator du bao NPL tuong lai (r=0.651). Thiet lap DTI cap &le;35% trong underwriting policy (DTI tang 5% → NPL tang 1.9 diem %). Tich hop vao provision rate de ECL phan ung voi chu ky kinh te.</p>
+                    <strong
+                      >Macro Stress Testing với Unemployment Lag 24
+                      Tháng</strong
+                    >
+                    <p>
+                      Sử dụng Unemployment Rate (t−24) làm leading indicator
+                      (r=0,651) để điều chỉnh provision rate trước 2 năm thay vì
+                      phản ứng sau khi NPL đã tăng. Thiết lập DTI cap ≤35% trong
+                      chính sách underwriting: mỗi 5% DTI tăng → NPL tăng ~1,9
+                      điểm % (r=0,953). Tích hợp vào Dynamic LGD: LGD_macro =
+                      LGD_base × (1 + GDP_shock_factor) để ECL phản ánh đúng rủi
+                      ro trong các kịch bản stress kinh tế.
+                    </p>
                   </div>
                 </li>
               </ol>
             </div>
           </section>
-
-        </div><!-- end content-col -->
-      </div><!-- end with-toc -->
+        </div>
+        <!-- end content-col -->
+      </div>
+      <!-- end with-toc -->
     </main>
 
     <footer>
-      <span>&copy; 2026 Nam Phuong</span>
-      <a href="https://linkedin.com" target="_blank">LinkedIn &nearr;</a>
+      <span>&copy; 2026 Nam Phương</span>
+      <a href="https://linkedin.com" target="_blank">LinkedIn &#8599;</a>
     </footer>
 
     <script src="portfolio-detail.js"></script>
+    <script>
+      const sections = document.querySelectorAll("[id]");
+      const links = document.querySelectorAll(".toc-sticky a");
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              links.forEach((l) => l.classList.remove("active"));
+              const a = document.querySelector(
+                `.toc-sticky a[href="#${e.target.id}"]`,
+              );
+              if (a) a.classList.add("active");
+            }
+          });
+        },
+        { rootMargin: "-25% 0px -65% 0px" },
+      );
+      sections.forEach((s) => obs.observe(s));
+    </script>
   </body>
 </html>
