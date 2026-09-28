@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/organic-0bc84cf3-a3ab-470a-a244-a51a0c5951c3/styles.css">
+<script src="_ds/organic-0bc84cf3-a3ab-470a-a244-a51a0c5951c3/_ds_bundle.js"></script>
+<style>
+body { background: var(--color-neutral-100); }
+a { color: var(--color-accent-700); }
+a:hover { color: var(--color-accent-800); }
+</style>
+</helmet>
+<div style="min-height:100vh;background:var(--color-neutral-100);color:var(--color-text);font-family:var(--font-body);">
+  <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,56px);">
+
+    <nav class="nav" style="padding:28px 0;flex-wrap:wrap;row-gap:12px;">
+      <a href="#top" class="nav-brand" style="font-size:20px;">Nam Phương</a>
+      <div style="display:flex;gap:clamp(14px,2.4vw,28px);align-items:center;flex-wrap:wrap;">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#focus">Focus</a>
+        <a href="Learning &amp; Activities.dc.html">Learning</a>
+        <a href="Contact.dc.html">Contact</a>
+        <a href="#cv" class="btn btn-secondary" style="font-size:14px;">Download CV</a>
+      </div>
+    </nav>
+
+    <header id="top" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(40px,6vw,80px);align-items:center;padding:clamp(40px,8vw,96px) 0 clamp(64px,9vw,120px);">
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:28px;max-width:600px;">
+        <sc-if value="{{ showStatus }}" hint-placeholder-val="{{ true }}">
+          <span class="tag tag-accent-2" style="font-size:13px;padding:6px 14px;gap:8px;">
+            <span style="width:8px;height:8px;border-radius:50%;background:var(--color-accent-2-600);"></span>
+            Open to internships &amp; graduate roles · 2026
+          </span>
+        </sc-if>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <p style="margin:0;font-size:17px;font-weight:600;color:var(--color-neutral-700);">Hi, I'm Nam.</p>
+          <h1 style="margin:0;font-size:clamp(36px,5.4vw,62px);line-height:1.04;text-wrap:balance;">Chử Trần Phương Nam — Aspiring Data Analyst</h1>
+        </div>
+        <p style="margin:0;font-size:clamp(17px,1.6vw,20px);line-height:1.5;color:var(--color-neutral-800);max-width:520px;text-wrap:pretty;">Final-year IT student at Thuy Loi University, aspiring to become a high-impact Data Analyst. I turn messy data and complex business problems into structured insights and actionable decisions.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="#projects" class="btn btn-primary" style="font-size:16px;padding:14px 24px;gap:10px;">Explore My Projects
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+          </a>
+          <a href="#cv" class="btn btn-secondary" style="font-size:16px;padding:14px 24px;gap:10px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"></path><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path></svg>
+            Download CV
+          </a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;padding-top:8px;">
+          <span style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;color:var(--color-neutral-700);">Roles I'm targeting</span>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span class="tag tag-outline" style="font-size:13px;padding:5px 12px;color:var(--color-accent-700);border-color:var(--color-accent-400);">Data Analyst</span>
+            <span class="tag tag-outline" style="font-size:13px;padding:5px 12px;color:var(--color-accent-700);border-color:var(--color-accent-400);">Product Analyst</span>
+            <span class="tag tag-outline" style="font-size:13px;padding:5px 12px;color:var(--color-accent-700);border-color:var(--color-accent-400);">Product Manager</span>
+            <span class="tag tag-outline" style="font-size:13px;padding:5px 12px;color:var(--color-accent-700);border-color:var(--color-accent-400);">Product Owner</span>
+            <span class="tag tag-outline" style="font-size:13px;padding:5px 12px;color:var(--color-accent-700);border-color:var(--color-accent-400);">Business Analyst</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="position:relative;display:flex;flex-direction:column;gap:20px;padding:clamp(24px,3vw,36px);border-radius:calc(var(--radius-lg) * 1.4);background:var(--color-bg);background-image:radial-gradient(circle,var(--color-neutral-400) 1.2px,transparent 1.4px);background-size:22px 22px;min-height:420px;justify-content:space-between;">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span class="tag" style="font-size:12px;letter-spacing:0.12em;font-weight:700;padding:7px 14px;background:var(--color-accent);color:var(--color-neutral-100);">DATA ANALYTICS</span>
+          <span class="tag" style="font-size:12px;letter-spacing:0.12em;font-weight:700;padding:7px 14px;background:var(--color-accent-2-600);color:var(--color-neutral-100);">PRODUCT</span>
+          <span class="tag" style="font-size:12px;letter-spacing:0.12em;font-weight:700;padding:7px 14px;background:var(--color-neutral-800);color:var(--color-neutral-100);">BUSINESS</span>
+        </div>
+
+        <sc-if value="{{ isChart }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:14px;padding:22px;border-radius:var(--radius-lg);background:var(--color-neutral-100);box-shadow:var(--shadow-md);">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;">
+              <span style="font-family:var(--font-heading);font-size:17px;">Question → Insight</span>
+              <span style="font-size:12px;color:var(--color-neutral-700);">illustrative</span>
+            </div>
+            <div style="display:flex;align-items:flex-end;gap:10px;height:150px;padding-bottom:4px;border-bottom:1.5px solid var(--color-neutral-300);">
+              <div style="flex:1;height:38%;border-radius:10px 10px 4px 4px;background:var(--color-neutral-300);"></div>
+              <div style="flex:1;height:52%;border-radius:10px 10px 4px 4px;background:var(--color-neutral-300);"></div>
+              <div style="flex:1;height:44%;border-radius:10px 10px 4px 4px;background:var(--color-neutral-300);"></div>
+              <div style="flex:1;height:66%;border-radius:10px 10px 4px 4px;background:var(--color-accent-2-300);"></div>
+              <div style="flex:1;height:58%;border-radius:10px 10px 4px 4px;background:var(--color-accent-2-300);"></div>
+              <div style="flex:1;height:92%;border-radius:10px 10px 4px 4px;background:var(--color-accent);"></div>
+              <div style="flex:1;height:74%;border-radius:10px 10px 4px 4px;background:var(--color-accent-300);"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--color-neutral-700);">
+              <span>Explore</span><span>Segment</span><span>Find the signal</span>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ isFlow }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:0;padding:22px;border-radius:var(--radius-lg);background:var(--color-neutral-100);box-shadow:var(--shadow-md);">
+            <div style="display:flex;align-items:center;gap:14px;"><span style="width:14px;height:14px;border-radius:50%;background:var(--color-neutral-800);flex:none;"></span><span style="font-family:var(--font-heading);font-size:18px;">Problem</span></div>
+            <div style="width:2px;height:22px;margin-left:6px;background:var(--color-neutral-300);"></div>
+            <div style="display:flex;align-items:center;gap:14px;"><span style="width:14px;height:14px;border-radius:50%;background:var(--color-accent);flex:none;"></span><span style="font-family:var(--font-heading);font-size:18px;">Data</span></div>
+            <div style="width:2px;height:22px;margin-left:6px;background:var(--color-neutral-300);"></div>
+            <div style="display:flex;align-items:center;gap:14px;"><span style="width:14px;height:14px;border-radius:50%;background:var(--color-accent-2-600);flex:none;"></span><span style="font-family:var(--font-heading);font-size:18px;">Insight</span></div>
+            <div style="width:2px;height:22px;margin-left:6px;background:var(--color-neutral-300);"></div>
+            <div style="display:flex;align-items:center;gap:14px;"><span style="width:14px;height:14px;border-radius:50%;border:3px solid var(--color-accent);flex:none;"></span><span style="font-family:var(--font-heading);font-size:18px;">Decision</span></div>
+          </div>
+        </sc-if>
+
+        <p style="margin:0;font-size:14px;color:var(--color-neutral-800);max-width:340px;">Every project starts with a question, moves through the data, and ends with a recommendation someone can act on.</p>
+      </div>
+    </header>
+
+    <section id="about" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(40px,6vw,80px);align-items:start;padding-bottom:clamp(64px,9vw,120px);">
+      <div style="display:flex;flex-direction:column;gap:18px;max-width:520px;">
+        <span style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700);">About me</span>
+        <h2 style="margin:0;font-size:clamp(28px,3.4vw,40px);text-wrap:balance;">Final-year IT student with a focus on Data Analytics and business problem-solving.</h2>
+        <p style="margin:0;font-size:18px;line-height:1.55;color:var(--color-neutral-800);text-wrap:pretty;">My analytical philosophy centers on uncovering root causes, not just symptoms. Long-term goal: transitioning into a Strategic Consultant role, using data to create sustainable value.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:18px;">
+        <span style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700);">My current toolkit</span>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div style="display:grid;grid-template-columns:minmax(0,96px) minmax(0,1fr);gap:16px;align-items:center;padding:20px 22px;border-radius:var(--radius-lg);background:var(--color-accent-100);">
+            <span style="font-size:12px;letter-spacing:0.12em;font-weight:700;color:var(--color-accent-700);">DATA</span>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <span class="tag" style="font-size:14px;padding:6px 14px;background:var(--color-neutral-100);color:var(--color-accent-800);">SQL</span>
+              <span class="tag" style="font-size:14px;padding:6px 14px;background:var(--color-neutral-100);color:var(--color-accent-800);">Excel</span>
+              <span class="tag" style="font-size:14px;padding:6px 14px;background:var(--color-neutral-100);color:var(--color-accent-800);">Python</span>
+              <span class="tag" style="font-size:14px;padding:6px 14px;background:var(--color-neutral-100);color:var(--color-accent-800);">Power BI</span>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:minmax(0,96px) minmax(0,1fr);gap:16px;align-items:center;padding:20px 22px;border-radius:var(--radius-lg);background:var(--color-neutral-200);">
+            <span style="font-size:12px;letter-spacing:0.12em;font-weight:700;color:var(--color-neutral-800);">BUSINESS</span>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <span class="tag" style="font-size:14px;padding:6px 14px;background:var(--color-neutral-100);color:var(--color-neutral-800);">Business Analysis</span>
+              <span class="tag" style="font-size:14px;padding:6px 14px;background:var(--color-neutral-100);color:var(--color-neutral-800);">Requirement Analysis</span>
+              <span class="tag" style="font-size:14px;padding:6px 14px;background:var(--color-neutral-100);color:var(--color-neutral-800);">Process Mapping</span>
+              <span class="tag" style="font-size:14px;padding:6px 14px;background:var(--color-neutral-100);color:var(--color-neutral-800);">KPI</span>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:minmax(0,96px) minmax(0,1fr);gap:16px;align-items:center;padding:20px 22px;border-radius:var(--radius-lg);background:var(--color-accent-2-100);">
+            <span style="font-size:12px;letter-spacing:0.12em;font-weight:700;color:var(--color-accent-2-700);">PRODUCT</span>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <span class="tag" style="font-size:14px;padding:6px 14px;background:var(--color-neutral-100);color:var(--color-accent-2-800);">Product Thinking</span>
+              <span class="tag" style="font-size:14px;padding:6px 14px;background:var(--color-neutral-100);color:var(--color-accent-2-800);">User Journey</span>
+              <span class="tag" style="font-size:14px;padding:6px 14px;background:var(--color-neutral-100);color:var(--color-accent-2-800);">Prioritization</span>
+              <span class="tag" style="font-size:14px;padding:6px 14px;background:var(--color-neutral-100);color:var(--color-accent-2-800);">Agile / Scrum</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="focus" style="display:flex;flex-direction:column;gap:36px;padding-bottom:clamp(64px,9vw,120px);">
+      <div style="display:flex;flex-direction:column;gap:10px;max-width:640px;">
+        <span style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700);">What I want to work on</span>
+        <h2 style="margin:0;font-size:clamp(28px,3.4vw,40px);">Problems I'm drawn to</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px;">
+        <div class="card" style="padding:28px;gap:14px;background:var(--color-accent-100);">
+          <span class="card-kicker" style="font-size:12px;font-weight:700;color:var(--color-accent-700);">Data Analytics</span>
+          <span class="card-title" style="font-size:22px;">Why did this number change?</span>
+          <p class="card-body" style="font-size:15px;opacity:1;color:var(--color-neutral-800);">Cleaning messy data, exploring trends and explaining what's behind them in plain language.</p>
+        </div>
+        <div class="card" style="padding:28px;gap:14px;background:var(--color-accent-2-100);">
+          <span class="card-kicker" style="font-size:12px;font-weight:700;color:var(--color-accent-2-700);">Product</span>
+          <span class="card-title" style="font-size:22px;">What should we build next, and for whom?</span>
+          <p class="card-body" style="font-size:15px;opacity:1;color:var(--color-neutral-800);">Understanding users, defining the problem clearly and prioritising what matters most.</p>
+        </div>
+        <div class="card" style="padding:28px;gap:14px;background:var(--color-neutral-200);">
+          <span class="card-kicker" style="font-size:12px;font-weight:700;color:var(--color-neutral-800);">Business</span>
+          <span class="card-title" style="font-size:22px;">Where is the process losing time or value?</span>
+          <p class="card-body" style="font-size:15px;opacity:1;color:var(--color-neutral-800);">Mapping how things work today, gathering requirements and proposing structured improvements.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" style="display:flex;flex-direction:column;gap:36px;padding-bottom:clamp(64px,9vw,120px);">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;">
+        <div style="display:flex;flex-direction:column;gap:10px;max-width:640px;">
+          <span style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700);">Personal &amp; academic work</span>
+          <h2 style="margin:0;font-size:clamp(28px,3.4vw,40px);">Selected projects</h2>
+        </div>
+        <a href="Selected Projects.dc.html" class="btn btn-ghost" style="font-size:15px;color:var(--color-accent-700);">View all projects →</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px;">
+        <sc-for list="{{ projects }}" as="p" hint-placeholder-count="3">
+          <a href="#project" style="display:flex;flex-direction:column;gap:16px;padding:14px 14px 24px;border-radius:calc(var(--radius-lg) * 1.15);background:var(--color-neutral-100);border:1.5px solid var(--color-neutral-300);text-decoration:none;color:var(--color-text);" style-hover="border-color:var(--color-accent-400);box-shadow:var(--shadow-md);">
+            <div style="aspect-ratio:16/10;border-radius:var(--radius-lg);background:var(--color-bg);background-image:radial-gradient(circle,var(--color-neutral-400) 1px,transparent 1.2px);background-size:18px 18px;display:grid;place-items:center;font-size:13px;color:var(--color-neutral-700);">[Project screenshot / chart]</div>
+            <div style="display:flex;flex-direction:column;gap:10px;padding:0 10px;">
+              <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                <span class="tag tag-neutral" style="font-size:12px;">{{ p.type }}</span>
+                <span class="tag tag-accent" style="font-size:12px;">{{ p.area }}</span>
+              </div>
+              <span style="font-family:var(--font-heading);font-size:21px;line-height:1.2;">{{ p.name }}</span>
+              <p style="margin:0;font-size:15px;color:var(--color-neutral-800);">{{ p.desc }}</p>
+              <span style="font-size:13px;color:var(--color-neutral-700);">Tools: {{ p.tools }}</span>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <footer id="contact" style="display:flex;flex-direction:column;gap:28px;padding:clamp(36px,5vw,56px);margin-bottom:40px;border-radius:calc(var(--radius-lg) * 1.4);background:var(--color-neutral-900);color:var(--color-neutral-100);">
+      <div style="display:flex;flex-direction:column;gap:12px;max-width:620px;">
+        <h2 style="margin:0;font-size:clamp(28px,3.4vw,40px);color:var(--color-neutral-100);">Let's talk</h2>
+        <p style="margin:0;font-size:17px;color:var(--color-neutral-300);">I'm looking for internship and entry-level opportunities in data, product and business analysis.</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+        <a href="mailto:tranphuongnam932004@gmail.com" class="btn btn-primary" style="font-size:15px;padding:12px 22px;">tranphuongnam932004@gmail.com</a>
+        <a href="https://linkedin.com/in/chutranphuongnam" class="btn" style="font-size:15px;padding:12px 22px;color:var(--color-neutral-100);border-color:var(--color-neutral-700);" style-hover="background:var(--color-neutral-800);">LinkedIn</a>
+        <a href="https://github.com/ctpn0011111" class="btn" style="font-size:15px;padding:12px 22px;color:var(--color-neutral-100);border-color:var(--color-neutral-700);" style-hover="background:var(--color-neutral-800);">GitHub</a>
+      </div>
+      <span style="font-size:13px;color:var(--color-neutral-500);">© 2026 Chử Trần Phương Nam</span>
+    </footer>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroVisual&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;chart&quot;,&quot;flow&quot;],&quot;default&quot;:&quot;chart&quot;,&quot;tsType&quot;:&quot;'chart'|'flow'&quot;},&quot;showStatus&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const v = this.props.heroVisual ?? "chart";
+    return {
+      showStatus: this.props.showStatus ?? true,
+      isChart: v === "chart",
+      isFlow: v === "flow",
+      projects: [
+        { type: "Personal Project", area: "Data Engineering", name: "Automated Data Platform for Multi-branch Business", desc: "End-to-end platform with Medallion architecture and ML-driven revenue forecasting (6–8% MAPE), providing deep visibility into ROI, LTV, and customer retention.", tools: "PostgreSQL · Airflow · Power BI · XGBoost/Prophet" },
+        { type: "Personal Project", area: "MLOps", name: "Real-time Movie Recommendation MLOps Platform", desc: "Microservices MLOps platform with hybrid batch & streaming ingestion, automated ML lifecycle, model registry, and Grafana/Prometheus monitoring for drift detection.", tools: "Docker · Kafka · Redis · SVD Algorithm · Grafana · Airflow" },
+        { type: "Personal Project", area: "Data Analytics", name: "Credit Risk Analytics IFRS 9 ECL System", desc: "Risk analytics on 2.26M Lending Club loans: PD Model AUC=0.9702, Early Warning System AUC=0.7412, ML-PD pipeline detecting $404M more in under-provisioned reserves.", tools: "Python · PySpark · XGBoost · IFRS 9/ECL · DuckDB · PostgreSQL" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

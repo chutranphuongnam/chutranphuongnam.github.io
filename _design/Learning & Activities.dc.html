@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/organic-0bc84cf3-a3ab-470a-a244-a51a0c5951c3/styles.css">
+<script src="_ds/organic-0bc84cf3-a3ab-470a-a244-a51a0c5951c3/_ds_bundle.js"></script>
+<style>
+body { background: var(--color-neutral-100); }
+a { color: var(--color-accent-700); }
+a:hover { color: var(--color-accent-800); }
+</style>
+</helmet>
+<div style="min-height:100vh;background:var(--color-neutral-100);color:var(--color-text);font-family:var(--font-body);">
+  <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,56px);">
+
+    <nav class="nav" style="padding:28px 0;flex-wrap:wrap;row-gap:12px;">
+      <a href="Portfolio Home.dc.html" class="nav-brand" style="font-size:20px;">Nam Phương</a>
+      <div style="display:flex;gap:clamp(14px,2.4vw,28px);align-items:center;flex-wrap:wrap;">
+        <a href="About &amp; Skills.dc.html">About</a>
+        <a href="Selected Projects.dc.html">Projects</a>
+        <a href="Learning &amp; Activities.dc.html" aria-current="page">Learning</a>
+        <a href="Contact.dc.html">Contact</a>
+        <a href="#cv" class="btn btn-secondary" style="font-size:14px;">Download CV</a>
+      </div>
+    </nav>
+
+    <header data-screen-label="Learning header" style="display:flex;flex-direction:column;gap:22px;padding:clamp(40px,7vw,88px) 0 clamp(48px,6vw,72px);max-width:720px;">
+      <span style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;color:var(--color-accent-2-700);">Active learning journey</span>
+      <h1 style="margin:0;font-size:clamp(38px,5.4vw,62px);line-height:1.04;">Learning &amp; Activities</h1>
+      <p style="margin:0;font-size:clamp(17px,1.6vw,20px);line-height:1.55;color:var(--color-neutral-800);max-width:560px;text-wrap:pretty;">What I'm studying now, what I've completed, and how I practice outside the classroom.</p>
+    </header>
+
+    <section id="learning" data-screen-label="Currently learning" style="display:flex;flex-direction:column;gap:32px;padding-bottom:clamp(64px,9vw,112px);">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;">
+        <h2 style="margin:0;font-size:clamp(28px,3.4vw,40px);">Currently learning</h2>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--color-neutral-800);">
+          <span style="display:inline-flex;align-items:center;gap:8px;"><span style="width:10px;height:10px;border-radius:50%;background:var(--color-accent-300);"></span>Learning</span>
+          <span style="display:inline-flex;align-items:center;gap:8px;"><span style="width:10px;height:10px;border-radius:50%;background:var(--color-accent);"></span>Practicing</span>
+          <span style="display:inline-flex;align-items:center;gap:8px;"><span style="width:10px;height:10px;border-radius:50%;background:var(--color-accent-2-600);"></span>Building</span>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:18px;">
+        <sc-for list="{{ topics }}" as="t" hint-placeholder-count="4">
+          <div style="display:flex;flex-direction:column;gap:22px;padding:26px;border-radius:calc(var(--radius-lg) * 1.15);background:var(--color-bg);">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
+              <span style="font-size:12px;letter-spacing:0.12em;font-weight:700;color:var(--color-neutral-700);">{{ t.area }}</span>
+              <span class="tag" style="font-size:12px;font-weight:600;padding:4px 12px;background:var(--color-neutral-100);color:var(--color-neutral-800);">{{ t.stageLabel }}</span>
+            </div>
+            <span style="font-family:var(--font-heading);font-size:24px;line-height:1.15;">{{ t.name }}</span>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;">
+                <span style="height:10px;border-radius:999px;background:{{ t.s1 }};"></span>
+                <span style="height:10px;border-radius:999px;background:{{ t.s2 }};"></span>
+                <span style="height:10px;border-radius:999px;background:{{ t.s3 }};"></span>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;font-size:12px;color:var(--color-neutral-700);">
+                <span>Learning</span><span>Practicing</span><span>Building</span>
+              </div>
+            </div>
+            <p style="margin:0;font-size:14px;line-height:1.5;color:var(--color-neutral-800);">Next: [What you're focusing on next]</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(40px,6vw,72px);padding-bottom:clamp(64px,9vw,112px);align-items:start;">
+
+      <section id="certifications" data-screen-label="Certifications" style="display:flex;flex-direction:column;gap:28px;">
+        <h2 style="margin:0;font-size:clamp(28px,3.4vw,40px);">Certifications</h2>
+        <div style="display:flex;flex-direction:column;">
+          <sc-for list="{{ certs }}" as="c" hint-placeholder-count="3">
+            <div style="display:grid;grid-template-columns:28px minmax(0,1fr);gap:18px;">
+              <div style="display:flex;flex-direction:column;align-items:center;">
+                <span style="width:18px;height:18px;margin-top:6px;border-radius:50%;background:var(--color-neutral-100);border:4px solid var(--color-accent);flex:none;"></span>
+                <span style="flex:1;width:2px;margin-top:6px;background:var(--color-neutral-300);"></span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px;padding-bottom:30px;">
+                <span style="font-size:13px;font-weight:700;color:var(--color-accent-700);">[Year]</span>
+                <span style="font-family:var(--font-heading);font-size:21px;line-height:1.2;">[Certificate Name]</span>
+                <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:14px;color:var(--color-neutral-800);">
+                  <span>[Platform]</span>
+                  <a href="#credential" style="font-weight:600;">View credential ↗</a>
+                </div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+
+      <section id="courses" data-screen-label="Courses" style="display:flex;flex-direction:column;gap:28px;">
+        <h2 style="margin:0;font-size:clamp(28px,3.4vw,40px);">Courses</h2>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <sc-for list="{{ courses }}" as="c" hint-placeholder-count="4">
+            <div style="display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:16px;align-items:center;padding:16px 20px 16px 16px;border-radius:var(--radius-lg);background:var(--color-neutral-100);border:1.5px solid var(--color-neutral-300);">
+              <span style="width:44px;height:44px;border-radius:50%;background:var(--color-neutral-200);color:var(--color-neutral-800);display:grid;place-items:center;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"></path><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path></svg>
+              </span>
+              <div style="display:flex;flex-direction:column;gap:2px;min-width:0;">
+                <span style="font-family:var(--font-heading);font-size:18px;line-height:1.2;">[Course Name]</span>
+                <span style="font-size:14px;color:var(--color-neutral-700);">[Platform]</span>
+              </div>
+              <span class="{{ c.cls }}" style="font-size:12px;font-weight:600;padding:5px 12px;white-space:nowrap;">{{ c.status }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+    </div>
+
+    <section id="activities" data-screen-label="Activities" style="display:flex;flex-direction:column;gap:32px;padding-bottom:clamp(64px,9vw,112px);">
+      <div style="display:flex;flex-direction:column;gap:10px;max-width:640px;">
+        <span style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700);">Self-directed practice</span>
+        <h2 style="margin:0;font-size:clamp(28px,3.4vw,40px);">Activities</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px;">
+        <sc-for list="{{ activities }}" as="a" hint-placeholder-count="5">
+          <div style="display:flex;flex-direction:column;gap:16px;padding:26px;border-radius:calc(var(--radius-lg) * 1.15);background:var(--color-neutral-100);border:1.5px solid var(--color-neutral-300);">
+            <span style="width:46px;height:46px;border-radius:50%;background:{{ a.bg }};color:{{ a.fg }};display:grid;place-items:center;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" dangerouslySetInnerHTML="{{ a.icon }}"></svg>
+            </span>
+            <span style="font-family:var(--font-heading);font-size:21px;line-height:1.2;">{{ a.name }}</span>
+            <p style="margin:0;font-size:15px;line-height:1.5;color:var(--color-neutral-800);">[What you did and what you practiced]</p>
+            <span style="font-size:13px;color:var(--color-neutral-700);">[Month Year] · [Link]</span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <footer id="contact" style="display:flex;flex-direction:column;gap:28px;padding:clamp(36px,5vw,56px);margin-bottom:40px;border-radius:calc(var(--radius-lg) * 1.4);background:var(--color-neutral-900);color:var(--color-neutral-100);">
+      <div style="display:flex;flex-direction:column;gap:12px;max-width:620px;">
+        <h2 style="margin:0;font-size:clamp(28px,3.4vw,40px);color:var(--color-neutral-100);">Let's talk</h2>
+        <p style="margin:0;font-size:17px;color:var(--color-neutral-300);">I'm looking for internship and entry-level opportunities in data, product and business analysis.</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+        <a href="mailto:tranphuongnam932004@gmail.com" class="btn btn-primary" style="font-size:15px;padding:12px 22px;">tranphuongnam932004@gmail.com</a>
+        <a href="https://linkedin.com/in/chutranphuongnam" class="btn" style="font-size:15px;padding:12px 22px;color:var(--color-neutral-100);border-color:var(--color-neutral-700);" style-hover="background:var(--color-neutral-800);">LinkedIn</a>
+        <a href="https://github.com/ctpn0011111" class="btn" style="font-size:15px;padding:12px 22px;color:var(--color-neutral-100);border-color:var(--color-neutral-700);" style-hover="background:var(--color-neutral-800);">GitHub</a>
+      </div>
+      <span style="font-size:13px;color:var(--color-neutral-500);">© 2026 Chử Trần Phương Nam</span>
+    </footer>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;sqlStage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Learning&quot;,&quot;Practicing&quot;,&quot;Building&quot;],&quot;default&quot;:&quot;Practicing&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Learning stages&quot;},&quot;powerBiStage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Learning&quot;,&quot;Practicing&quot;,&quot;Building&quot;],&quot;default&quot;:&quot;Building&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Learning stages&quot;},&quot;pythonStage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Learning&quot;,&quot;Practicing&quot;,&quot;Building&quot;],&quot;default&quot;:&quot;Building&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Learning stages&quot;},&quot;dataEngineeringStage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Learning&quot;,&quot;Practicing&quot;,&quot;Building&quot;],&quot;default&quot;:&quot;Practicing&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Learning stages&quot;}}">
+const STAGES = ["Learning", "Practicing", "Building"];
+const STAGE_COLORS = ["var(--color-accent-300)", "var(--color-accent)", "var(--color-accent-2-600)"];
+const ICONS = {
+  chart: '<path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/>',
+  code: '<path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/>',
+  puzzle: '<path d="M15.39 4.39a1 1 0 0 0 1.68-.474 2.5 2.5 0 1 1 3.014 3.015 1 1 0 0 0-.474 1.68l1.683 1.682a2.414 2.414 0 0 1 0 3.414L19.61 15.39a1 1 0 0 1-1.68-.474 2.5 2.5 0 1 0-3.014 3.015 1 1 0 0 1 .474 1.68l-1.683 1.682a2.414 2.414 0 0 1-3.414 0L8.61 19.61a1 1 0 0 0-1.68.474 2.5 2.5 0 1 1-3.014-3.015 1 1 0 0 0 .474-1.68l-1.683-1.682a2.414 2.414 0 0 1 0-3.414L4.39 8.61a1 1 0 0 1 1.68.474 2.5 2.5 0 1 0 3.014-3.015 1 1 0 0 1-.474-1.68l1.683-1.682a2.414 2.414 0 0 1 3.414 0z"/>',
+  flask: '<path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/>',
+  users: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>'
+};
+class Component extends DCLogic {
+  renderVals() {
+    const P = this.props;
+    const topic = (name, area, stage) => {
+      const i = Math.max(0, STAGES.indexOf(stage));
+      const fill = n => n <= i ? STAGE_COLORS[i] : "var(--color-neutral-300)";
+      return { name, area, stageLabel: STAGES[i], s1: fill(0), s2: fill(1), s3: fill(2) };
+    };
+    return {
+      topics: [
+        topic("Advanced SQL", "DATA", P.sqlStage ?? "Practicing"),
+        topic("Power BI / DAX", "DATA", P.powerBiStage ?? "Building"),
+        topic("Python (Pandas · Scikit-learn)", "DATA", P.pythonStage ?? "Building"),
+        topic("Data Engineering (Spark · Airflow)", "ENGINEERING", P.dataEngineeringStage ?? "Practicing")
+      ],
+      certs: [1, 2, 3],
+      courses: [
+        { status: "Completed", cls: "tag tag-accent-2" },
+        { status: "In progress", cls: "tag tag-accent" },
+        { status: "Completed", cls: "tag tag-accent-2" },
+        { status: "In progress", cls: "tag tag-accent" }
+      ],
+      activities: [
+        { name: "Personal analytics projects", icon: { __html: ICONS.chart }, bg: "var(--color-accent-100)", fg: "var(--color-accent-700)" },
+        { name: "Kaggle practice", icon: { __html: ICONS.code }, bg: "var(--color-neutral-200)", fg: "var(--color-neutral-800)" },
+        { name: "Case study challenges", icon: { __html: ICONS.puzzle }, bg: "var(--color-accent-2-100)", fg: "var(--color-accent-2-700)" },
+        { name: "Product experiments", icon: { __html: ICONS.flask }, bg: "var(--color-accent-100)", fg: "var(--color-accent-700)" },
+        { name: "Community activities", icon: { __html: ICONS.users }, bg: "var(--color-accent-2-100)", fg: "var(--color-accent-2-700)" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

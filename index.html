@@ -1,188 +1,229 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chử Trần Phương Nam - Data Practitioner (Entry-level)</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <nav>
-      <a href="#" class="nav-logo">Nam Phương</a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#about">LinkedIn</a></li>
-        <!-- <li><a href="#contact">Contact</a></li> -->
-      </ul>
-    </nav>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nam Phương — Data Practitioner</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<div style="min-height:100vh;background:var(--color-neutral-100);color:var(--color-text);font-family:var(--font-body);">
+<div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,56px);">
 
-    <section class="hero">
-      <div class="hero-content">
-        <p class="hero-eyebrow">Data Practitioner (Entry-level)</p>
-        <h1 class="hero-title">Chử Trần Phương Nam</h1>
-        <p class="hero-subtitle">
-          I am a final-year Information Technology student at Thuy Loi
-          University (Southern Campus), aspiring to become a high-impact Data
-          Analyst. My analytical philosophy centers on uncovering the root
-          causes of complex problems to drive data-informed decisions. With a
-          solid foundation in Excel, SQL, Power BI, and Python, I am committed
-          to refining my critical thinking and observational skills. My
-          long-term goal is to transition into a Strategic Consultant role,
-          utilizing my current analytical expertise to create sustainable value
-          for any organization.
-        </p>
-        <!-- <a href="#contact" class="btn">Start a conversation</a>   -->
+  <!-- NAV -->
+  <nav class="nav" style="padding:28px 0;">
+    <a href="index.html" class="nav-brand">Nam Phương</a>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="learning.html">Learning</a>
+      <a href="contact.html">Contact</a>
+      <a href="#cv" class="btn btn-secondary" style="font-size:14px;">Download CV</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="top" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(40px,6vw,80px);align-items:center;padding:clamp(40px,8vw,96px) 0 clamp(64px,9vw,120px);">
+    <div style="display:flex;flex-direction:column;align-items:flex-start;gap:28px;max-width:600px;">
+      <span class="tag tag-accent-2" style="font-size:13px;padding:6px 14px;gap:8px;">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--color-accent-2-600);"></span>
+        Open to internships &amp; graduate roles · 2026
+      </span>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <p style="margin:0;font-size:17px;font-weight:600;color:var(--color-neutral-700);">Hi, I'm Nam.</p>
+        <h1 style="margin:0;font-size:clamp(36px,5.4vw,62px);line-height:1.04;font-family:var(--font-heading);text-wrap:balance;">Chử Trần Phương Nam — Aspiring Data Analyst</h1>
       </div>
-    </section>
-
-    <section class="portfolio fade-in" id="portfolio">
-      <div class="portfolio-header">
-        <h2>Portfolio</h2>
-      </div>
-      <div class="portfolio-grid">
-        <a class="portfolio-item" href="portfolio-detail.html?project=undp">
-          <div class="portfolio-img">
-            <img
-              src="img/cach-phan-loai-doanh-thu-trong-doanh-nghiep.webp"
-              alt="Data Platform Project"
-              class="project-img"
-            />
-          </div>
-
-          <div class="portfolio-content">
-            <h3 class="portfolio-title">
-              Automated Data Platform for Multi-branch Business
-            </h3>
-            <p class="portfolio-desc">
-              Built an end-to-end automated data platform featuring Medallion
-              architecture and ML-driven revenue forecasting (6-8% MAPE). This
-              system optimizes multi-branch marketing strategies by providing
-              deep visibility into ROI, LTV, and customer retention.
-            </p>
-            <div class="portfolio-tags">
-              <span class="ptag">PostgreSQL (Medallion)</span>
-              <span class="ptag">Apache Airflow (ETL)</span>
-              <span class="ptag">Power BI (Analytics)</span>
-              <span class="ptag">ML (XGBoost/Prophet)</span>
-              <span class="ptag">Data Storytelling</span>
-              <span class="ptag">Automated Reporting</span>
-            </div>
-            <span class="portfolio-cta">View project →</span>
-          </div>
+      <p style="margin:0;font-size:clamp(17px,1.6vw,20px);line-height:1.5;color:var(--color-neutral-800);max-width:520px;">Final-year IT student at Thuy Loi University, aspiring to become a high-impact Data Analyst. I turn messy data and complex business problems into structured insights and actionable decisions.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="projects.html" class="btn btn-primary" style="font-size:16px;padding:14px 24px;gap:10px;">Explore My Projects
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
-
-        <a
-          class="portfolio-item"
-          href="portfolio-detail2.html?project=movie-mlops"
-        >
-          <div class="portfolio-img">
-            <img
-              src="img/home_feature-collections-mobile.webp"
-              alt="Real-time Movie Recommendation MLOps Platform"
-              class="project-img"
-            />
-          </div>
-
-          <div class="portfolio-content">
-            <h3 class="portfolio-title">
-              Real-time Movie Recommendation MLOps Platform
-            </h3>
-            <p class="portfolio-desc">
-              Architected a Microservices-based MLOps platform for instant movie
-              recommendations. The system features a Hybrid Data Ingestion
-              (Batch & Streaming), automated ML Lifecycle with Model Registry,
-              and a centralized monitoring system to track Model Drift and
-              infrastructure health.
-            </p>
-            <div class="portfolio-tags">
-              <span class="ptag">MLOps (Docker/Kafka)</span>
-              <span class="ptag">Real-time Streaming</span>
-              <span class="ptag">Redis (Feature Store)</span>
-              <span class="ptag">ML (SVD Algorithm)</span>
-              <span class="ptag">Grafana & Prometheus</span>
-              <span class="ptag">Apache Airflow</span>
-            </div>
-            <span class="portfolio-cta">View project →</span>
-          </div>
-        </a>
-
-        <a
-          class="portfolio-item"
-          href="portfolio-risk-analytics.html?project=risk_banking"
-        >
-          <div class="portfolio-img">
-            <img
-              src="img/m4_macro_overlay.png"
-              alt="Phân tích rủi ro"
-              class="project-img"
-            />
-          </div>
-
-          <div class="portfolio-content">
-            <h3 class="portfolio-title">
-              Credit Risk Analytics IFRS 9 ECL System
-            </h3>
-            <p class="portfolio-desc">
-              Hệ thống phân tích rủi ro trên 2.26M khoản vay Lending Club
-              (2007-2018): PD Model AUC=0.9702, Early Warning System predictive
-              AUC=0.7412, va IFRS 9 ECL pipeline cho thay ML-PD phát hiện thêm
-              $404M dự phòng thiếu hụt so với phương pháp PD tĩnh.
-            </p>
-            <div class="portfolio-tags">
-              <span class="ptag">Python / PySpark</span>
-              <span class="ptag">Logistics Regression</span>
-              <span class="ptag">IFRS 9 / ECL</span>
-              <span class="ptag">DuckDB / PostgreSQL</span>
-              <span class="ptag">EWS Rule-based</span>
-              <span class="ptag">Credit Risk</span>
-            </div>
-            <span class="portfolio-cta">View project &rarr;</span>
-          </div>
-        </a>
-
-        <a
-          class="portfolio-item"
-          href="portfolio-detail3.html?project=nyc-taxi-forecasting"
-        >
-          <div class="portfolio-img">
-            <img
-              src="img/kq_md_images/problem-objective_demand-by-hour_line-chart.png"
-              alt="NYC Taxi Demand Forecasting System"
-              class="project-img"
-            />
-          </div>
-
-          <div class="portfolio-content">
-            <h3 class="portfolio-title">NYC Taxi Demand Forecasting System</h3>
-            <p class="portfolio-desc">
-              Lakehouse end-to-end với Spark, Kafka, Delta Lake trên MinIO;
-              batch và streaming song song, LightGBM &amp; LSTM cho dự báo theo
-              zone và giờ, dashboard Streamlit với inference gần realtime.
-            </p>
-            <div class="portfolio-tags">
-              <span class="ptag">Apache Spark</span>
-              <span class="ptag">Kafka</span>
-              <span class="ptag">Delta Lake</span>
-              <span class="ptag">Docker Compose</span>
-              <span class="ptag">LightGBM / LSTM</span>
-              <span class="ptag">Streamlit</span>
-            </div>
-            <span class="portfolio-cta">View project →</span>
-          </div>
+        <a href="#cv" class="btn btn-secondary" style="font-size:16px;padding:14px 24px;gap:10px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg>
+          Download CV
         </a>
       </div>
-    </section>
+      <div style="display:flex;flex-direction:column;gap:10px;padding-top:8px;">
+        <span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--color-neutral-700);">Roles I'm targeting</span>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span class="tag tag-outline" style="font-size:13px;padding:5px 12px;">Data Analyst</span>
+          <span class="tag tag-outline" style="font-size:13px;padding:5px 12px;">Product Analyst</span>
+          <span class="tag tag-outline" style="font-size:13px;padding:5px 12px;">Business Analyst</span>
+          <span class="tag tag-outline" style="font-size:13px;padding:5px 12px;">Data Engineer</span>
+        </div>
+      </div>
+    </div>
 
-    <!-- FOOTER -->
-    <footer>
-      <span>© 2026 Nam Phuong</span>
-      <a href="https://linkedin.com" target="_blank">LinkedIn ↗</a>
-    </footer>
+    <!-- Hero visual: chart -->
+    <div class="dot-bg" style="position:relative;display:flex;flex-direction:column;gap:20px;padding:clamp(24px,3vw,36px);border-radius:calc(var(--radius-lg)*1.4);min-height:420px;justify-content:space-between;">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <span class="tag" style="font-size:12px;letter-spacing:.12em;font-weight:700;padding:7px 14px;background:var(--color-accent);color:var(--color-neutral-100);">DATA ANALYTICS</span>
+        <span class="tag" style="font-size:12px;letter-spacing:.12em;font-weight:700;padding:7px 14px;background:var(--color-accent-2-600);color:var(--color-neutral-100);">ENGINEERING</span>
+        <span class="tag" style="font-size:12px;letter-spacing:.12em;font-weight:700;padding:7px 14px;background:var(--color-neutral-800);color:var(--color-neutral-100);">ML / AI</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;padding:22px;border-radius:var(--radius-lg);background:var(--color-neutral-100);box-shadow:var(--shadow-md);">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;">
+          <span style="font-family:var(--font-heading);font-size:17px;">Question → Insight</span>
+          <span style="font-size:12px;color:var(--color-neutral-700);">illustrative</span>
+        </div>
+        <div style="display:flex;align-items:flex-end;gap:10px;height:150px;padding-bottom:4px;border-bottom:1.5px solid var(--color-neutral-300);">
+          <div style="flex:1;height:38%;border-radius:10px 10px 4px 4px;background:var(--color-neutral-300);"></div>
+          <div style="flex:1;height:52%;border-radius:10px 10px 4px 4px;background:var(--color-neutral-300);"></div>
+          <div style="flex:1;height:44%;border-radius:10px 10px 4px 4px;background:var(--color-neutral-300);"></div>
+          <div style="flex:1;height:66%;border-radius:10px 10px 4px 4px;background:var(--color-accent-2-300);"></div>
+          <div style="flex:1;height:58%;border-radius:10px 10px 4px 4px;background:var(--color-accent-2-300);"></div>
+          <div style="flex:1;height:92%;border-radius:10px 10px 4px 4px;background:var(--color-accent);"></div>
+          <div style="flex:1;height:74%;border-radius:10px 10px 4px 4px;background:var(--color-accent-300);"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--color-neutral-700);">
+          <span>Explore</span><span>Segment</span><span>Find the signal</span>
+        </div>
+      </div>
+      <p style="margin:0;font-size:14px;color:var(--color-neutral-800);max-width:340px;">Every project starts with a question, moves through the data, and ends with a recommendation someone can act on.</p>
+    </div>
+  </header>
 
-    <script src="scripts.js"></script>
-  </body>
+  <!-- ABOUT -->
+  <section id="about" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(40px,6vw,80px);align-items:start;padding-bottom:clamp(64px,9vw,120px);">
+    <div style="display:flex;flex-direction:column;gap:18px;max-width:520px;">
+      <span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700);">About me</span>
+      <h2 style="margin:0;font-size:clamp(28px,3.4vw,40px);font-family:var(--font-heading);">Final-year IT student with a focus on Data Analytics and business problem-solving.</h2>
+      <p style="margin:0;font-size:18px;line-height:1.55;color:var(--color-neutral-800);">My analytical philosophy centers on uncovering root causes, not just symptoms. Long-term goal: transitioning into a Strategic Consultant role, using data to create sustainable value for organizations.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:18px;">
+      <span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700);">My current toolkit</span>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div style="display:grid;grid-template-columns:minmax(0,96px) minmax(0,1fr);gap:16px;align-items:center;padding:20px 22px;border-radius:var(--radius-lg);background:var(--color-accent-100);">
+          <span style="font-size:12px;letter-spacing:.12em;font-weight:700;color:var(--color-accent-700);">DATA</span>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span class="tag" style="font-size:14px;padding:6px 14px;background:var(--color-neutral-100);color:var(--color-accent-800);">SQL</span>
+            <span class="tag" style="font-size:14px;padding:6px 14px;background:var(--color-neutral-100);color:var(--color-accent-800);">Excel</span>
+            <span class="tag" style="font-size:14px;padding:6px 14px;background:var(--color-neutral-100);color:var(--color-accent-800);">Python</span>
+            <span class="tag" style="font-size:14px;padding:6px 14px;background:var(--color-neutral-100);color:var(--color-accent-800);">Power BI</span>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,96px) minmax(0,1fr);gap:16px;align-items:center;padding:20px 22px;border-radius:var(--radius-lg);background:var(--color-neutral-200);">
+          <span style="font-size:12px;letter-spacing:.12em;font-weight:700;color:var(--color-neutral-800);">ENGINEERING</span>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span class="tag" style="font-size:14px;padding:6px 14px;background:var(--color-neutral-100);color:var(--color-neutral-800);">Apache Airflow</span>
+            <span class="tag" style="font-size:14px;padding:6px 14px;background:var(--color-neutral-100);color:var(--color-neutral-800);">Apache Spark</span>
+            <span class="tag" style="font-size:14px;padding:6px 14px;background:var(--color-neutral-100);color:var(--color-neutral-800);">Kafka</span>
+            <span class="tag" style="font-size:14px;padding:6px 14px;background:var(--color-neutral-100);color:var(--color-neutral-800);">Docker</span>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,96px) minmax(0,1fr);gap:16px;align-items:center;padding:20px 22px;border-radius:var(--radius-lg);background:var(--color-accent-2-100);">
+          <span style="font-size:12px;letter-spacing:.12em;font-weight:700;color:var(--color-accent-2-700);">ML / AI</span>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span class="tag" style="font-size:14px;padding:6px 14px;background:var(--color-neutral-100);color:var(--color-accent-2-800);">XGBoost</span>
+            <span class="tag" style="font-size:14px;padding:6px 14px;background:var(--color-neutral-100);color:var(--color-accent-2-800);">LightGBM</span>
+            <span class="tag" style="font-size:14px;padding:6px 14px;background:var(--color-neutral-100);color:var(--color-accent-2-800);">LSTM</span>
+            <span class="tag" style="font-size:14px;padding:6px 14px;background:var(--color-neutral-100);color:var(--color-accent-2-800);">Prophet</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOCUS -->
+  <section id="focus" style="display:flex;flex-direction:column;gap:36px;padding-bottom:clamp(64px,9vw,120px);">
+    <div style="display:flex;flex-direction:column;gap:10px;max-width:640px;">
+      <span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700);">What I want to work on</span>
+      <h2 style="margin:0;font-size:clamp(28px,3.4vw,40px);font-family:var(--font-heading);">Problems I'm drawn to</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px;">
+      <div class="card" style="padding:28px;gap:14px;background:var(--color-accent-100);">
+        <span style="font-size:12px;font-weight:700;color:var(--color-accent-700);">Data Analytics</span>
+        <span style="font-family:var(--font-heading);font-size:22px;">Why did this number change?</span>
+        <p style="font-size:15px;color:var(--color-neutral-800);">Cleaning messy data, exploring trends and explaining what's behind them — and surfacing root causes rather than just symptoms.</p>
+      </div>
+      <div class="card" style="padding:28px;gap:14px;background:var(--color-accent-2-100);">
+        <span style="font-size:12px;font-weight:700;color:var(--color-accent-2-700);">Data Engineering</span>
+        <span style="font-family:var(--font-heading);font-size:22px;">How do we make data reliable at scale?</span>
+        <p style="font-size:15px;color:var(--color-neutral-800);">Building pipelines, orchestrating ETL workflows, and ensuring data lands cleanly in the warehouse.</p>
+      </div>
+      <div class="card" style="padding:28px;gap:14px;background:var(--color-neutral-200);">
+        <span style="font-size:12px;font-weight:700;color:var(--color-neutral-800);">Machine Learning</span>
+        <span style="font-family:var(--font-heading);font-size:22px;">Can we predict what happens next?</span>
+        <p style="font-size:15px;color:var(--color-neutral-800);">Applying forecasting and classification models to real business problems, with measurable impact.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" style="display:flex;flex-direction:column;gap:36px;padding-bottom:clamp(64px,9vw,120px);">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;">
+      <div style="display:flex;flex-direction:column;gap:10px;max-width:640px;">
+        <span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700);">Personal work</span>
+        <h2 style="margin:0;font-size:clamp(28px,3.4vw,40px);font-family:var(--font-heading);">Selected projects</h2>
+      </div>
+      <a href="projects.html" class="btn btn-ghost" style="font-size:15px;color:var(--color-accent-700);">View all projects →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px;">
+
+      <a href="portfolio-detail.html" class="project-card" style="display:flex;flex-direction:column;gap:16px;padding:14px 14px 24px;border-radius:calc(var(--radius-lg)*1.15);background:var(--color-neutral-100);border:1.5px solid var(--color-neutral-300);text-decoration:none;color:var(--color-text);">
+        <div style="aspect-ratio:16/10;border-radius:var(--radius-lg);overflow:hidden;background:var(--color-bg);background-image:radial-gradient(circle,var(--color-neutral-400) 1px,transparent 1.2px);background-size:18px 18px;display:grid;place-items:center;">
+          <img src="img/cach-phan-loai-doanh-thu-trong-doanh-nghiep.webp" alt="Data Platform" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;padding:0 10px;">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <span class="tag tag-neutral" style="font-size:12px;">Personal Project</span>
+            <span class="tag tag-accent" style="font-size:12px;">Data Engineering</span>
+          </div>
+          <span style="font-family:var(--font-heading);font-size:21px;line-height:1.2;">Automated Data Platform for Multi-branch Business</span>
+          <p style="margin:0;font-size:15px;color:var(--color-neutral-800);">End-to-end platform with Medallion architecture and ML-driven revenue forecasting (6–8% MAPE), providing deep visibility into ROI, LTV, and customer retention across branches.</p>
+          <span style="font-size:13px;color:var(--color-neutral-700);">Tools: PostgreSQL · Airflow · Power BI · XGBoost/Prophet</span>
+        </div>
+      </a>
+
+      <a href="portfolio-detail2.html" class="project-card" style="display:flex;flex-direction:column;gap:16px;padding:14px 14px 24px;border-radius:calc(var(--radius-lg)*1.15);background:var(--color-neutral-100);border:1.5px solid var(--color-neutral-300);text-decoration:none;color:var(--color-text);">
+        <div style="aspect-ratio:16/10;border-radius:var(--radius-lg);overflow:hidden;background:var(--color-bg);background-image:radial-gradient(circle,var(--color-neutral-400) 1px,transparent 1.2px);background-size:18px 18px;display:grid;place-items:center;">
+          <img src="img/home_feature-collections-mobile.webp" alt="MLOps Platform" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;padding:0 10px;">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <span class="tag tag-neutral" style="font-size:12px;">Personal Project</span>
+            <span class="tag tag-accent" style="font-size:12px;">MLOps</span>
+          </div>
+          <span style="font-family:var(--font-heading);font-size:21px;line-height:1.2;">Real-time Movie Recommendation MLOps Platform</span>
+          <p style="margin:0;font-size:15px;color:var(--color-neutral-800);">Microservices MLOps with hybrid batch &amp; streaming ingestion, automated ML lifecycle, model registry, and Grafana/Prometheus monitoring for drift detection.</p>
+          <span style="font-size:13px;color:var(--color-neutral-700);">Tools: Docker · Kafka · Redis · SVD · Grafana · Airflow</span>
+        </div>
+      </a>
+
+      <a href="portfolio-risk-analytics.html" class="project-card" style="display:flex;flex-direction:column;gap:16px;padding:14px 14px 24px;border-radius:calc(var(--radius-lg)*1.15);background:var(--color-neutral-100);border:1.5px solid var(--color-neutral-300);text-decoration:none;color:var(--color-text);">
+        <div style="aspect-ratio:16/10;border-radius:var(--radius-lg);overflow:hidden;background:var(--color-bg);background-image:radial-gradient(circle,var(--color-neutral-400) 1px,transparent 1.2px);background-size:18px 18px;display:grid;place-items:center;">
+          <img src="img/m4_macro_overlay.png" alt="Credit Risk" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;padding:0 10px;">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <span class="tag tag-neutral" style="font-size:12px;">Personal Project</span>
+            <span class="tag tag-accent" style="font-size:12px;">Data Analytics</span>
+          </div>
+          <span style="font-family:var(--font-heading);font-size:21px;line-height:1.2;">Credit Risk Analytics IFRS 9 ECL System</span>
+          <p style="margin:0;font-size:15px;color:var(--color-neutral-800);">Risk analytics on 2.26M Lending Club loans: PD Model AUC=0.9702, EWS AUC=0.7412, ML-PD pipeline detecting $404M more in under-provisioned reserves.</p>
+          <span style="font-size:13px;color:var(--color-neutral-700);">Tools: Python · PySpark · XGBoost · IFRS 9/ECL · DuckDB</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact" style="display:flex;flex-direction:column;gap:28px;padding:clamp(36px,5vw,56px);margin-bottom:40px;border-radius:calc(var(--radius-lg)*1.4);background:var(--color-neutral-900);color:var(--color-neutral-100);">
+    <div style="display:flex;flex-direction:column;gap:12px;max-width:620px;">
+      <h2 style="margin:0;font-size:clamp(28px,3.4vw,40px);font-family:var(--font-heading);color:var(--color-neutral-100);">Let's talk</h2>
+      <p style="margin:0;font-size:17px;color:var(--color-neutral-300);">I'm looking for internship and entry-level opportunities in data analytics and data engineering.</p>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+      <a href="mailto:tranphuongnam932004@gmail.com" class="btn btn-primary" style="font-size:15px;padding:12px 22px;">tranphuongnam932004@gmail.com</a>
+      <a href="https://linkedin.com/in/chutranphuongnam" class="btn" style="font-size:15px;padding:12px 22px;color:var(--color-neutral-100);border-color:var(--color-neutral-700);">LinkedIn</a>
+      <a href="https://github.com/ctpn0011111" class="btn" style="font-size:15px;padding:12px 22px;color:var(--color-neutral-100);border-color:var(--color-neutral-700);">GitHub</a>
+    </div>
+    <span style="font-size:13px;color:var(--color-neutral-500);">© 2026 Chử Trần Phương Nam</span>
+  </footer>
+
+</div>
+</div>
+</body>
 </html>
