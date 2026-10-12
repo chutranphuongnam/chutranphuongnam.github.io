@@ -48,7 +48,42 @@
   <!-- PROJECT GRID -->
   <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:24px;padding-bottom:clamp(64px,9vw,112px);">
 
-    <!-- Project 01: Data Platform -->
+    <!-- Project 01: Vinmec Diabetes Readmission -->
+    <div class="project-card project-item" data-tags="data,ml"
+       style="display:flex;flex-direction:column;gap:22px;padding:14px 14px 26px;border-radius:calc(var(--radius-lg)*1.3);background:var(--color-neutral-100);border:1.5px solid var(--color-neutral-300);color:var(--color-text);">
+      <!-- Flow thumbnail -->
+      <a href="portfolio-diabetes-readmission.html" style="text-decoration:none;display:block;">
+        <div style="position:relative;aspect-ratio:16/10;border-radius:var(--radius-lg);overflow:hidden;background:var(--color-bg);background-image:radial-gradient(circle,var(--color-neutral-400) 1.1px,transparent 1.3px);background-size:20px 20px;">
+          <img src="project_vinmec/outputs/figures/model_roc_pr_curve.png" alt="Giảm Tỷ Lệ Tái Nhập Viện Đái Tháo Đường" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:16px;padding:0 12px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+          <span style="font-family:var(--font-heading);font-size:28px;line-height:1;color:var(--color-neutral-400);">01</span>
+          <span style="font-size:13px;font-weight:600;color:var(--color-neutral-700);">Clinical Solution / BA</span>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span style="font-size:12px;letter-spacing:.12em;font-weight:700;padding:7px 14px;border-radius:999px;background:var(--color-accent-600);color:var(--color-neutral-100);">BUSINESS ANALYSIS</span>
+          <span style="font-size:12px;letter-spacing:.12em;font-weight:700;padding:7px 14px;border-radius:999px;background:var(--color-accent-2-600);color:var(--color-neutral-100);">HEALTHCARE ML</span>
+        </div>
+        <a href="portfolio-diabetes-readmission.html" style="text-decoration:none;color:inherit;">
+          <span style="font-family:var(--font-heading);font-size:clamp(24px,2.4vw,28px);line-height:1.15;display:block;">Giảm Tỷ Lệ Tái Nhập Viện 30 Ngày Bệnh Nhân Đái Tháo Đường</span>
+        </a>
+        <p style="margin:0;font-size:16px;line-height:1.55;color:var(--color-neutral-800);">Phân tích 99,343 lượt điều trị nội trú để tìm ra các yếu tố nguy cơ độc lập. Xây dựng mô hình máy học chia nhóm theo bệnh nhân phân tầng nhóm 20% nguy cơ cao nhất (tỷ lệ tái nhập 21.74%, gấp 3.3x nhóm thấp), thiết kế quy trình can thiệp chuyển tiếp 48h (PRD) và kế hoạch thử nghiệm lâm sàng A/B ($N=1,458$).</p>
+        <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;font-size:14px;">
+          <span style="font-weight:700;color:var(--color-neutral-700);">Tools</span>
+          <span>Python · XGBoost · Logistic Regression · Odds Ratio/Multivariate · A/B Testing · PRD Design</span>
+        </div>
+        <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding-top:4px;">
+          <a href="project_vinmec/demo/risk_worklist_demo.html" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-heading);font-size:15px;color:#fff;background:var(--color-accent-700);padding:8px 18px;border-radius:999px;text-decoration:none;font-weight:600;">Trải nghiệm Worklist Demo ↗</a>
+          <a href="portfolio-diabetes-readmission.html" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-heading);font-size:16px;color:var(--color-accent-700);text-decoration:none;">Xem Case Study
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 02: Data Platform -->
     <a href="portfolio-detail.html" class="project-card project-item" data-tags="data,engineering,ml"
        style="display:flex;flex-direction:column;gap:22px;padding:14px 14px 26px;border-radius:calc(var(--radius-lg)*1.3);background:var(--color-neutral-100);border:1.5px solid var(--color-neutral-300);text-decoration:none;color:var(--color-text);">
       <!-- Dashboard thumbnail -->
@@ -57,7 +92,7 @@
       </div>
       <div style="display:flex;flex-direction:column;gap:16px;padding:0 12px;">
         <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
-          <span style="font-family:var(--font-heading);font-size:28px;line-height:1;color:var(--color-neutral-400);">01</span>
+          <span style="font-family:var(--font-heading);font-size:28px;line-height:1;color:var(--color-neutral-400);">02</span>
           <span style="font-size:13px;font-weight:600;color:var(--color-neutral-700);">Personal Project</span>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
@@ -76,7 +111,7 @@
       </div>
     </a>
 
-    <!-- Project 02: MLOps Platform -->
+    <!-- Project 03: MLOps Platform -->
     <a href="portfolio-detail2.html" class="project-card project-item" data-tags="engineering,ml"
        style="display:flex;flex-direction:column;gap:22px;padding:14px 14px 26px;border-radius:calc(var(--radius-lg)*1.3);background:var(--color-neutral-100);border:1.5px solid var(--color-neutral-300);text-decoration:none;color:var(--color-text);">
       <!-- Flow thumbnail -->
@@ -85,7 +120,7 @@
       </div>
       <div style="display:flex;flex-direction:column;gap:16px;padding:0 12px;">
         <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
-          <span style="font-family:var(--font-heading);font-size:28px;line-height:1;color:var(--color-neutral-400);">02</span>
+          <span style="font-family:var(--font-heading);font-size:28px;line-height:1;color:var(--color-neutral-400);">03</span>
           <span style="font-size:13px;font-weight:600;color:var(--color-neutral-700);">Personal Project</span>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
@@ -104,7 +139,7 @@
       </div>
     </a>
 
-    <!-- Project 03: Credit Risk -->
+    <!-- Project 04: Credit Risk -->
     <a href="portfolio-risk-analytics.html" class="project-card project-item" data-tags="data,ml"
        style="display:flex;flex-direction:column;gap:22px;padding:14px 14px 26px;border-radius:calc(var(--radius-lg)*1.3);background:var(--color-neutral-100);border:1.5px solid var(--color-neutral-300);text-decoration:none;color:var(--color-text);">
       <!-- Matrix thumbnail -->
@@ -113,7 +148,7 @@
       </div>
       <div style="display:flex;flex-direction:column;gap:16px;padding:0 12px;">
         <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
-          <span style="font-family:var(--font-heading);font-size:28px;line-height:1;color:var(--color-neutral-400);">03</span>
+          <span style="font-family:var(--font-heading);font-size:28px;line-height:1;color:var(--color-neutral-400);">04</span>
           <span style="font-size:13px;font-weight:600;color:var(--color-neutral-700);">Personal Project</span>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
@@ -132,7 +167,7 @@
       </div>
     </a>
 
-    <!-- Project 04: NYC Taxi -->
+    <!-- Project 05: NYC Taxi -->
     <a href="portfolio-detail3.html" class="project-card project-item" data-tags="data,engineering,ml"
        style="display:flex;flex-direction:column;gap:22px;padding:14px 14px 26px;border-radius:calc(var(--radius-lg)*1.3);background:var(--color-neutral-100);border:1.5px solid var(--color-neutral-300);text-decoration:none;color:var(--color-text);">
       <!-- Funnel thumbnail -->
@@ -141,7 +176,7 @@
       </div>
       <div style="display:flex;flex-direction:column;gap:16px;padding:0 12px;">
         <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
-          <span style="font-family:var(--font-heading);font-size:28px;line-height:1;color:var(--color-neutral-400);">04</span>
+          <span style="font-family:var(--font-heading);font-size:28px;line-height:1;color:var(--color-neutral-400);">05</span>
           <span style="font-size:13px;font-weight:600;color:var(--color-neutral-700);">Personal Project</span>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
@@ -160,7 +195,7 @@
       </div>
     </a>
 
-    <!-- Project 05: E-Commerce Cart Abandonment -->
+    <!-- Project 06: E-Commerce Cart Abandonment -->
     <a href="portfolio-cart-abandonment.html" class="project-card project-item" data-tags="data,ml"
        style="display:flex;flex-direction:column;gap:22px;padding:14px 14px 26px;border-radius:calc(var(--radius-lg)*1.3);background:var(--color-neutral-100);border:1.5px solid var(--color-neutral-300);text-decoration:none;color:var(--color-text);">
       <!-- Funnel thumbnail -->
@@ -169,7 +204,7 @@
       </div>
       <div style="display:flex;flex-direction:column;gap:16px;padding:0 12px;">
         <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
-          <span style="font-family:var(--font-heading);font-size:28px;line-height:1;color:var(--color-neutral-400);">05</span>
+          <span style="font-family:var(--font-heading);font-size:28px;line-height:1;color:var(--color-neutral-400);">06</span>
           <span style="font-size:13px;font-weight:600;color:var(--color-neutral-700);">Personal Project</span>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
@@ -188,7 +223,7 @@
       </div>
     </a>
 
-    <!-- Project 06: ENGENIX AI CAD Platform -->
+    <!-- Project 07: ENGENIX AI CAD Platform -->
     <div class="project-card project-item" data-tags="data,engineering,ml"
        style="display:flex;flex-direction:column;gap:22px;padding:14px 14px 26px;border-radius:calc(var(--radius-lg)*1.3);background:var(--color-neutral-100);border:1.5px solid var(--color-neutral-300);color:var(--color-text);">
       <!-- Flow thumbnail -->
@@ -199,7 +234,7 @@
       </a>
       <div style="display:flex;flex-direction:column;gap:16px;padding:0 12px;">
         <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
-          <span style="font-family:var(--font-heading);font-size:28px;line-height:1;color:var(--color-neutral-400);">06</span>
+          <span style="font-family:var(--font-heading);font-size:28px;line-height:1;color:var(--color-neutral-400);">07</span>
           <span style="font-size:13px;font-weight:600;color:var(--color-neutral-700);">Enterprise Project</span>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">

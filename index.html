@@ -188,6 +188,27 @@
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px;">
 
+      <div class="project-card" style="display:flex;flex-direction:column;gap:16px;padding:14px 14px 24px;border-radius:calc(var(--radius-lg)*1.15);background:var(--color-neutral-100);border:1.5px solid var(--color-neutral-300);color:var(--color-text);">
+        <a href="portfolio-diabetes-readmission.html" style="aspect-ratio:16/10;border-radius:var(--radius-lg);overflow:hidden;background:var(--color-bg);background-image:radial-gradient(circle,var(--color-neutral-400) 1px,transparent 1.2px);background-size:18px 18px;display:grid;place-items:center;text-decoration:none;">
+          <img src="project_vinmec/outputs/figures/model_roc_pr_curve.png" alt="Giảm Tỷ Lệ Tái Nhập Viện Đái Tháo Đường" style="width:100%;height:100%;object-fit:cover;">
+        </a>
+        <div style="display:flex;flex-direction:column;gap:10px;padding:0 10px;">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <span class="tag tag-neutral" style="font-size:12px;">Clinical Solution</span>
+            <span class="tag tag-accent" style="font-size:12px;">Business Analysis / ML</span>
+          </div>
+          <a href="portfolio-diabetes-readmission.html" style="text-decoration:none;color:inherit;">
+            <span style="font-family:var(--font-heading);font-size:21px;line-height:1.2;display:block;">Giảm Tỷ Lệ Tái Nhập Viện 30 Ngày Bệnh Nhân Đái Tháo Đường</span>
+          </a>
+          <p style="margin:0;font-size:15px;color:var(--color-neutral-800);">Phân tích 99,343 ca bệnh nội trú; mô hình phân tầng rủi ro tách nhóm 20% nguy cơ cao nhất (21.74% tái nhập, gấp 3.3x nhóm thấp); quy trình can thiệp chuyển tiếp 48h và kế hoạch A/B testing.</p>
+          <span style="font-size:13px;color:var(--color-neutral-700);">Tools: Python · XGBoost · Logistic Regression · Odds Ratio · A/B Test · PRD</span>
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding-top:2px;">
+            <a href="project_vinmec/demo/risk_worklist_demo.html" target="_blank" rel="noopener noreferrer" style="font-size:13px;color:#fff;background:var(--color-accent-700);padding:5px 12px;border-radius:999px;text-decoration:none;font-weight:600;">Worklist Demo ↗</a>
+            <a href="portfolio-diabetes-readmission.html" style="font-size:13px;color:var(--color-accent-700);text-decoration:none;">Case Study →</a>
+          </div>
+        </div>
+      </div>
+
       <a href="portfolio-detail.html" class="project-card" style="display:flex;flex-direction:column;gap:16px;padding:14px 14px 24px;border-radius:calc(var(--radius-lg)*1.15);background:var(--color-neutral-100);border:1.5px solid var(--color-neutral-300);text-decoration:none;color:var(--color-text);">
         <div style="aspect-ratio:16/10;border-radius:var(--radius-lg);overflow:hidden;background:var(--color-bg);background-image:radial-gradient(circle,var(--color-neutral-400) 1px,transparent 1.2px);background-size:18px 18px;display:grid;place-items:center;">
           <img src="img/cach-phan-loai-doanh-thu-trong-doanh-nghiep.webp" alt="Data Platform" style="width:100%;height:100%;object-fit:cover;">

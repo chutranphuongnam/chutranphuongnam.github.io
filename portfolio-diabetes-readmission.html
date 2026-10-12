@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio — Giảm Tỷ Lệ Tái Nhập Viện 30 Ngày Bệnh Nhân Đái Tháo Đường (Vinmec Case Study)</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="portfolio-detail.css" />
+    <style>
+      :root {
+        --font-body: "Times New Roman", Times, serif;
+        --font-heading: "Times New Roman", Times, serif;
+      }
+      body, h1, h2, h3, h4, p, span, a, li, td, th {
+        font-family: "Times New Roman", Times, serif !important;
+      }
+
+      .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+        margin: 1.5rem 0;
+      }
+      .metric-card {
+        background: var(--cream);
+        border: 1px solid var(--light-warm);
+        border-radius: 8px;
+        padding: 1.2rem 1.4rem;
+      }
+      .metric-label {
+        font-size: 0.74rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--warm);
+        margin-bottom: 0.35rem;
+      }
+      .metric-value {
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--dark);
+        line-height: 1.1;
+      }
+      .metric-sub {
+        font-size: 0.76rem;
+        color: var(--warm);
+        margin-top: 0.2rem;
+      }
+
+      .finding-list {
+        list-style: none;
+        padding: 0;
+        margin: 0.8rem 0;
+      }
+      .finding-list li {
+        padding: 0.75rem 1rem 0.75rem 2.6rem;
+        margin-bottom: 0.5rem;
+        border-radius: 6px;
+        font-size: 0.95rem;
+        position: relative;
+        line-height: 1.6;
+      }
+      .finding-list li::before {
+        position: absolute;
+        left: 0.88rem;
+        top: 0.75rem;
+        font-weight: 700;
+        font-size: 0.88rem;
+      }
+      .finding-list li.good {
+        background: #f0faf0;
+        color: #1b4a1b;
+      }
+      .finding-list li.good::before {
+        content: "✓";
+        color: #2e7d32;
+      }
+      .finding-list li.bad {
+        background: #fff5f5;
+        color: #5c1a1a;
+      }
+      .finding-list li.bad::before {
+        content: "✗";
+        color: #c62828;
+      }
+      .finding-list li.note {
+        background: #fffbf0;
+        color: #4a3800;
+      }
+      .finding-list li.note::before {
+        content: "~";
+        color: #e65100;
+      }
+
+      .impact-callout {
+        border-left: 4px solid var(--accent);
+        background: var(--cream);
+        padding: 1.2rem 1.6rem;
+        margin: 1.5rem 0;
+        border-radius: 0 8px 8px 0;
+      }
+      .impact-callout .ic-number {
+        font-size: 2.3rem;
+        font-weight: 600;
+        color: var(--accent);
+        line-height: 1.1;
+      }
+      .impact-callout .ic-desc {
+        font-size: 0.92rem;
+        color: var(--dark);
+        margin-top: 0.35rem;
+        line-height: 1.55;
+      }
+
+      .chart-figure {
+        margin: 1.8rem 0;
+      }
+      .chart-figure img {
+        width: 100%;
+        border-radius: 8px;
+        border: 1px solid var(--light-warm);
+        display: block;
+      }
+      .chart-caption {
+        font-size: 0.82rem;
+        color: var(--warm);
+        margin-top: 0.5rem;
+        font-style: italic;
+        text-align: center;
+        line-height: 1.55;
+      }
+
+      .disclaimer-box {
+        background: #fffbeb;
+        border: 1px solid #fde68a;
+        border-left: 5px solid #d97706;
+        border-radius: 6px;
+        padding: 14px 18px;
+        margin: 1.5rem 0;
+        font-size: 0.88rem;
+        color: #92400e;
+        line-height: 1.6;
+      }
+
+      .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.2rem 0;
+        font-size: 0.88rem;
+      }
+      .data-table th, .data-table td {
+        padding: 10px 14px;
+        border: 1px solid var(--light-warm);
+        text-align: left;
+      }
+      .data-table th {
+        background: var(--cream);
+        font-weight: 700;
+      }
+      .data-table tr:nth-child(even) {
+        background: #faf8f5;
+      }
+
+      @media (min-width: 1024px) {
+        .with-toc {
+          display: grid;
+          grid-template-columns: 1fr 240px;
+          gap: 3.5rem;
+          max-width: 1180px;
+          margin: 0 auto;
+          padding: 0 2rem;
+        }
+        .toc-col {
+          order: 2;
+        }
+        .content-col {
+          order: 1;
+        }
+        .detail-container {
+          max-width: none !important;
+          padding: 0 !important;
+        }
+      }
+      .toc-sticky {
+        position: sticky;
+        top: 2rem;
+        background: var(--cream);
+        border: 1px solid var(--light-warm);
+        border-radius: 8px;
+        padding: 1.4rem;
+        font-size: 0.84rem;
+      }
+      .toc-sticky h4 {
+        margin: 0 0 0.8rem;
+        font-size: 0.88rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--dark);
+      }
+      .toc-sticky ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .toc-sticky li {
+        margin-bottom: 0.55rem;
+      }
+      .toc-sticky a {
+        color: var(--warm);
+        text-decoration: none;
+        transition: color 0.15s;
+        display: block;
+        line-height: 1.4;
+      }
+      .toc-sticky a:hover {
+        color: var(--accent);
+      }
+    </style>
+  </head>
+  <body class="detail-page-compact">
+    <!-- NAV -->
+    <nav>
+      <a href="index.html" class="nav-logo">Nam Phương</a>
+      <ul class="nav-links">
+        <li><a href="index.html#projects">Work</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <a href="projects.html" class="back-btn">
+        <span class="arrow">←</span> All Projects
+      </a>
+    </nav>
+
+    <!-- HEADER -->
+    <header class="detail-hero">
+      <div class="breadcrumb">
+        <a href="index.html">Portfolio</a> / <a href="projects.html">Projects</a> / <span>Project 01</span>
+      </div>
+      <h1>Giảm Tỷ Lệ Tái Nhập Viện 30 Ngày Bệnh Nhân Đái Tháo Đường</h1>
+      <p style="font-size: 1.15rem; color: var(--warm); max-width: 820px; line-height: 1.5; margin-top: 0.5rem;">
+        Hệ thống phân tầng rủi ro lâm sàng &amp; Thiết kế quy trình can thiệp chuyển tiếp 48 giờ — Dự án Proof-of-Concept phân tích nghiệp vụ y tế (Vinmec Healthcare Case Study)
+      </p>
+    </header>
+
+    <div class="with-toc">
+      <!-- CỘT MỤC LỤC BÊN PHẢI -->
+      <aside class="toc-col">
+        <div class="toc-sticky">
+          <h4>Mục Lục Dự Án</h4>
+          <ul>
+            <li><a href="#summary">1. Tóm tắt &amp; Bộ chỉ số KPI</a></li>
+            <li><a href="#problem">2. Vấn đề nghiệp vụ y tế</a></li>
+            <li><a href="#root-cause">3. Phân tích nguyên nhân đa biến</a></li>
+            <li><a href="#model">4. Mô hình máy học &amp; Phân tầng rủi ro</a></li>
+            <li><a href="#ceiling">5. Chẩn đoán trần hiệu năng</a></li>
+            <li><a href="#prd">6. PRD: Can thiệp chuyển tiếp 48h</a></li>
+            <li><a href="#ab-test">7. Kế hoạch thử nghiệm A/B</a></li>
+            <li><a href="#demo">8. Live Demo: Bảng điều phối</a></li>
+            <li><a href="#takeaways">9. Đóng góp &amp; Giới hạn lâm sàng</a></li>
+          </ul>
+          <div style="margin-top: 1.4rem; padding-top: 1rem; border-top: 1px solid var(--light-warm);">
+            <a href="project_vinmec/demo/risk_worklist_demo.html" target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; background: #1e40af; color: #fff; padding: 8px 12px; border-radius: 6px; font-weight: 600; text-decoration: none;">
+              Trải nghiệm Demo ↗
+            </a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- CỘT NỘI DUNG CHÍNH BÊN TRÁI -->
+      <div class="content-col">
+        <main class="detail-container">
+          <!-- METADATA & QUICK LINKS -->
+          <section class="project-section" style="padding-top: 0;">
+            <div class="project-meta-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; background: var(--cream); border: 1px solid var(--light-warm); border-radius: 8px; padding: 1.2rem 1.4rem; margin-bottom: 2rem;">
+              <div>
+                <strong style="display:block; font-size:0.76rem; text-transform:uppercase; color:var(--warm);">Vai trò</strong>
+                <span style="font-size:0.92rem;">Lead Business Analyst &amp; Solution Design</span>
+              </div>
+              <div>
+                <strong style="display:block; font-size:0.76rem; text-transform:uppercase; color:var(--warm);">Dữ liệu nghiên cứu</strong>
+                <span style="font-size:0.92rem;">99,343 đợt điều trị (UCI Diabetes 130-US)</span>
+              </div>
+              <div>
+                <strong style="display:block; font-size:0.76rem; text-transform:uppercase; color:var(--warm);">Công cụ chính</strong>
+                <span style="font-size:0.92rem;">Python · XGBoost · Logistic Regression · A/B Test</span>
+              </div>
+              <div>
+                <strong style="display:block; font-size:0.76rem; text-transform:uppercase; color:var(--warm);">Sản phẩm bàn giao</strong>
+                <a href="project_vinmec/demo/risk_worklist_demo.html" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 600; text-decoration: none; font-size:0.92rem;">
+                  Interactive Worklist Demo ↗
+                </a>
+              </div>
+            </div>
+
+            <!-- DISCLAIMER -->
+            <div class="disclaimer-box">
+              <strong>Lưu ý về tính chất nghiên cứu:</strong> Toàn bộ dữ liệu sử dụng là bộ dữ liệu hồi cứu từ 130 bệnh viện Hoa Kỳ (UCI id=296, giai đoạn 1999–2008), đóng vai trò làm <strong>Proof-of-Concept (PoC)</strong> về mặt phương pháp luận phân tích nghiệp vụ y tế và kỹ thuật mô hình hóa. Các số liệu thống kê không phản ánh trực tiếp tình trạng lâm sàng của bệnh viện Vinmec tại Việt Nam nếu chưa qua tái thẩm định nội bộ.
+            </div>
+          </section>
+
+          <!-- 1. TÓM TẮT & BỘ CHỈ SỐ KPI -->
+          <section class="project-section" id="summary">
+            <h2>1. Tóm Tắt Dự Án &amp; Bộ Chỉ Số KPI Cốt Lõi</h2>
+            <p>
+              Tái nhập viện sớm trong vòng 30 ngày ở bệnh nhân đái tháo đường nội trú là gánh nặng lớn đối với hệ thống y tế: làm tăng chi phí điều trị, nguy cơ nhiễm trùng bệnh viện và phản ánh lỗ hổng trong khâu chuyển tiếp chăm sóc từ viện về nhà. Dự án phân tích <strong>99,343 lượt điều trị</strong> sau làm sạch nghiêm ngặt nhằm:
+            </p>
+            <ul style="padding-left: 1.4rem; line-height: 1.8; margin: 0.8rem 0;">
+              <li>Xác định các yếu tố nguy cơ độc lập thực sự qua phân tích hồi quy đa biến có đối chứng.</li>
+              <li>Xây dựng mô hình máy học phân tầng rủi ro (chia nhóm chống rò rỉ theo mã bệnh nhân), phân tách được nhóm 20% nguy cơ cao nhất.</li>
+              <li>Thiết kế quy trình can thiệp chuyển tiếp 48 giờ (PRD) và kế hoạch thử nghiệm lâm sàng đối chứng A/B Testing ($N=1,458$).</li>
+            </ul>
+
+            <div class="metric-grid">
+              <div class="metric-card">
+                <div class="metric-label">Tái nhập nhóm High-Risk</div>
+                <div class="metric-value">21.74%</div>
+                <div class="metric-sub">Gấp 3.3x nhóm Low-Risk (6.53%)</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-label">Recall @ Top 20%</div>
+                <div class="metric-value">38.90%</div>
+                <div class="metric-sub">Bắt trúng gần 40% ca tái nhập viện</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-label">Lift Factor</div>
+                <div class="metric-value">1.94x</div>
+                <div class="metric-sub">Hiệu quả gần gấp đôi chọn ngẫu nhiên</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-label">Cỡ mẫu A/B Test MDE 5pp</div>
+                <div class="metric-value">1,458</div>
+                <div class="metric-sub">Bệnh nhân ngẫu nhiên hóa (Power 80%)</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 2. VẤN ĐỀ NGHIỆP VỤ Y TẾ -->
+          <section class="project-section" id="problem">
+            <h2>2. Vấn Đề Vận Hành &amp; Nhu Cầu Phân Tầng Nguồn Lực</h2>
+            <p>
+              Trong thực tế vận hành bệnh viện đa khoa, đội ngũ điều dưỡng và nhân viên chăm sóc khách hàng không thể gọi điện theo dõi chuyên sâu cho 100% bệnh nhân xuất viện. Việc thiếu một công cụ phân tầng rủi ro tự động dẫn đến hai hệ lụy nghiêm trọng:
+            </p>
+            <ul class="finding-list">
+              <li class="bad">
+                <strong>Phân bổ nguồn lực cào bằng:</strong> Nhân viên y tế gọi điện dàn trải theo danh sách ngẫu nhiên, phần lớn thời gian dành cho các bệnh nhân có diễn tiến nhẹ và khả năng tự chăm sóc tốt.
+              </li>
+              <li class="bad">
+                <strong>Bỏ sót ca bệnh nguy kịch tại nhà:</strong> Bệnh nhân cao tuổi, nhiều bệnh nền phức tạp hoặc kiểm soát thuốc kém không được theo dõi sát trong 48 giờ đầu tiên sau khi rời viện — giai đoạn dễ xảy ra sự cố tụt/tăng đường huyết cấp tính nhất.
+              </li>
+              <li class="good">
+                <strong>Giải pháp định hướng:</strong> Xây dựng mô hình xếp hạng danh sách xuất viện hàng ngày (Prioritization Worklist). Khi chỉ tập trung nguồn lực điều dưỡng vào 20% bệnh nhân nặng nhất, bệnh viện có thể bao phủ tới <strong>38.90%</strong> toàn bộ các ca có nguy cơ tái nhập viện.
+              </li>
+            </ul>
+
+            <div class="chart-figure">
+              <img src="project_vinmec/outputs/figures/eda_readmission_by_prior_visits.png" alt="Tỷ lệ tái nhập theo số lần nằm viện trước" />
+              <p class="chart-caption">Hình 1: Tỷ lệ tái nhập viện tăng vọt từ 8.59% ở nhóm không có tiền sử nhập viện lên 31.36% ở nhóm nhập viện $\ge 4$ lần trong năm qua.</p>
+            </div>
+          </section>
+
+          <!-- 3. PHÂN TÍCH NGUYÊN NHÂN ĐA BIẾN -->
+          <section class="project-section" id="root-cause">
+            <h2>3. Phân Tích Nguyên Nhân Đa Biến (Multivariate Odds Ratios)</h2>
+            <p>
+              Điểm mấu chốt của phân tích nghiệp vụ lâm sàng là <strong>không đánh đồng tương quan đơn biến với nguyên nhân thực sự</strong>. Bằng cách kiểm soát đồng thời các yếu tố gây nhiễu trong mô hình hồi quy đa biến ($N=99,343$), chúng tôi phân định rõ ràng giữa yếu tố nguy cơ độc lập đã được xác nhận và các tín hiệu đơn biến mất ý nghĩa:
+            </p>
+
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Yếu tố nguy cơ</th>
+                  <th>Odds Ratio (95% CI)</th>
+                  <th>Giá trị p</th>
+                  <th>Ý nghĩa vận hành y tế</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Tiền sử nhập viện (`num_inpatient`)</strong></td>
+                  <td><strong>1.305</strong> [1.249 - 1.362]</td>
+                  <td><strong>&lt; 0.0001</strong></td>
+                  <td>Driver mạnh nhất: Mỗi đợt nằm viện trước làm tăng 30.5% tỷ lệ chênh tái nhập. Cần kích hoạt Case Management ngay từ ngày đầu nhập viện.</td>
+                </tr>
+                <tr>
+                  <td><strong>Số chẩn đoán bệnh (`number_diagnoses`)</strong></td>
+                  <td><strong>1.052</strong> [1.022 - 1.082]</td>
+                  <td><strong>0.0005</strong></td>
+                  <td>Bệnh đồng mắc làm đơn thuốc trở nên phức tạp (polypharmacy), tăng nguy cơ tương tác thuốc bất lợi.</td>
+                </tr>
+                <tr>
+                  <td><strong>Bệnh nhân cao tuổi $\ge 70$ (`is_elderly_70plus`)</strong></td>
+                  <td><strong>1.172</strong> [1.022 - 1.344]</td>
+                  <td><strong>0.0233</strong></td>
+                  <td>Suy giảm nhận thức và thị lực kém dễ dẫn đến tiêm sai liều insulin; bắt buộc có người nhà tham gia buổi bàn giao xuất viện.</td>
+                </tr>
+                <tr>
+                  <td><strong>Thời gian nằm viện (`time_in_hospital`)</strong></td>
+                  <td><strong>1.025</strong> [1.000 - 1.050]</td>
+                  <td><strong>0.0480</strong></td>
+                  <td>Nằm viện kéo dài phản ánh thể trạng suy kiệt, cần đánh giá chế độ dinh dưỡng và vận động phục hồi sau xuất viện.</td>
+                </tr>
+                <tr style="color: #64748b;">
+                  <td>Đổi liều Insulin (`insulin_down`)</td>
+                  <td>1.157 [0.990 - 1.353]</td>
+                  <td>0.0677</td>
+                  <td>Mất ý nghĩa thống kê trong đa biến; chỉ phản ánh độ nặng bệnh lý nền chứ không phải nguyên nhân trực tiếp gây tái nhập.</td>
+                </tr>
+                <tr style="color: #64748b;">
+                  <td>Không đo HbA1c (`no_a1c_test`)</td>
+                  <td>1.146 [0.971 - 1.352]</td>
+                  <td>0.1076</td>
+                  <td>83.05% hồ sơ thiếu HbA1c, nhưng không đủ bằng chứng thống kê đa biến khẳng định làm tăng tái nhập 30 ngày.</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="chart-figure">
+              <img src="project_vinmec/outputs/figures/root_cause_odds_ratios.png" alt="Biểu đồ Odds Ratios hồi quy đa biến" />
+              <p class="chart-caption">Hình 2: Biểu đồ tỷ suất chênh (Odds Ratios) và khoảng tin cậy 95% của các biến số lâm sàng độc lập sau khi kiểm soát biến gây nhiễu.</p>
+            </div>
+          </section>
+
+          <!-- 4. MÔ HÌNH MÁY HỌC & PHÂN TẦNG RỦI RO -->
+          <section class="project-section" id="model">
+            <h2>4. Khung Đánh Giá Mô Hình Dự Báo Trung Thực</h2>
+            <p>
+              Để triệt tiêu hoàn toàn hiện tượng <strong>rò rỉ dữ liệu (Data Leakage)</strong> giữa các đợt nằm viện của cùng một người bệnh, dữ liệu được chia theo cơ chế <strong>Group-split theo `patient_nbr`</strong> (80% Train: 55,992 bệnh nhân; 20% Test: 13,998 bệnh nhân).
+            </p>
+
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Mô hình</th>
+                  <th>ROC-AUC</th>
+                  <th>PR-AUC</th>
+                  <th>Recall @ Top 20%</th>
+                  <th>Precision @ Top 20%</th>
+                  <th>Lift Factor</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Logistic Regression (Baseline)</strong></td>
+                  <td>0.6613</td>
+                  <td>0.2158</td>
+                  <td>38.00%</td>
+                  <td>21.26%</td>
+                  <td>1.90x</td>
+                </tr>
+                <tr style="background: #edf2fc;">
+                  <td><strong>XGBoost (Challenger - Chọn dùng)</strong></td>
+                  <td><strong>0.6670</strong></td>
+                  <td><strong>0.2312</strong></td>
+                  <td><strong>38.90%</strong></td>
+                  <td><strong>21.76%</strong></td>
+                  <td><strong>1.94x</strong></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="impact-callout">
+              <div class="ic-number">ROC-AUC = 0.6670: Nhìn Nhận Thực Tế</div>
+              <div class="ic-desc">
+                Con số AUC khiêm tốn phản ánh bản chất của dữ liệu hồ sơ bệnh án (EHR): hệ thống không ghi nhận được các yếu tố xã hội ngoài đời thực (Social Determinants of Health như điều kiện kinh tế, hỗ trợ gia đình, tuân thủ ăn uống). Giá trị ứng dụng cốt lõi của mô hình <strong>không phải là bộ lọc nhị phân hoàn hảo</strong>, mà là <strong>công cụ xếp hạng danh sách ưu tiên (Prioritization)</strong> với Lift đạt 1.94x và phân tách rủi ro gấp 3.3 lần giữa nhóm cao và thấp.
+              </div>
+            </div>
+
+            <div class="chart-figure">
+              <img src="project_vinmec/outputs/figures/model_roc_pr_curve.png" alt="Đường cong ROC và PR của mô hình" />
+              <p class="chart-caption">Hình 3: Đường cong ROC và Precision-Recall Curve trên tập kiểm thử độc lập (Group-split by patient).</p>
+            </div>
+          </section>
+
+          <!-- 5. CHẨN ĐOÁN TRẦN HIỆU NĂNG -->
+          <section class="project-section" id="ceiling">
+            <h2>5. Chẩn Đoán Trần Hiệu Năng (Ceiling Analysis)</h2>
+            <p>
+              Nhằm kiểm tra xem mô hình có thể cải thiện thêm bằng kỹ thuật phức tạp hay không, chúng tôi thực hiện phân tích Learning Curve và Feature Ablation:
+            </p>
+            <ul class="finding-list">
+              <li class="note">
+                <strong>Đường cong học bão hòa (Learning Curve):</strong> Điểm ROC-AUC của tập kiểm thử phẳng hoàn toàn từ cỡ mẫu $N \ge 45,000$ bệnh nhân. Điều này chứng minh trần hiệu năng bị giới hạn bởi không gian thuộc tính của dữ liệu, không thể cải thiện đơn thuần bằng cách thu thập thêm dòng dữ liệu cùng loại.
+              </li>
+              <li class="note">
+                <strong>Thực nghiệm loại bỏ đặc trưng (Feature Ablation):</strong> Tín hiệu dự báo chủ yếu tập trung ở 2 cụm: Tiền sử sử dụng dịch vụ y tế (`prior_inpatient`) và hình thức xuất viện. Các nhóm đặc trưng thuốc chi tiết chỉ đóng góp biên rất nhỏ (&lt; 0.01 AUC).
+              </li>
+            </ul>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+              <div class="chart-figure">
+                <img src="project_vinmec/outputs/figures/learning_curve.png" alt="Đường cong học bão hòa" />
+                <p class="chart-caption">Hình 4: Learning curve bão hòa ở $N \ge 45,000$.</p>
+              </div>
+              <div class="chart-figure">
+                <img src="project_vinmec/outputs/figures/feature_ablation.png" alt="Thực nghiệm Feature Ablation" />
+                <p class="chart-caption">Hình 5: Đóng góp biên của các nhóm biến số lâm sàng.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 6. PRD: GÓI CAN THIỆP CHUYỂN TIẾP 48H -->
+          <section class="project-section" id="prd">
+            <h2>6. PRD: Gói Can Thiệp Chăm Sóc Chuyển Tiếp 48 Giờ</h2>
+            <p>
+              Dựa trên kết quả phân tầng rủi ro, dự án thiết kế quy trình can thiệp chuyển tiếp (Transitional Care Protocol) dành riêng cho nhóm 20% bệnh nhân nguy cơ cao nhất:
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; margin: 1.5rem 0;">
+              <div style="background: var(--cream); border: 1px solid var(--light-warm); border-radius: 8px; padding: 1.4rem;">
+                <h4 style="margin-top:0; color: #1e40af;">Bước 1: Teach-Back Tại Giường</h4>
+                <p style="font-size:0.9rem; line-height:1.6; margin:0;">
+                  Dược sĩ lâm sàng đối soát thuốc trực tiếp trước khi xuất viện, yêu cầu bệnh nhân hoặc người chăm sóc thực hành lại thao tác chỉnh liều và tiêm bút insulin; hướng dẫn nhận biết hạ đường huyết.
+                </p>
+              </div>
+              <div style="background: var(--cream); border: 1px solid var(--light-warm); border-radius: 8px; padding: 1.4rem;">
+                <h4 style="margin-top:0; color: #1e40af;">Bước 2: Cuộc Gọi Chủ Động 48h</h4>
+                <p style="font-size:0.9rem; line-height:1.6; margin:0;">
+                  Điều dưỡng chuyên trách gọi điện trong vòng 48 giờ đầu tiên theo checklist 5 điểm: đo đường huyết mao mạch, tuân thủ thuốc tại nhà, dấu hiệu cảnh báo, dinh dưỡng và nhắc lịch tái khám.
+                </p>
+              </div>
+              <div style="background: var(--cream); border: 1px solid var(--light-warm); border-radius: 8px; padding: 1.4rem;">
+                <h4 style="margin-top:0; color: #1e40af;">Bước 3: Phân Luồng Xử Trí Khẩn Cấp</h4>
+                <p style="font-size:0.9rem; line-height:1.6; margin:0;">
+                  Nếu phát hiện đường huyết &gt; 250 mg/dL hoặc triệu chứng bất thường, kích hoạt tư vấn bác sĩ điều trị trong 2 giờ hoặc điều phối xe cấp cứu tới nhà ngay lập tức.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 7. KẾ HOẠCH THỬ NGHIỆM LÂM SÀNG A/B -->
+          <section class="project-section" id="ab-test">
+            <h2>7. Kế Hoạch Thử Nghiệm Lâm Sàng Đối Chứng (A/B Testing Plan)</h2>
+            <p>
+              Để đo lường hiệu quả thực tế của quy trình can thiệp chuyển tiếp 48h trước khi triển khai diện rộng, chúng tôi xây dựng kế hoạch thử nghiệm ngẫu nhiên có đối chứng (RCT):
+            </p>
+            <ul style="padding-left: 1.4rem; line-height: 1.8; margin: 0.8rem 0;">
+              <li><strong>Đơn vị ngẫu nhiên hóa:</strong> Phân nhóm ngẫu nhiên theo mã bệnh nhân (`patient_nbr`) tại thời điểm xuất viện thuộc nhóm High-Risk.</li>
+              <li><strong>Nhánh A (Đối chứng):</strong> Chăm sóc tiêu chuẩn theo quy trình xuất viện hiện tại ($p_1 = 21.74\%$).</li>
+              <li><strong>Nhánh B (Can thiệp):</strong> Gói chăm sóc chuyển tiếp 48 giờ (Teach-back + Cuộc gọi 48h).</li>
+              <li><strong>Kiểm định thống kê:</strong> Two-Proportion Z-Test ($\alpha = 0.05, \text{Power} = 80\%$, kiểm định hai phía).</li>
+            </ul>
+
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Mức giảm kỳ vọng (MDE)</th>
+                  <th>Tỷ lệ tái nhập sau can thiệp</th>
+                  <th>Cỡ mẫu mỗi nhánh ($N_{\text{arm}}$)</th>
+                  <th>Tổng cỡ mẫu cần thu thập</th>
+                  <th>Dự phòng mất dấu 5%</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Giảm 3 điểm %</td>
+                  <td>18.74%</td>
+                  <td>2,813</td>
+                  <td>5,626</td>
+                  <td>5,923 bệnh nhân</td>
+                </tr>
+                <tr>
+                  <td>Giảm 4 điểm %</td>
+                  <td>17.74%</td>
+                  <td>1,551</td>
+                  <td>3,102</td>
+                  <td>3,266 bệnh nhân</td>
+                </tr>
+                <tr style="background: #edf2fc;">
+                  <td><strong>Giảm 5 điểm % (Khuyến nghị)</strong></td>
+                  <td><strong>16.74%</strong></td>
+                  <td><strong>972</strong></td>
+                  <td><strong>1,944</strong></td>
+                  <td><strong>2,047 bệnh nhân</strong></td>
+                </tr>
+                <tr>
+                  <td>Giảm 6 điểm %</td>
+                  <td>15.74%</td>
+                  <td>661</td>
+                  <td>1,322</td>
+                  <td>1,392 bệnh nhân</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <!-- 8. LIVE DEMO -->
+          <section class="project-section" id="demo">
+            <h2>8. Bảng Điều Phối Ưu Tiên Xuất Viện (Interactive Worklist Demo)</h2>
+            <p>
+              Dự án đi kèm một ứng dụng giao diện hoàn chỉnh được xây dựng sẵn để mô phỏng màn hình làm việc hàng ngày của điều dưỡng trưởng tại khoa nội trú:
+            </p>
+            <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 24px; margin: 1.5rem 0; text-align: center;">
+              <h3 style="margin-top: 0; color: #1e293b;">Clinical Risk-Stratified Worklist Demo</h3>
+              <p style="color: #64748b; font-size: 0.95rem; max-width: 600px; margin: 0.5rem auto 1.5rem;">
+                Trải nghiệm tìm kiếm bệnh nhân, lọc danh sách theo nhóm rủi ro (High, Medium, Low), mở ngăn kéo thông tin lâm sàng chi tiết và checklist gọi điện chăm sóc 48 giờ.
+              </p>
+              <a href="project_vinmec/demo/risk_worklist_demo.html" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; background: #1e40af; color: #fff; padding: 12px 26px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 1rem;">
+                Mở Bản Demo Ứng Dụng ↗
+              </a>
+            </div>
+          </section>
+
+          <!-- 9. ĐÓNG GÓP & BÀI HỌC -->
+          <section class="project-section" id="takeaways">
+            <h2>9. Đóng Góp Nghiệp Vụ &amp; Cảnh Báo Lâm Sàng</h2>
+            <ul class="finding-list">
+              <li class="good">
+                <strong>Minh bạch về năng lực mô hình:</strong> Thừa nhận thẳng thắn mức AUC 0.667 và tập trung khai thác giá trị thực tế của xếp hạng ưu tiên (Lift = 1.94x, bắt trúng 38.9% ca tái nhập), thay vì hứa hẹn những kết quả viển vông.
+              </li>
+              <li class="good">
+                <strong>Tư duy giải pháp khép kín (End-to-End):</strong> Dự án đi trọn vẹn từ phân tích nguyên nhân đa biến, huấn luyện mô hình có trách nhiệm, xây dựng PRD quy trình lâm sàng đến thiết kế A/B testing kiểm chứng.
+              </li>
+              <li class="note">
+                <strong>Nguyên tắc phối hợp y tế:</strong> Công nghệ chỉ đóng vai trò phân tầng hỗ trợ ra quyết định; mọi hành động can thiệp y khoa đều phải tuân thủ hướng dẫn của bác sĩ và phê duyệt của Hội đồng Lâm sàng.
+              </li>
+            </ul>
+
+            <!-- NAV PREV / NEXT -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--light-warm); flex-wrap: wrap; gap: 1rem;">
+              <a href="index.html" class="back-btn">
+                <span class="arrow">←</span> Về Trang Chủ
+              </a>
+              <a href="portfolio-detail.html" style="color: var(--accent); font-weight: 600; text-decoration: none; font-size: 0.95rem;">
+                Dự án tiếp theo: Automated Data Platform →
+              </a>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer style="margin-top: 4rem; padding: 2rem 0; border-top: 1px solid var(--light-warm); text-align: center; color: var(--warm); font-size: 0.85rem;">
+      <p>© 2026 Chử Trần Phương Nam — Healthcare BA &amp; Data-Driven Solution Design</p>
+    </footer>
+  </body>
+</html>
