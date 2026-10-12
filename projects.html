@@ -7,6 +7,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
 <style>
+:root {
+  --font-body: "Times New Roman", Times, serif;
+  --font-heading: "Times New Roman", Times, serif;
+}
 .project-item[hidden]{display:none}
 </style>
 </head>
@@ -155,6 +159,69 @@
         </span>
       </div>
     </a>
+
+    <!-- Project 05: E-Commerce Cart Abandonment -->
+    <a href="portfolio-cart-abandonment.html" class="project-card project-item" data-tags="data,ml"
+       style="display:flex;flex-direction:column;gap:22px;padding:14px 14px 26px;border-radius:calc(var(--radius-lg)*1.3);background:var(--color-neutral-100);border:1.5px solid var(--color-neutral-300);text-decoration:none;color:var(--color-text);">
+      <!-- Funnel thumbnail -->
+      <div style="position:relative;aspect-ratio:16/10;border-radius:var(--radius-lg);overflow:hidden;background:var(--color-bg);background-image:radial-gradient(circle,var(--color-neutral-400) 1.1px,transparent 1.3px);background-size:20px 20px;">
+        <img src="img/ecommerce/cohort_gmv.png" alt="E-Commerce Cart Abandonment Strategy" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;padding:0 12px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+          <span style="font-family:var(--font-heading);font-size:28px;line-height:1;color:var(--color-neutral-400);">05</span>
+          <span style="font-size:13px;font-weight:600;color:var(--color-neutral-700);">Personal Project</span>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span style="font-size:12px;letter-spacing:.12em;font-weight:700;padding:7px 14px;border-radius:999px;background:var(--color-accent-600);color:var(--color-neutral-100);">DATA ANALYTICS</span>
+          <span style="font-size:12px;letter-spacing:.12em;font-weight:700;padding:7px 14px;border-radius:999px;background:var(--color-accent-2-600);color:var(--color-neutral-100);">PRODUCT ANALYTICS</span>
+        </div>
+        <span style="font-family:var(--font-heading);font-size:clamp(24px,2.4vw,28px);line-height:1.15;">Decoding E-Commerce Cart Abandonment: Product Strategy</span>
+        <p style="margin:0;font-size:16px;line-height:1.55;color:var(--color-neutral-800);">Processed 110M events via DuckDB to uncover root causes behind $8.02M in Black Friday cart abandonment (Triple-Leak model). Designed targeted product interventions and real-time XGBoost model recovering ~$1.76M/sale with &gt;10x ROI.</p>
+        <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;font-size:14px;">
+          <span style="font-weight:700;color:var(--color-neutral-700);">Tools</span>
+          <span>DuckDB · Python · SQL · XGBoost · Funnel/Cohort Analytics · PRD Design</span>
+        </div>
+        <span style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-heading);font-size:16px;color:var(--color-accent-700);padding-top:4px;">View Case Study
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- Project 06: ENGENIX AI CAD Platform -->
+    <div class="project-card project-item" data-tags="data,engineering,ml"
+       style="display:flex;flex-direction:column;gap:22px;padding:14px 14px 26px;border-radius:calc(var(--radius-lg)*1.3);background:var(--color-neutral-100);border:1.5px solid var(--color-neutral-300);color:var(--color-text);">
+      <!-- Flow thumbnail -->
+      <a href="portfolio/index.html" style="text-decoration:none;display:block;">
+        <div style="position:relative;aspect-ratio:16/10;border-radius:var(--radius-lg);overflow:hidden;background:var(--color-bg);background-image:radial-gradient(circle,var(--color-neutral-400) 1.1px,transparent 1.3px);background-size:20px 20px;">
+          <img src="portfolio/portfolio_preview.png" alt="ENGENIX AI CAD Quantity Takeoff Platform" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:16px;padding:0 12px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+          <span style="font-family:var(--font-heading);font-size:28px;line-height:1;color:var(--color-neutral-400);">06</span>
+          <span style="font-size:13px;font-weight:600;color:var(--color-neutral-700);">Enterprise Project</span>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span style="font-size:12px;letter-spacing:.12em;font-weight:700;padding:7px 14px;border-radius:999px;background:var(--color-accent-600);color:var(--color-neutral-100);">AI / FULL-STACK</span>
+          <span style="font-size:12px;letter-spacing:.12em;font-weight:700;padding:7px 14px;border-radius:999px;background:var(--color-neutral-800);color:var(--color-neutral-100);">ENGINEERING</span>
+        </div>
+        <a href="portfolio/index.html" style="text-decoration:none;color:inherit;">
+          <span style="font-family:var(--font-heading);font-size:clamp(24px,2.4vw,28px);line-height:1.15;display:block;">ENGENIX — AI-Powered CAD Quantity Takeoff Platform</span>
+        </a>
+        <p style="margin:0;font-size:16px;line-height:1.55;color:var(--color-neutral-800);">Enterprise platform automating CAD quantity takeoff and construction cost estimation. Combines Computational Geometry (ezdxf + Shapely) with Agentic AI (GPT-4o-mini) to process architectural floor plans (.dwg, .dxf, vector .pdf) into complete BOMs in 15s with &gt;96% accuracy.</p>
+        <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;font-size:14px;">
+          <span style="font-weight:700;color:var(--color-neutral-700);">Tools</span>
+          <span>React 18 · TypeScript · FastAPI · Python · ezdxf · Shapely · OpenAI · PostgreSQL</span>
+        </div>
+        <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding-top:4px;">
+          <a href="https://c4-app-059.vercel.app/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-heading);font-size:15px;color:#fff;background:var(--color-accent-700);padding:8px 18px;border-radius:999px;text-decoration:none;font-weight:600;">Trải nghiệm Live App ↗</a>
+          <a href="portfolio/index.html" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-heading);font-size:16px;color:var(--color-accent-700);text-decoration:none;">Chi tiết Showcase
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
 
   </section>
 

@@ -1,0 +1,1002 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio — Decoding E-Commerce Cart Abandonment: Data-Driven Product Strategy</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="portfolio-detail.css" />
+    <style>
+      .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+        margin: 1.5rem 0;
+      }
+      .metric-card {
+        background: var(--cream);
+        border: 1px solid var(--light-warm);
+        border-radius: 8px;
+        padding: 1.2rem 1.4rem;
+      }
+      .metric-label {
+        font-size: 0.74rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--warm);
+        margin-bottom: 0.35rem;
+      }
+      .metric-value {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--dark);
+        line-height: 1.1;
+      }
+      .metric-sub {
+        font-size: 0.76rem;
+        color: var(--warm);
+        margin-top: 0.2rem;
+      }
+
+      .finding-list {
+        list-style: none;
+        padding: 0;
+        margin: 0.8rem 0;
+      }
+      .finding-list li {
+        padding: 0.75rem 1rem 0.75rem 2.6rem;
+        margin-bottom: 0.5rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        position: relative;
+        line-height: 1.6;
+      }
+      .finding-list li::before {
+        position: absolute;
+        left: 0.88rem;
+        top: 0.75rem;
+        font-weight: 700;
+        font-size: 0.88rem;
+      }
+      .finding-list li.good {
+        background: #f0faf0;
+        color: #1b4a1b;
+      }
+      .finding-list li.good::before {
+        content: "✓";
+        color: #2e7d32;
+      }
+      .finding-list li.bad {
+        background: #fff5f5;
+        color: #5c1a1a;
+      }
+      .finding-list li.bad::before {
+        content: "✗";
+        color: #c62828;
+      }
+      .finding-list li.note {
+        background: #fffbf0;
+        color: #4a3800;
+      }
+      .finding-list li.note::before {
+        content: "~";
+        color: #e65100;
+      }
+
+      .proposal-list {
+        list-style: none;
+        padding: 0;
+        margin: 0.8rem 0;
+      }
+      .proposal-item {
+        display: flex;
+        gap: 1rem;
+        padding: 1.1rem 1rem;
+        border-bottom: 1px solid var(--light-warm);
+      }
+      .proposal-badge {
+        flex-shrink: 0;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: #fff;
+        font-size: 0.82rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0.15rem;
+      }
+      .proposal-body strong {
+        display: block;
+        font-size: 0.95rem;
+        margin-bottom: 0.3rem;
+        color: var(--dark);
+      }
+      .proposal-body p {
+        font-size: 0.88rem;
+        color: var(--warm);
+        line-height: 1.65;
+        margin: 0;
+      }
+
+      .module-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.2rem 0;
+        font-size: 0.86rem;
+      }
+      .module-table th {
+        background: var(--dark);
+        color: #fff;
+        padding: 0.65rem 0.9rem;
+        text-align: left;
+        font-weight: 500;
+        font-size: 0.82rem;
+      }
+      .module-table td {
+        padding: 0.65rem 0.9rem;
+        border-bottom: 1px solid var(--light-warm);
+        line-height: 1.5;
+      }
+      .module-table tr:nth-child(even) td {
+        background: var(--cream);
+      }
+
+      .formula-block {
+        background: #1a1a2e;
+        color: #a8d8a8;
+        font-family: "Courier New", monospace;
+        font-size: 0.82rem;
+        line-height: 1.8;
+        padding: 1.2rem 1.5rem;
+        border-radius: 8px;
+        margin: 1.2rem 0;
+        overflow-x: auto;
+        white-space: pre;
+      }
+
+      .tier-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        background: var(--dark);
+        color: #fff;
+        font-size: 0.74rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.4rem 1rem;
+        border-radius: 20px;
+        margin-bottom: 1.2rem;
+        margin-top: 0.5rem;
+      }
+      .tier-num {
+        background: var(--accent);
+        color: #fff;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.72rem;
+        font-weight: 700;
+      }
+
+      .impact-callout {
+        border-left: 4px solid var(--accent);
+        background: var(--cream);
+        padding: 1.2rem 1.6rem;
+        margin: 1.5rem 0;
+        border-radius: 0 8px 8px 0;
+      }
+      .impact-callout .ic-number {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 2.5rem;
+        font-weight: 600;
+        color: var(--accent);
+        line-height: 1.1;
+      }
+      .impact-callout .ic-desc {
+        font-size: 0.88rem;
+        color: var(--dark);
+        margin-top: 0.35rem;
+        line-height: 1.55;
+      }
+
+      .chart-figure {
+        margin: 1.8rem 0;
+      }
+      .chart-figure img {
+        width: 100%;
+        border-radius: 8px;
+        border: 1px solid var(--light-warm);
+        display: block;
+      }
+      .chart-caption {
+        font-size: 0.78rem;
+        color: var(--warm);
+        margin-top: 0.5rem;
+        font-style: italic;
+        text-align: center;
+        line-height: 1.55;
+      }
+
+      @media (min-width: 1024px) {
+        .with-toc {
+          display: grid;
+          grid-template-columns: 1fr 220px;
+          gap: 3.5rem;
+          max-width: 1160px;
+          margin: 0 auto;
+          padding: 0 2rem;
+        }
+        .toc-col {
+          order: 2;
+        }
+        .content-col {
+          order: 1;
+        }
+        .detail-container {
+          max-width: none !important;
+          padding: 0 !important;
+        }
+      }
+      .toc-sticky {
+        position: sticky;
+        top: 5.5rem;
+        font-size: 0.8rem;
+      }
+      .toc-sticky .toc-head {
+        font-size: 0.71rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--warm);
+        margin-bottom: 0.6rem;
+      }
+      .toc-sticky a {
+        display: block;
+        padding: 0.3rem 0 0.3rem 0.7rem;
+        color: var(--warm);
+        text-decoration: none;
+        border-left: 2px solid transparent;
+        transition: all 0.2s;
+        line-height: 1.45;
+      }
+      .toc-sticky a:hover,
+      .toc-sticky a.active {
+        color: var(--dark);
+        border-left-color: var(--accent);
+      }
+      .toc-tier {
+        font-size: 0.68rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin: 0.75rem 0 0.15rem 0.7rem;
+        font-weight: 600;
+      }
+
+      .section-intro {
+        font-size: 0.93rem;
+        color: var(--warm);
+        font-style: italic;
+        margin-bottom: 1.2rem;
+        line-height: 1.65;
+        padding: 0.8rem 1rem;
+        border-left: 3px solid var(--light-warm);
+      }
+
+      .code-tag {
+        display: inline-block;
+        padding: 2px 7px;
+        background: var(--cream);
+        border: 1px solid var(--light-warm);
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 0.82rem;
+      }
+    </style>
+  </head>
+
+  <body class="detail-page-compact">
+    <nav>
+      <a href="index.html" class="nav-logo">Nam Phương</a>
+      <ul class="nav-links">
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="projects.html" class="back-btn">
+        <span class="arrow">&#8592;</span> Quay lại Projects
+      </a>
+    </nav>
+
+    <header class="detail-hero">
+      <div class="breadcrumb">
+        <a href="index.html">Portfolio</a> /
+        <a href="projects.html">Projects</a> /
+        <span>E-Commerce Cart Abandonment Strategy</span>
+      </div>
+      <h1 style="text-align: justify">Giải Mã Thất Thoát Giỏ Hàng Mùa Sale: Chiến Lược Sản Phẩm Dựa Trên Dữ Liệu</h1>
+    </header>
+
+    <main>
+      <div class="with-toc">
+        <!-- ── MỤC LỤC ĐIỀU HƯỚNG (TOC) ── -->
+        <aside class="toc-col">
+          <div class="toc-sticky">
+            <div class="toc-head">Mục Lục Dự Án</div>
+            <a href="#overview">Tổng quan Executive</a>
+            <div class="toc-tier">Phần 1: Bài Toán</div>
+            <a href="#problem">Nghịch lý Black Friday</a>
+            <a href="#triple-leak">Mô hình Triple-Leak</a>
+            <a href="#vip-breakdown">Sự cố gãy phễu VIP</a>
+            <div class="toc-tier">Phần 2: Kiến Trúc</div>
+            <a href="#architecture">Kiến trúc DuckDB & OLAP</a>
+            <a href="#engines">Hệ thống 6 Động cơ lõi</a>
+            <div class="toc-tier">Phần 3: Giải Pháp</div>
+            <a href="#solutions">3 Chiến lược can thiệp</a>
+            <a href="#guardrails">Rơ-le an toàn (Guardrails)</a>
+            <div class="toc-tier">Phần 4: Học Máy</div>
+            <a href="#ml-modeling">Mô hình dự báo XGBoost</a>
+            <a href="#profit-curve">Tối ưu hóa Profit Curve</a>
+            <div class="toc-tier">Phần 5: Kết Quả</div>
+            <a href="#rollout">Kế hoạch 90 ngày & ROI</a>
+            <a href="#impact">Tác động kinh tế & Đúc kết</a>
+          </div>
+        </aside>
+
+        <!-- ── NỘI DUNG CHÍNH ── -->
+        <div class="content-col">
+
+          <!-- TỔNG QUAN DỰ ÁN -->
+          <section class="project-section" id="overview">
+            <div class="detail-container">
+              <div class="project-links">
+                <a
+                  href="https://github.com/Nam-phuong624/ecommerce-cart-abandonment-strategy"
+                  target="_blank"
+                  class="github-btn"
+                >
+                  GitHub Repository
+                </a>
+              </div>
+
+              <p class="section-intro">
+                Dự án Phân tích Sản phẩm &amp; Khoa học Dữ liệu End-to-End. Xử lý tập dữ liệu <strong>110 triệu sự kiện hành vi</strong> thương mại điện tử nhằm bóc tách nguyên nhân khiến <strong>~$8.02 Triệu USD</strong> bị bỏ lại trong giỏ hàng mùa Black Friday. Thay vì phát mã giảm giá đại trà làm bào mòn lợi nhuận, dự án tái cấu trúc trải nghiệm sản phẩm để khôi phục <strong>~1.5 – 1.76 Triệu USD/đợt Sale</strong> với tỷ lệ hoàn vốn ROI vượt 10×.
+              </p>
+
+              <!-- METRIC GRID -->
+              <div class="metric-grid">
+                <div class="metric-card">
+                  <div class="metric-label">Quy mô dữ liệu</div>
+                  <div class="metric-value">110M+</div>
+                  <div class="metric-sub">Sự kiện hành vi (23M sessions)</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">GMV rò rỉ (4 ngày BF)</div>
+                  <div class="metric-value">$8.02M</div>
+                  <div class="metric-sub">Bị bỏ lại trong giỏ hàng</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">Doanh thu cứu vãn</div>
+                  <div class="metric-value">~$1.76M</div>
+                  <div class="metric-sub">Khôi phục mỗi đợt Sale</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">Tỷ lệ hoàn vốn kỳ vọng</div>
+                  <div class="metric-value">10×+</div>
+                  <div class="metric-sub">Bảo vệ biên lợi nhuận ròng</div>
+                </div>
+              </div>
+
+              <div class="impact-callout">
+                <div class="ic-number">100% Data-Driven</div>
+                <div class="ic-desc">
+                  Toàn bộ nhận định đều được kiểm chứng từ dữ liệu sự kiện thực tế (Kaggle REES46 eCommerce events). Loại bỏ hoàn toàn các con số giả định, chuyển hóa tư duy từ <em>"đốt tiền marketing cứu vớt doanh số bằng mọi giá"</em> sang <em>"cấu trúc lại sản phẩm và bảo vệ dòng tiền bền vững"</em>.
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- PHẦN 1: BÀI TOÁN KINH DOANH & NGUYÊN NHÂN GỐC RỄ -->
+          <section class="project-section" id="problem">
+            <div class="detail-container">
+              <span class="tier-label"><span class="tier-num">1</span> Bối cảnh &amp; Bài toán kinh doanh</span>
+              <h2 class="detail-section-title">Nghịch Lý Mùa Sale &amp; Sự Thất Bại Của Mã Giảm Giá Đại Trà</h2>
+              
+              <p style="text-align: justify; margin-bottom: 1rem;">
+                Black Friday được kỳ vọng là đòn bẩy bùng nổ doanh số của năm. Tuy nhiên, khi đào sâu vào dữ liệu của 4 ngày cao điểm (14/11 – 17/11), hệ thống ghi nhận một thực tế đáng báo động: <strong>Lượng truy cập tăng vọt, số lượng người nhặt hàng vào giỏ tăng gấp 3 lần so với tháng 10, nhưng tỷ lệ thoát trang (Cart Abandonment) cũng leo thang lên mức kỷ lục 59.4% – 76.4% vào các ngày cao điểm.</strong>
+              </p>
+
+              <div class="chart-figure">
+                <img
+                  src="img/ecommerce/hourly_traffic_gmv.png"
+                  alt="Biến động lưu lượng truy cập và GMV theo từng khung giờ trong mùa Sale"
+                />
+                <div class="chart-caption">Hình 1.1: Phân tích lưu lượng truy cập (Traffic) và GMV theo giờ — Khách hàng đổ dồn vào giỏ hàng nhưng điểm rơi thanh toán bị nghẽn nghiêm trọng.</div>
+              </div>
+
+              <p style="text-align: justify; margin-bottom: 1rem;">
+                Theo quán tính thông thường, các sàn thương mại điện tử thường phản ứng bằng cách <strong>"bắn voucher đại trà" (Blanket Discounting)</strong>. Tuy nhiên, phân tích định lượng đã chỉ ra đây là một cái bẫy chết người:
+              </p>
+
+              <ul class="finding-list">
+                <li class="bad">
+                  <strong>Ăn mòn biên lợi nhuận (Margin Cannibalization):</strong> Mã giảm giá bị "bố thí" cho cả những khách hàng vốn dĩ đã có ý định chi trả nguyên giá, biến giao dịch sinh lời thành giao dịch chịu lỗ.
+                </li>
+                <li class="bad">
+                  <strong>Không giải quyết tận gốc nguyên nhân đứt gãy:</strong> Giảm giá chỉ kích thích sự tò mò nhất thời, không thể chữa lành trải nghiệm thanh toán bị tắc nghẽn hoặc tâm lý chần chừ so sánh giá.
+                </li>
+                <li class="good">
+                  <strong>Định hướng tiếp cận mới:</strong> Phân rã hành vi người dùng thành các tập Cohort riêng biệt để thực hiện <em>Can thiệp hành vi mục tiêu (Behavior-Driven Intervention)</em>.
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- PHÂN RÃ TRIPLE-LEAK -->
+          <section class="project-section" id="triple-leak">
+            <div class="detail-container">
+              <h2 class="detail-section-title">Mô Hình Triple-Leak: Nhận Diện 3 Dòng Chảy Thất Thoát</h2>
+              
+              <p style="text-align: justify; margin-bottom: 1rem;">
+                Phân tích sâu phễu chuyển đổi cho thấy số tiền $8.02M GMV bị bỏ rơi không đến từ một tệp khách hàng đồng nhất, mà xuất phát từ 3 nhóm hành vi có đặc điểm và tâm lý hoàn toàn khác biệt:
+              </p>
+
+              <div class="chart-figure">
+                <img
+                  src="img/ecommerce/macro_shift.png"
+                  alt="Sự dịch chuyển vĩ mô về hành vi giỏ hàng và phễu thanh toán giữa Tháng 10 và Tháng 11"
+                />
+                <div class="chart-caption">Hình 1.2: Dịch chuyển vĩ mô giữa Tháng 10 và Tháng 11 — Tỷ lệ bỏ giỏ hàng bùng nổ cùng với sự xáo trộn cơ cấu giao dịch.</div>
+              </div>
+
+              <table class="module-table">
+                <thead>
+                  <tr>
+                    <th>Nhóm Khách Hàng</th>
+                    <th>Đặc Điểm Hành Vi Cốt Lõi</th>
+                    <th>Quy Mô Bỏ Giỏ</th>
+                    <th>GMV Bị Đứt Gãy</th>
+                    <th>Tự Phục Hồi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Khách Ngủ Đông (Chronic)</strong></td>
+                    <td>Đã lướt xem hàng chục sản phẩm từ tháng 10, chờ đợi đợt Sale để săn đáy giá; cân nhắc rất lâu và ngâm giỏ.</td>
+                    <td>150,802 users</td>
+                    <td><strong>$4.04M</strong></td>
+                    <td>20.0%</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Khách Hàng Mới (New Users)</strong></td>
+                    <td>Tải app/truy cập lần đầu nhờ chiến dịch quảng cáo Black Friday; nhạy cảm về giá, rớt phễu cực nhanh sau 1-2 click.</td>
+                    <td>93,059 users</td>
+                    <td><strong>$2.49M</strong></td>
+                    <td>7.2%</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Khách VIP (Direct Buyers)</strong></td>
+                    <td>Khách hàng giá trị cao có thói quen mua ngay 1-chạm, nhưng bị giao diện sale ép qua luồng Giỏ hàng gây khó chịu.</td>
+                    <td>55,711 users</td>
+                    <td><strong>$1.49M</strong></td>
+                    <td>18.2%</td>
+                  </tr>
+                  <tr>
+                    <td><strong>TỔNG CỘNG</strong></td>
+                    <td><strong>4 ngày cao điểm Black Friday</strong></td>
+                    <td><strong>299,572 users</strong></td>
+                    <td><strong>~$8.02M</strong></td>
+                    <td><strong>~15.6%</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="chart-figure">
+                <img
+                  src="img/ecommerce/cohort_gmv.png"
+                  alt="Tỷ trọng GMV thất thoát giữa các nhóm Cohort"
+                />
+                <div class="chart-caption">Hình 1.3: Phân bổ GMV rủi ro (GMV at Risk) theo từng nhóm đối tượng người dùng.</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- SỰ CỐ GÃY PHỄU KHÁCH VIP -->
+          <section class="project-section" id="vip-breakdown">
+            <div class="detail-container">
+              <h2 class="detail-section-title">Bằng Chứng Gãy Phễu Khách VIP: "Cú Sốc Ý Định" (The Intent Shock)</h2>
+              
+              <p style="text-align: justify; margin-bottom: 1rem;">
+                Phát hiện chấn động nhất trong quá trình phân tích dữ liệu nằm ở tệp khách hàng VIP — nhóm người dùng chi tiêu nhiều nhất và trung thành nhất của sàn:
+              </p>
+
+              <div class="chart-figure">
+                <img
+                  src="img/ecommerce/direct_collapse_proof.png"
+                  alt="Bằng chứng sụp đổ của luồng mua hàng trực tiếp của khách VIP"
+                />
+                <div class="chart-caption">Hình 1.4: Bằng chứng sụp đổ luồng Direct Checkout — Từ 100% mua trực tiếp tháng 10 xuống còn 2.2% tháng 11, đẩy 55.6% khách VIP rớt khỏi phễu.</div>
+              </div>
+
+              <ul class="finding-list">
+                <li class="note">
+                  <strong>Hành vi tháng 10 (Chuẩn mực gốc):</strong> Toàn bộ 176,233 phiên giao dịch có ý định mua của nhóm VIP đều thực hiện qua nút <em>"Mua Ngay" (Direct Checkout)</em>. Tỷ lệ chốt đơn thành công đạt 100%, tỷ lệ rớt phễu bằng 0%. Họ có phản xạ: Thấy đồ ưng ý &#8594; Bấm Mua Ngay.
+                </li>
+                <li class="bad">
+                  <strong>Thảm họa tháng 11 (Black Friday):</strong> Nhằm ép khách mua thêm đồ theo gói khuyến mãi, đội ngũ Product đã ẩn hoặc làm chìm nút Mua Ngay, bắt buộc toàn bộ VIP phải đưa đồ vào Giỏ Hàng. Hành động này tạo ra một "Cú sốc ý định" (The Intent Shock), khiến <strong>55.6% phiên mua của khách VIP (57,969 phiên) bị bỏ dở giữa chừng</strong>.
+                </li>
+                <li class="good">
+                  <strong>Sự thật về tốc độ chốt đơn:</strong> Dữ liệu chỉ ra những khách VIP kiên nhẫn đi qua giỏ hàng chốt đơn trung bình chỉ mất <strong>634.9 giây (~10.5 phút)</strong>, nhanh hơn cả luồng Mua Ngay cũ (14.7 phút). Điều này chứng minh luồng thanh toán không bị lỗi kỹ thuật tải chậm, mà đứt gãy hoàn toàn do <em>xáo trộn thói quen tâm lý người dùng</em>.
+                </li>
+              </ul>
+
+              <div class="chart-figure">
+                <img
+                  src="img/ecommerce/vip_shift.png"
+                  alt="Dịch chuyển tỷ trọng hành vi nhóm VIP"
+                />
+                <div class="chart-caption">Hình 1.5: Minh chứng dịch chuyển hành vi nhóm VIP — Từ thói quen chốt đơn 1-chạm sang luồng giỏ hàng đầy ma sát.</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- PHẦN 2: KIẾN TRÚC HỆ THỐNG & LUỒNG DỮ LIỆU -->
+          <section class="project-section" id="architecture">
+            <div class="detail-container">
+              <span class="tier-label"><span class="tier-num">2</span> Kiến trúc Kỹ thuật &amp; Xử lý Dữ liệu</span>
+              <h2 class="detail-section-title">DuckDB OLAP Engine: Big Data Trọng Lượng Nhẹ</h2>
+              
+              <p style="text-align: justify; margin-bottom: 1rem;">
+                Xử lý 110 triệu dòng sự kiện thô (tương đương hơn 14 GB dữ liệu CSV/Parquet) thường đòi hỏi các cụm máy chủ Spark hay Cloud Data Warehouse đắt đỏ. Dự án đã chứng minh phương pháp hiện đại: sử dụng <strong>DuckDB</strong> làm OLAP Engine nhúng (In-process analytical database).
+              </p>
+
+              <div class="formula-block">
+Data Flow Architecture:
+[Raw Kaggle REES46 Events] (110M rows)
+       │
+       ▼  (DuckDB Ingestion & Parquet Scanning)
+[Staging Layer: stg_events] (Schema validation, timestamp casting, data quality checks)
+       │
+       ▼  (SQL Window Functions & Sessionization)
+[Marts Layer: fct_session_funnel] (23M unique sessions, multi-step funnel flags)
+       │
+       ├──► [Cohort Profiler Engine] (VIP vs Chronic vs New User Classification)
+       └──► [Feature Store for Machine Learning] (XGBoost Real-time Inference)
+              </div>
+
+              <ul class="finding-list">
+                <li class="good">
+                  <strong>Tốc độ mili-giây:</strong> Nhờ cơ chế Vectorized Execution và định dạng Columnar Storage, các truy vấn tổng hợp phức tạp (CTE, Window Functions, Funnel Aggregations) trên hàng triệu bản ghi hoàn thành chỉ trong vài trăm mili-giây.
+                </li>
+                <li class="good">
+                  <strong>Chi phí $0 Cloud:</strong> Vận hành trơn tru toàn bộ pipeline phân tích dữ liệu trực tiếp trên máy trạm thông thường, đảm bảo 100% tính tái lập (Reproducibility).
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- 6 ĐỘNG CƠ LÕI -->
+          <section class="project-section" id="engines">
+            <div class="detail-container">
+              <h2 class="detail-section-title">Hệ Thống 6 Động Cơ Can Thiệp Nền Tảng (Core System Engines)</h2>
+
+              <p style="text-align: justify; margin-bottom: 1rem;">
+                Để chuyển hóa các báo cáo phân tích thành hành động sản phẩm có thể chạy tự động ở quy mô hàng triệu người dùng, hệ thống được thiết kế với 6 khối kiến trúc chuyên biệt:
+              </p>
+
+              <div class="proposal-list">
+                <div class="proposal-item">
+                  <div class="proposal-badge">C1</div>
+                  <div class="proposal-body">
+                    <strong>Real-time Cohort Classifier (Bộ Phân Loại Thời Gian Thực)</strong>
+                    <p>Nhận diện tức thời danh tính hành vi của người dùng ngay khi họ truy cập (độ trễ &lt; 50ms) dựa trên lịch sử hoạt động tháng 10 và phiên hiện tại.</p>
+                  </div>
+                </div>
+                <div class="proposal-item">
+                  <div class="proposal-badge">C2</div>
+                  <div class="proposal-body">
+                    <strong>Behavior Telemetry Pipeline (Hệ Thống Giám Sát Hành Vi Phễu)</strong>
+                    <p>Lắng nghe luồng sự kiện theo thời gian thực (Xem hàng, Thêm giỏ, Bắt đầu Checkout), tính toán Cart Value và Intent Score để bắt trúng khoảnh khắc rớt phễu.</p>
+                  </div>
+                </div>
+                <div class="proposal-item">
+                  <div class="proposal-badge">C3</div>
+                  <div class="proposal-body">
+                    <strong>Recovery Decision Engine (Động Cơ Ra Quyết Định Cứu Vãn)</strong>
+                    <p>Bộ não trung tâm phối hợp kênh tiếp cận (On-site Popup vs Push Notification) dựa trên quy tắc logic và điểm dự báo ML. Tích hợp luật chặn spam (Suppression logic: tối đa 1 thông báo/24h).</p>
+                  </div>
+                </div>
+                <div class="proposal-item">
+                  <div class="proposal-badge">C4</div>
+                  <div class="proposal-body">
+                    <strong>Interactive UX Layer (Tầng Giao Diện Người Dùng Thích Ứng)</strong>
+                    <p>Hiển thị widget cá nhân hóa: Popup Exit-intent cho khách mới, Hộp thông báo Price-Drop cho thợ săn sale, hoặc Nút Fast-checkout thanh toán 1-chạm cho VIP.</p>
+                  </div>
+                </div>
+                <div class="proposal-item">
+                  <div class="proposal-badge">C5</div>
+                  <div class="proposal-body">
+                    <strong>Experimentation &amp; Guardrails Engine (Nền Tảng Thử Nghiệm &amp; Tự Bảo Vệ)</strong>
+                    <p>Vận hành các thử nghiệm A/B Testing chặt chẽ. Liên tục kiểm tra các rơ-le an toàn tài chính; tự động ngắt tính năng trong 1 giờ nếu biên lợi nhuận bị ảnh hưởng tiêu cực.</p>
+                  </div>
+                </div>
+                <div class="proposal-item">
+                  <div class="proposal-badge">C6</div>
+                  <div class="proposal-body">
+                    <strong>Executive Recovery Dashboard (Bảng Điều Khiển Ban Điều Hành)</strong>
+                    <p>Cập nhật real-time số tiền GMV thất thoát đang được khôi phục, tỷ lệ chuyển đổi từng nhóm, và hệ thống cảnh báo sức khỏe toàn sàn phục vụ C-level.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- PHẦN 3: THIẾT KẾ GIẢI PHÁP SẢN PHẨM -->
+          <section class="project-section" id="solutions">
+            <div class="detail-container">
+              <span class="tier-label"><span class="tier-num">3</span> Thiết kế Giải pháp Sản phẩm</span>
+              <h2 class="detail-section-title">3 Luồng Can Thiệp Mục Tiêu (Targeted Workstreams)</h2>
+
+              <p style="text-align: justify; margin-bottom: 1rem;">
+                Thay vì dùng một công thức chung cho mọi khách hàng, dự án thiết kế 3 luồng trải nghiệm người dùng tương ứng với từng điểm nghẽn tâm lý:
+              </p>
+
+              <!-- WORKSTREAM 1 -->
+              <div class="card" style="padding:1.4rem;background:var(--cream);border-radius:8px;margin-bottom:1.2rem;border:1px solid var(--light-warm);">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem;">
+                  <span style="font-weight:700;color:var(--dark);font-size:1.05rem;">WS-1: Giải Cứu Khách Hàng Mới (Target GMV: $2.49M)</span>
+                  <span class="code-tag">Mục tiêu phục hồi: 16.2% (~$0.40M)</span>
+                </div>
+                <p style="font-size:0.88rem;color:var(--dark);margin-bottom:0.8rem;line-height:1.6;">
+                  <strong>Vấn đề:</strong> Khách mới vào sàn vì tò mò, thiếu niềm tin thương hiệu, lướt qua loa rồi vuốt thoát app rất nhanh (chỉ 7.2% tự quay lại).
+                </p>
+                <ul class="finding-list">
+                  <li class="good">
+                    <strong>Exit-Intent Voucher Popup:</strong> Cảm biến hành vi người dùng định rời trang (di chuột ra khỏi viewport hoặc vuốt màn hình thoát app) để kích hoạt popup tặng mã giảm 10–15% có đồng hồ đếm ngược 15 phút tạo tính cấp bách.
+                  </li>
+                  <li class="good">
+                    <strong>Mồi nhử Miễn phí Vận chuyển (Free Shipping Ladder):</strong> Thanh đo động thông báo <em>"Chỉ cần thêm $X nữa để được Miễn phí giao hàng"</em> giúp kích thích gia tăng quy mô giỏ hàng.
+                  </li>
+                  <li class="good">
+                    <strong>Push Notification Đa Tầng (Cadence Multi-touch):</strong> Lịch trình gửi thông báo đẩy nhắc nhở giỏ hàng tại các mốc vàng: 1 giờ, 24 giờ và 72 giờ sau khi rớt phễu.
+                  </li>
+                </ul>
+              </div>
+
+              <!-- WORKSTREAM 2 -->
+              <div class="card" style="padding:1.4rem;background:var(--cream);border-radius:8px;margin-bottom:1.2rem;border:1px solid var(--light-warm);">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem;">
+                  <span style="font-weight:700;color:var(--dark);font-size:1.05rem;">WS-2: Tái Kích Hoạt "Thợ Săn Sale" Ngủ Đông (Target GMV: $4.04M)</span>
+                  <span class="code-tag">Mục tiêu phục hồi: 22.5% (~$0.91M)</span>
+                </div>
+                <p style="font-size:0.88rem;color:var(--dark);margin-bottom:0.8rem;line-height:1.6;">
+                  <strong>Vấn đề:</strong> Khách hàng đã soi rất kỹ sản phẩm từ tháng 10 (trung bình xem 39.9 lượt) nhưng kiên quyết ngâm giỏ đợi giá chạm đáy trong Black Friday.
+                </p>
+                <ul class="finding-list">
+                  <li class="good">
+                    <strong>Personalized Price-Drop Alert:</strong> Gửi thông báo đẩy đích danh cho sản phẩm họ đã theo dõi suốt tháng 10 ngay khi món đồ đó bước vào khung giờ Flash Sale giảm giá.
+                  </li>
+                  <li class="good">
+                    <strong>In-App Reminder "Vẫn đang đắn đo?":</strong> Hộp nhắc nhở xuất hiện nổi bật ngay tại trang chủ khi họ vừa mở lại ứng dụng, tái hiện giỏ hàng đang chờ sẵn.
+                  </li>
+                  <li class="good">
+                    <strong>Kích hoạt tâm lý FOMO:</strong> Cảnh báo số lượng hàng tồn kho còn ít (<em>"Chỉ còn 3 sản phẩm trong kho"</em>) để đẩy nhanh quyết định chốt đơn.
+                  </li>
+                </ul>
+              </div>
+
+              <!-- WORKSTREAM 3 -->
+              <div class="card" style="padding:1.4rem;background:var(--cream);border-radius:8px;margin-bottom:1.2rem;border:1px solid var(--light-warm);">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem;">
+                  <span style="font-weight:700;color:var(--dark);font-size:1.05rem;">WS-3: Bảo Vệ Dòng Tiền &amp; Trải Nghiệm Khách VIP (Target GMV: $1.49M)</span>
+                  <span class="code-tag">Mục tiêu phục hồi: 30.0% (~$0.45M)</span>
+                </div>
+                <p style="font-size:0.88rem;color:var(--dark);margin-bottom:0.8rem;line-height:1.6;">
+                  <strong>Vấn đề:</strong> Khách VIP có thói quen mua nhanh 1-chạm không quan tâm voucher, bị giao diện khuyến mãi ép qua giỏ hàng gây bức xúc thoát trang (55.6% rớt phễu).
+                </p>
+                <ul class="finding-list">
+                  <li class="good">
+                    <strong>Khôi phục nút "Mua Ngay" (Fast-Checkout Bypass):</strong> Cho phép nhóm VIP bỏ qua hoàn toàn bước vào giỏ hàng rườm rà, chốt đơn trực tiếp trong 1 thao tác.
+                  </li>
+                  <li class="good">
+                    <strong>Làm sạch giao diện (Ad/Popup Suppression):</strong> Ẩn toàn bộ các banner sale, pop-up vòng quay may mắn gây nhiễu loạn trên màn hình của khách VIP.
+                  </li>
+                  <li class="good">
+                    <strong>Khóa giá ưu đãi 15 phút:</strong> Cam kết giữ mức giá tốt nhất trong 15 phút để khách VIP hoàn toàn an tâm khi nhập thông tin thanh toán.
+                  </li>
+                </ul>
+              </div>
+
+              <div class="chart-figure">
+                <img
+                  src="img/ecommerce/cohort_volume.png"
+                  alt="Khối lượng người dùng trong từng phân khúc can thiệp"
+                />
+                <div class="chart-caption">Hình 3.1: So sánh quy mô số lượng người dùng cần can thiệp trên 3 phân khúc.</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- RƠ-LE AN TOÀN (GUARDRAILS) -->
+          <section class="project-section" id="guardrails">
+            <div class="detail-container">
+              <h2 class="detail-section-title">Hệ Thống Rơ-le An Toàn (Financial &amp; System Guardrails)</h2>
+
+              <p style="text-align: justify; margin-bottom: 1rem;">
+                Một chiến dịch can thiệp sản phẩm dù có ý đồ tốt đến đâu cũng tiềm ẩn rủi ro phá hủy doanh nghiệp nếu không có cơ chế tự ngắt mạch. Hệ thống thiết lập 4 chỉ số sinh tồn: nếu vi phạm trong <strong>3 giờ liên tục</strong> (đủ mẫu đạt ý nghĩa thống kê nhưng đủ nhanh để cắt lỗ), hệ thống sẽ <strong>tự động tắt tính năng trong vòng 1 Giờ Vàng</strong>:
+              </p>
+
+              <table class="module-table">
+                <thead>
+                  <tr>
+                    <th>Chỉ Số An Toàn</th>
+                    <th>Ngưỡng Cho Phép (Baseline)</th>
+                    <th>Nguy Cơ Tiềm Ẩn</th>
+                    <th>Quy Trình Xử Lý Tự Động</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Giá Trị Đơn Trung Bình (AOV)</strong></td>
+                    <td>Duy trì &gt;= <strong>$26.79</strong></td>
+                    <td>Khách hàng lạm dụng mã giảm giá thay vì mua nguyên giá</td>
+                    <td>Vô hiệu hóa ngay luồng voucher giảm giá WS-1.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tỷ Lệ Mua Hàng Toàn Sàn (CVR)</strong></td>
+                    <td>Duy trì &gt;= <strong>6.9%</strong></td>
+                    <td>Giao diện Fast-checkout hoặc popup gây lỗi gián đoạn</td>
+                    <td>Rollback tính năng về phiên bản UI mặc định.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Chi Phí Phát Mã / GMV Khôi Phục</strong></td>
+                    <td>Luôn &lt;= <strong>20%</strong></td>
+                    <td>Doanh thu cứu vãn không bù đắp nổi tiền voucher khuyến mãi</td>
+                    <td>Siết chặt ngưỡng điều kiện nhận mã giảm giá.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Độ Trễ Hệ Thống (Latency P95)</strong></td>
+                    <td>Luôn &lt;= <strong>3.0 giây</strong></td>
+                    <td>Mô hình phân loại Cohort làm chậm tốc độ tải trang mùa cao điểm</td>
+                    <td>Chuyển mô hình AI sang chế độ cache tĩnh ngoại tuyến.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- PHẦN 4: ỨNG DỤNG MACHINE LEARNING & MÔ HÌNH LỢI NHUẬN -->
+          <section class="project-section" id="ml-modeling">
+            <div class="detail-container">
+              <span class="tier-label"><span class="tier-num">4</span> Mô hình Học máy &amp; Tối ưu Lợi nhuận</span>
+              <h2 class="detail-section-title">Machine Learning Dự Báo Ý Định Bỏ Giỏ Hàng</h2>
+
+              <p style="text-align: justify; margin-bottom: 1rem;">
+                Để quyết định chính xác <em>"Thời điểm nào và Người nào thực sự cần được tặng voucher?"</em>, dự án xây dựng mô hình phân loại nhị phân dựa trên thuật toán <strong>XGBoost Classifier</strong>:
+              </p>
+
+              <ul class="finding-list">
+                <li class="note">
+                  <strong>Tập dữ liệu huấn luyện:</strong> Trích xuất từ 2,316,434 phiên có sử dụng giỏ hàng; kiểm thử ngoại tuyến trên tập độc lập gồm <strong>441,582 phiên giao dịch</strong> trong 10 ngày cuối tháng 11 (Tỷ lệ bỏ giỏ thực tế 52.2%).
+                </li>
+                <li class="good">
+                  <strong>Đặc trưng hành vi (Feature Engineering):</strong> Số lần xem sản phẩm, tổng giá trị giỏ hàng, khoảng thời gian ngẫm nghĩ giữa các lượt click, thương hiệu sản phẩm và danh mục sản phẩm. Mô hình <strong>không dùng dữ liệu nhân khẩu học cá nhân</strong>, đảm bảo 100% tính đạo đức và công bằng.
+                </li>
+                <li class="good">
+                  <strong>Hiệu năng phân loại:</strong> Mô hình đạt ROC-AUC và PR-AUC vượt trội so với phân loại ngẫu nhiên, cho phép phát hiện sớm tín hiệu thoát trang với độ nhạy cực cao.
+                </li>
+              </ul>
+
+              <div class="chart-figure">
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;">
+                  <div>
+                    <img src="img/ecommerce/roc_curve.png" alt="Đường cong ROC Curve của mô hình XGBoost" />
+                    <div class="chart-caption">Hình 4.1: ROC Curve phân loại ý định bỏ giỏ hàng</div>
+                  </div>
+                  <div>
+                    <img src="img/ecommerce/pr_curve.png" alt="Đường cong Precision-Recall Curve" />
+                    <div class="chart-caption">Hình 4.2: Precision-Recall Curve trên tập mất cân bằng</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="chart-figure">
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;">
+                  <div>
+                    <img src="img/ecommerce/feature_importance.png" alt="Mức độ quan trọng của các biến số đặc trưng trong mô hình" />
+                    <div class="chart-caption">Hình 4.3: Feature Importance của mô hình XGBoost</div>
+                  </div>
+                  <div>
+                    <img src="img/ecommerce/calibration_curve.png" alt="Đường chuẩn hóa xác suất dự báo Calibration Curve" />
+                    <div class="chart-caption">Hình 4.4: Calibration Curve — Độ tin cậy xác suất đầu ra</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- TỐI ƯU HÓA ĐƯỜNG CONG LỢI NHUẬN (PROFIT CURVE) -->
+          <section class="project-section" id="profit-curve">
+            <div class="detail-container">
+              <h2 class="detail-section-title">Chứng Minh Kinh Tế: Tối Ưu Hóa Đường Cong Lợi Nhuận (Profit Curve)</h2>
+
+              <p style="text-align: justify; margin-bottom: 1rem;">
+                Một điểm nhấn học thuật và thực tiễn của dự án là không dừng lại ở các chỉ số kỹ thuật khô khan (như Accuracy hay F1-Score), mà chuyển dịch hoàn toàn bài toán Machine Learning sang <strong>Ma Trận Chi Phí – Lợi Nhuận Kinh Doanh</strong>:
+              </p>
+
+              <div class="chart-figure">
+                <img
+                  src="img/ecommerce/profit_curve.png"
+                  alt="Đường cong mô phỏng lợi nhuận ròng dựa trên ngưỡng quyết định của mô hình AI"
+                />
+                <div class="chart-caption">Hình 4.5: Đường cong Lợi Nhuận Ròng (Profit Curve) — Điểm cực đại của lợi nhuận đạt được khi AI chọn đúng ngưỡng can thiệp, đánh bại hoàn toàn phương án phát mã đại trà.</div>
+              </div>
+
+              <ul class="finding-list">
+                <li class="good">
+                  <strong>Khách hàng chắc chắn mua (High Purchase Propensity):</strong> AI không phát mã giảm giá &#8594; Bảo toàn 100% doanh thu và lợi nhuận gộp ban đầu.
+                </li>
+                <li class="good">
+                  <strong>Khách hàng đang phân vân (Borderline Abandoners):</strong> AI kích hoạt voucher giảm giá tức thì &#8594; Kích thích chuyển đổi thành công món hàng có nguy cơ mất trắng.
+                </li>
+                <li class="bad">
+                  <strong>So sánh phương án phát mã đại trà:</strong> Tặng mã cho tất cả khiến sàn chịu lỗ nặng vì chi phí chiết khấu vượt quá lợi nhuận tăng thêm từ đơn hàng mới.
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- PHẦN 5: KẾ HOẠCH TRIỂN KHAI & KẾT QUẢ KINH DOANH -->
+          <section class="project-section" id="rollout">
+            <div class="detail-container">
+              <span class="tier-label"><span class="tier-num">5</span> Kế hoạch Triển khai &amp; Kết quả</span>
+              <h2 class="detail-section-title">Lộ Trình Triển Khai 90 Ngày (Phased 90-Day Rollout)</h2>
+
+              <p style="text-align: justify; margin-bottom: 1rem;">
+                Để giảm thiểu rủi ro vận hành, các giải pháp được triển khai phân kỳ theo 3 giai đoạn dựa trên quy mô rủi ro doanh thu và độ phức tạp kỹ thuật:
+              </p>
+
+              <table class="module-table">
+                <thead>
+                  <tr>
+                    <th>Giai Đoạn</th>
+                    <th>Nhóm Đối Tượng</th>
+                    <th>Tính Năng Trọng Tâm</th>
+                    <th>Doanh Thu Cứu Vãn Kỳ Vọng</th>
+                    <th>Độ Ưu Tiên &amp; Rủi Ro</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Phase 1 (Tháng 1)</strong></td>
+                    <td>Khách Ngủ Đông (Chronic)</td>
+                    <td>Thông báo Price-Drop &amp; In-app Box</td>
+                    <td><strong>~$0.91M</strong> (22.5% phục hồi)</td>
+                    <td>Ưu tiên cao nhất: Doanh thu thất thoát lớn nhất ($4.04M), triển khai an toàn qua Notification.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Phase 2 (Tháng 2)</strong></td>
+                    <td>Khách Hàng Mới (New Users)</td>
+                    <td>Popup Exit-Intent &amp; Mồi Free Ship</td>
+                    <td><strong>~$0.40M</strong> (16.2% phục hồi)</td>
+                    <td>Ưu tiên thứ hai: Đông người dùng nhất ($2.49M rủi ro), cần tinh chỉnh trigger tránh gây ức chế.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Phase 3 (Tháng 3)</strong></td>
+                    <td>Khách VIP (Direct Buyers)</td>
+                    <td>Fast-Checkout 1-chạm &amp; Clean UI</td>
+                    <td><strong>~$0.45M</strong> (30.0% phục hồi)</td>
+                    <td>Ưu tiên thứ ba: Tập khách nhỏ hơn ($1.49M rủi ro), can thiệp trực tiếp vào luồng thanh toán cốt lõi.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>TỔNG CỘNG</strong></td>
+                    <td><strong>Kế hoạch 90 ngày</strong></td>
+                    <td><strong>Bộ 3 giải pháp tích hợp</strong></td>
+                    <td><strong>~$1.76M / đợt Sale</strong></td>
+                    <td><strong>Bảo vệ an toàn biên lợi nhuận ròng</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- TÁC ĐỘNG KINH TẾ & BÀI HỌC KINH NGHIỆM -->
+          <section class="project-section" id="impact">
+            <div class="detail-container">
+              <h2 class="detail-section-title">Tác Động Kinh Tế &amp; Bài Học Về Phân Tích Sản Phẩm</h2>
+
+              <div class="impact-callout">
+                <div class="ic-number">~$1.76M GMV</div>
+                <div class="ic-desc">
+                  Giá trị doanh thu khôi phục tiềm năng mỗi đợt Sale lớn 4 ngày, mở rộng lên hơn <strong>$21.4M GMV hàng năm</strong> qua 7 chiến dịch Flash Sale trọng điểm của sàn thương mại điện tử.
+                </div>
+              </div>
+
+              <p style="text-align: justify; margin-bottom: 1rem;">
+                Dự án mang lại 3 bài học sâu sắc về tư duy giải quyết vấn đề bằng dữ liệu trong phát triển sản phẩm:
+              </p>
+
+              <div class="proposal-list">
+                <div class="proposal-item">
+                  <div class="proposal-badge">1</div>
+                  <div class="proposal-body">
+                    <strong>Đừng bao giờ chữa triệu chứng bằng giải pháp dễ dãi nhất</strong>
+                    <p>Phát mã giảm giá đại trà là phản xạ tự nhiên của các nhà quản lý khi thấy đơn hàng tụt giảm. Nhưng dữ liệu chứng minh rằng mã giảm giá không thể hàn gắn một phễu thanh toán bị gãy về mặt trải nghiệm UX, thậm chí còn làm sụt giảm lợi nhuận ròng.</p>
+                  </div>
+                </div>
+                <div class="proposal-item">
+                  <div class="proposal-badge">2</div>
+                  <div class="proposal-body">
+                    <strong>Hiểu sâu hành vi người dùng quan trọng hơn thuật toán phức tạp</strong>
+                    <p>Phát hiện "Cú sốc ý định của khách VIP" không đòi hỏi mạng nơ-ron sâu hay siêu máy tính, mà đến từ sự tò mò và kỹ năng phân tích cohort tỉ mỉ bằng SQL/DuckDB: so sánh hành vi cùng một nhóm người qua hai mốc thời gian khác nhau.</p>
+                  </div>
+                </div>
+                <div class="proposal-item">
+                  <div class="proposal-badge">3</div>
+                  <div class="proposal-body">
+                    <strong>Một dự án Data thành công phải gắn liền với rơ-le bảo vệ dòng tiền</strong>
+                    <p>Mô hình dự đoán hoặc tính năng sản phẩm chỉ thực sự có giá trị khi được thiết kế kèm theo các chỉ số Guardrails tài chính (AOV, CVR, Margin Dip) để bảo vệ sự sống còn của doanh nghiệp trước các biến số bất định ngoài thị trường.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- TOOLS USED IN PROJECT -->
+              <div style="margin-top:2.5rem;padding:1.4rem;border-radius:8px;background:var(--cream);border:1px solid var(--light-warm);">
+                <div style="font-weight:700;font-size:0.95rem;margin-bottom:0.8rem;color:var(--dark);">Công Nghệ &amp; Kỹ Thuật Sử Dụng Trong Dự Án</div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                  <span class="code-tag">DuckDB (OLAP Engine)</span>
+                  <span class="code-tag">Python &amp; Pandas</span>
+                  <span class="code-tag">Advanced SQL (CTE, Window Functions)</span>
+                  <span class="code-tag">XGBoost Classifier</span>
+                  <span class="code-tag">Funnel &amp; Cohort Analytics</span>
+                  <span class="code-tag">Product Requirements Document (PRD)</span>
+                  <span class="code-tag">Financial Guardrails &amp; Rollout Sizing</span>
+                  <span class="code-tag">Profit Curve Optimization</span>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer style="margin-top:5rem;padding:3rem 2rem;background:var(--dark);color:#fff;text-align:center;">
+      <p style="margin-bottom:0.5rem;font-family:'Times New Roman',Times,serif;font-size:1.4rem;">Chử Trần Phương Nam — Data Practitioner</p>
+      <p style="font-size:0.85rem;color:var(--warm);">Liên hệ: tranphuongnam932004@gmail.com · <a href="index.html" style="color:var(--accent);text-decoration:none;">Trang chủ</a> · <a href="projects.html" style="color:var(--accent);text-decoration:none;">Danh sách Dự án</a></p>
+    </footer>
+
+    <script>
+      // Active TOC tracking on scroll
+      window.addEventListener('DOMContentLoaded', () => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            const id = entry.target.getAttribute('id');
+            const link = document.querySelector(`.toc-sticky a[href="#${id}"]`);
+            if (link) {
+              if (entry.isIntersecting) {
+                document.querySelectorAll('.toc-sticky a').forEach(a => a.classList.remove('active'));
+                link.classList.add('active');
+              }
+            }
+          });
+        }, { rootMargin: '-20% 0px -70% 0px' });
+
+        document.querySelectorAll('section[id]').forEach((section) => {
+          observer.observe(section);
+        });
+      });
+    </script>
+  </body>
+</html>
